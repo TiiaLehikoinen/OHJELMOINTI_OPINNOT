@@ -120,6 +120,19 @@ Kokonaisleveys= 300px + 40px + 10px = 350px ulkoleveys*/
 
 /*prismic.io/blog/css-hover-effects (Erilaisia hover efektejä) */
 
+
+/*NORMAL FLOW = selaimen oletuslayout HTML koodin pohjalta, jota muutetaan CSS:llä
+
+display: inline(alue tekstin määrittelemänä. Mahdollistaa vierekkäin useampi)/block(alue reunasta reunaan)/inline-block(näyttää kuin inlinelta, mutta käyttäytyy kuin block. Voi laittaa perätysten)
+display: none;
+visibility: hidden;
+opacity: x; (0-100)
+
+block elementtejä oletuksena: div, p , h1-hx, section, article, main etc.
+-block elementit menee allekkain
+-inline virtaavat tekstin mukana ja siirtyvät vasta tarvittaessa seuraavalle riville
+*/
+
 body { /*koko homma*/
     background-color: darkseagreen;
 }
