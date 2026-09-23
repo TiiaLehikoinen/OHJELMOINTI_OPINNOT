@@ -8,7 +8,7 @@
     --button-height: 40px;
     --note-width: 40px,
     --note-height: 20px;
-    --border-color: rgb(111, 50, 17);
+    --border-color: brown;
 }
 
 body {
@@ -23,7 +23,7 @@ h1 {
     z-index: 1;
     padding: 5px;
     text-align: center;
-    background-color: antiquewhite;
+    background-color: var(--background-color);
     border-color: var(--border-color);
     border: 5px solid;
     color: var(--title-color);
