@@ -133,6 +133,42 @@ block elementtejä oletuksena: div, p , h1-hx, section, article, main etc.
 -inline virtaavat tekstin mukana ja siirtyvät vasta tarvittaessa seuraavalle riville
 */
 
+/*position: relative; (säilyy paikallaan)
+position: absolute; (menee minne määrätään) inset: .75rem .75rem auto auto;
+-koordinaatit/offset = top, right, bottom, left
+static; (säilyy paikallaan) 
+fixed; (menee minne määrätään) 
+sticky; (normaalivirran mukana aluksi, sitten ei) 
+= mahdollistaa päällekkäiset ja liikkumattomat elementit
+-z-index = layerit kuvankäsittelyssä. ns. kalvoja päällekkäin.
+
+static = default PAITSI jos elementissä on jokin osa määritelty jo ylempänä/alempana.
+
+relative = tekee elementistä absolute lapsen containing blocking. hyvä visuaalisiin siirtoihin.
+
+containing block = viewport johon kaikki positioidut elementit suhteutetaan.
+
+fixed = pysyy paikoillaan sivua scrollatessa (esim huomio tai navigointipalkki). suhteessa viewporttiin.
+
+sticky = pysyy normaalisti mukana, kunnes määritelty reuna tulee ja se jää siihen reunaan. Tarvitsee top tai z-index rajan.
+
+absolute = aina siinä mihin määritelty. suhteessa vanhempi elementtiinsä, joka on relative/fixed. (top: 50%; left 50%; transform: translate (-50%, -50%;
+
+z-index: 0-100 arvoilla. (mitä suurempi arvo, niin sitä pinnemmalla se on.)
+
+inset = offsetin nopeampi versio.
+loogiset versiot: 
+-inset-block start/end (lohkon alku ja loppu)
+-inset-inline-start/end (seuraa tekstin kirjoitus suuntaa)
+
+!!visuaalinen sijainti ei saa rikkoa loogista lukemis ja fokus järjestystä!!
+
+stacking contexts?
+
+devtools kertoo jos position arvo on väärä suhteessa blockkiin. Computed ja Layout näkymästä. Tarkista position ja inset.
+
+*/
+
 body { /*koko homma*/
     background-color: darkseagreen;
 }

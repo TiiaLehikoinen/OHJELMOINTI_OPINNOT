@@ -1,11 +1,33 @@
+:root {
+    --background-color: oldlace;
+    --title-color: brown;
+    --text-color: beige;
+    --box-width: 300px;
+    --box-height: 300px;
+    --button-width: 100px;
+    --button-height: 40px;
+    --note-width: 40px,
+    --note-height: 20px;
+    --border-color: rgb(111, 50, 17);
+}
+
 body {
-    background-color: linen;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 h1 {
-    color:rgb(155, 107, 107);
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    padding: 5px;
     text-align: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: antiquewhite;
+    border-color: var(--border-color);
+    border: 5px solid;
+    color: var(--title-color);
+    font-family: 'Times New Roman', Times, serif;
 }
 
 main {
@@ -15,38 +37,102 @@ main {
 .pricing-card {
     box-sizing: border-box;
     display: inline-block;
-    color: rosybrown;
-    text-align: center;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     padding: 30px;
-    border: 5px dotted rosybrown;
-    border-radius: 25%;
+    border: 5px dotted;
+    border-color: var(--border-color);
     background-color: oldlace;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    max-width: 300px;
-    min-width: 300px;
+    width: var(--box-width);
+    height: var(--box-height);
 }
 
 .pricing-card:hover {
-    background-color: mistyrose;
-    border-color: rgb(155, 107, 107);
+    background-color: rgb(251, 239, 218);
+    border: 5px dotted rgb(130, 59, 20);
+    transform: scale(1.01);
 }
 
-.cta-button {
+#item-x {
+    position: fixed;
+    top: 100px;
+    left: 30px
+}
+
+#item-y {
+    position: fixed;
+    top: 100px;
+    left: 350px
+}
+
+#item-z {
+    position: fixed;
+    top: 100px;
+    left: 670px
+}
+
+#item-z span {
     box-sizing: border-box;
-    color: rosybrown;
-    background-color: oldlace;
-    padding: 10px;
-    border: 3px solid rosybrown;
-    border-radius: 50%;
-    margin-top: 5px;
+    display: inline;
+    position: absolute;
+    width: var(--note-width);
+    height: var(--note-height);
+    top: 12px;
+    left: 12px;
+    background-color: brown;
+    color:beige;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 2px;
+    border: 2px solid rgb(111, 50, 17);
 }
 
-.cta-button:hover {
-    background-color: rgb(255, 234, 210);
-    border: 3px dotted rosybrown;
-    transform: scaleX(1.1);
+h2 {
+    text-align: center;
+    color:brown;
+    margin-top: 50px;
+}
+
+p {
+    text-align: center;
+    color: brown;
+    margin: 20px;
+}
+
+
+
+.price-button {
+    box-sizing: border-box;
+    display: inline-block;
+    position: absolute;
+    top: 70%;
+    left: 96px;
+    bottom: 30%;
+    color: beige;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    background-color: brown;
+    height: var(--button-height);
+    width: var(--button-width);
+    padding: 2px;
+    border: 3px solid;
+    border-color:  var(--border-color);
+    border-radius: 0%;
+}
+
+.price-button:hover {
+    background-color: rgb(173, 87, 44);
+    border: 3px solid rgb(130, 59, 20);
+    transform: scale(0.9);
+}
+
+#help {
+    position: fixed;
+    bottom: 1%;
+    right: 1%;
+    width: var(--note-width);
+    height: var(--note-height);
+    background-color: brown;
+    color:beige;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 2px;
+    border: 2px solid rgb(111, 50, 17);
 }
