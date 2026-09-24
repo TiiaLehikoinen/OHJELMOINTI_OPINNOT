@@ -10,3 +10,4 @@
 
 ##Tulossa:
 - Osa 3 (Korttigalleria ja Box Model)
+- Osa 5 (Flexbox)

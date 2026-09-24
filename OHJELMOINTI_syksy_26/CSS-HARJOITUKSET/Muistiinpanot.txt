@@ -1,0 +1,203 @@
+/*MUISTIINPANOT*/
+
+/*selector = elementti (mikä muutetaan), ilmoituslohko = {} (rajaa muutokset valittuihin elementteihin), property = x: (mitä muutetaan), value x (millaiseksi muutetaan), lopetus = ; (ilmoitus päättyy)*/
+
+/*x tai x, z, y {tyyli} = elementti*/
+/*.x {tyyli} = class*/
+/*#x {tyyli} = id*/
+
+/*HEX-värikoodi (heksadesimaalinen värikoodi) = #dbeafe*/
+/*(00-ff, jossa 00 = ei lainkaan kyseistä väriä, 
+- ff = maksimaalinen määrä väriä, 00 00 00 = musta 
+- ff ff ff = valkoinen
+- ff 00 00 = punainen 
+- 00 ff 00 = vihreä 
+- 00 00 ff = sininen)*/
+/*hae: hex color picker, HTML color picker tai CSS color picker (Coolors, MDN Color Picker, W3Schools HTML Color Picker, Tailwind CSS Colors)*/
+
+/*Värien merkintätavat:
+-värinimi (purple;)
+-HEX (#8b5cf6;)
+-RGB (red, green, blue/rgb(51, 65, 85);)
+-hsl ((262 83% 58%);)*/
+
+
+/*px = pikseli (border: 1px solid;)*/
+/*rem = suhteessa sivun perusfonttikokoon (font-size: 1,5rem;)*/
+/*% = suhteessa vanhempaan elementtiin (width: 80%)*/
+/*vw/vh (view width/view height) = suhteessa näkyvään leveyteen/korkeuteen (min-height: 60vh;)*/
+
+/*Fontit: font-family: Arial, font-size: 1rem, line-height: 1.6, text-align: left,*/
+
+/*tausta ja kulmat: background-color: #ffffff, border: 1px solid #000000 (leveys, tyyli, väri), border-radius: 12px*/
+
+/*HTML → DOM = Selain rakentaa HTML-elementeistä puurakenteen (DOM).
+CSS → CSSOM = CSS-säännöistä muodostuu selaimen tyylimalli.
+Renderöinti = Selain yhdistää rakenteen ja tyylit, laskee asettelun ja piirtää sivun.
+!CSS ei muuta HTML-tiedostoa — selain tulkitsee molemmat ja muodostaa lopputuloksen.!*/
+
+/*Cascade: .x on tarkempi valitsin kuin pelkkä x. Toisin sanoen: samasta elementistä voi kilpailla useita sääntöjä, ja täsmällisempi voittaa.*/
+
+/*Periytyminen: osa ominaisuuksista siirtyy vanhemmalta lapsille — esim. color ja monet fonttiominaisuudet. Mutta margin, padding ja border eivät yleensä periydy.*/
+
+/*Cascade järjestys: elementi, class, id, !important*/
+
+/*Yhdistelmä selectorit: -
+- x väilyönti y = jälkeläinen (article p) 
+- > = suora lapsi (.card > h2) 
+- + = heti seuraava sisarus (h2 + p) 
+- ~ = kaikkiin´paitsi ensimmäisseen lapseen/myöhemmät lapset (h2 ~ p)*/
+
+/*Atribuuttivalitsin: input [required] {}*/
+
+/*Pseudoluokka: a:hover (Mitä käyttäjä tekee sivustolla)*/ 
+
+/*:x (minkä ominaisuuden sisällä)*/
+
+/*:hover (osoitin elementin päällä ), :focus (kun ollaan atribuutin päällä), :active (kun atribuutti on valittu)*/
+
+/*Pseudorakenne: li:first-child, li:last-child, li:nth-child(odd/even), li:nth-child(3), li/.luokka/#id:only-child*/
+
+/*:not(.x) ei huomioida () selectoria, :is(x, y, z)  ja :where(a, b, c) , .x:has() kun elementillä on ()*/ 
+
+/*.x::after = selektorin jälkeen, #x::before = ennen selektoria, x::first-line = luokan ensimmäinen*/
+
+/*specificity (selectorin painoarvo) = !important (.x {color: red !important}, id, class, type = 1-1-1-1. 
+Testataan vasemmalta oikealle, merkiten 0-0-1 (p{})/1-0-0(id{})/(id class{}) 1-1-0.
+Selain lukee ylhäältä alas, eli alin voittaa. Mitä tarkempi, sitä vahvempi.
+Lasketaan painoarvo: 0-0-1 = 0x2^2 + 0x2^1 + 1x2^0 JA ALOITETAAN OIKEALTA VASEMMALLE*/ 
+
+/*Casacde layers - opiskele itse*/
+
+/*CSS-nesting: & = viittaa vanhempi-selectoriin, mutta on sen sisällä (.x {padding: 1rem; & x {margin-top: 0;}}*/
+
+/*Opettele @layer itse*/
+
+/*Box-model = html elementti muodostaa boxin, missä on sisältö, sisätila, reuna ja ulkotila 
+1. content - sisältö
+2. padding - sisätila (sisällön ja reunan välissä)
+3. border - reuna
+4.margin - ulkotila
+
+esim. .card {
+max/min-width: 300px; 
+min/max-height: 100px;
+padding: 24px X X X
+} 
+
+(YKSI KOMENTO KOSKEE [N] E [S] W)
+
+esim. .card { border: 2px solid red;}
+.avatar {border-radius: 50%;}
+.card {margin: 14px (tai rem);}
+
+box-sizing: border-box;/box-sizing: content-box; (Voidaan määrittää koko sivulle. Mahdollistaa laskennan pois jättämisen boxin sisätilasta! margin vaikuttaa ulkopuolella silti + x)
+width: 300px;
+padding: 20px;
+border: 5px;
+
+Kokonaisleveys= 300px + 40px + 10px = 350px ulkoleveys*/
+
+/*rem = X x oletuskoko*/
+
+/*overflow: auto;*/
+
+/*Margin saattaa mergautua toiseen marginaaliin. Yleensä sulautumistilanteessa margin on suuremman marginin koko, mutta ei aina.*/
+
+/*in-line-block = mahdollistaa vierekkäiset boxit*/
+
+/*logical properties: margin-inline, padding-inline*/
+
+/* TARKISTA:
+-content koko
+-padding koko
+-border paksuus
+-margin jokasuunnassa
+-box sizing
+-computed width/height*/
+
+/*content-box (oletus) vai border-box (määritellään manuallisesti)*/
+
+/*prismic.io/blog/css-hover-effects (Erilaisia hover efektejä) */
+
+
+/*NORMAL FLOW = selaimen oletuslayout HTML koodin pohjalta, jota muutetaan CSS:llä
+
+display: inline(alue tekstin määrittelemänä. Mahdollistaa vierekkäin useampi)/block(alue reunasta reunaan)/inline-block(näyttää kuin inlinelta, mutta käyttäytyy kuin block. Voi laittaa perätysten)
+display: none;
+visibility: hidden;
+opacity: x; (0-100)
+
+block elementtejä oletuksena: div, p , h1-hx, section, article, main etc.
+-block elementit menee allekkain
+-inline virtaavat tekstin mukana ja siirtyvät vasta tarvittaessa seuraavalle riville
+*/
+
+/*position: relative; (säilyy paikallaan)
+position: absolute; (menee minne määrätään) inset: .75rem .75rem auto auto;
+-koordinaatit/offset = top, right, bottom, left
+static; (säilyy paikallaan) 
+fixed; (menee minne määrätään) 
+sticky; (normaalivirran mukana aluksi, sitten ei) 
+= mahdollistaa päällekkäiset ja liikkumattomat elementit
+-z-index = layerit kuvankäsittelyssä. ns. kalvoja päällekkäin.
+
+static = kulkee normaalivirran mukana, default PAITSI jos elementissä on jokin osa määritelty jo ylempänä/alempana.
+
+relative = kulkee normaalivirran mukana, tekee elementistä absolute lapsen containing blocking. hyvä visuaalisiin siirtoihin.
+
+containing block = viewport johon kaikki positioidut elementit suhteutetaan.
+
+fixed = ei kulje normaalivirran mukana, pysyy paikoillaan sivua scrollatessa (esim huomio tai navigointipalkki). suhteessa viewporttiin.
+
+sticky = pysyy normaalisti mukana, kunnes määritelty reuna tulee ja se jää siihen reunaan. Tarvitsee top tai z-index rajan.
+
+absolute = ei kulje normaalivirran mukana, aina siinä mihin määritelty. suhteessa vanhempi elementtiinsä, joka on relative/fixed. (top: 50%; left 50%; transform: translate (-50%, -50%;))
+
+z-index: 0-100 arvoilla. (mitä suurempi arvo, niin sitä pinnemmalla se on.)
+
+inset = offsetin nopeampi versio.
+loogiset versiot: 
+-inset-block start/end (lohkon alku ja loppu)
+-inset-inline-start/end (seuraa tekstin kirjoitus suuntaa)
+
+!!visuaalinen sijainti ei saa rikkoa loogista lukemis ja fokus järjestystä!!
+
+stacking contexts?
+
+devtools kertoo jos position arvo on väärä suhteessa blockkiin. Computed ja Layout näkymästä. Tarkista position ja inset.
+
+
+flexbox:
+-display: flex; (vaaka)
+-flex-direction: row (x)/column (y); (määrittää akselisuunnan)
+-flex-direction: row-reverse / column-reverse; ()
+-flex-wrap: nowrap (yksi flex linja)/wrap (uusia linjoja tarpeen mukaan)/wrap-reverse (linjojen cross suunta kääntyy);
+-justify-content: flex-start/flex-end (kiinnittyy reunoihin/ x suuntainen)
+-justify-content: space-between/space-evenly/space-around; (jakaa laatikot tasaisesti vasemmalta oikealle)
+-gap: 1rem 2rem (riviväli 1, sarakeväli 2 static/relative)
+-flex-flow: row-wrap; (direction)
+-align-items (container/y suuntainen): stretch;
+-align-self (yhden elementin align):;
+-align-content (kokonaiset flex linjat):
+-display: inline-flex; (mahdollista laittaa tekstin väliin)
+-flex-grow: 1; (1x)
+-flex-shrink: (oletuskin että kutistuu jossei ole tilaa) 0 (estää kutistumisen).
+-flex-basis: xrem; (pääakselin lähtökoko)
+-flex: 1 1 16 rem; (saa kasvaa yhdellä, kutistua 1 ja sen koko on 16rem)
+-order: -1/1 (layer määrittäjä)
+
+Selain lukee = HTML - CSS - FLEX SIZES - ALIGNMENT - PAINT
+
+NAV bar idea: 
+display: flex; 
+align-items: center;
+gap: 1rem;
+margin-inline-start: auto;
+
+
+Main axis = x
+Cross axis = y
+vh = näytön korkeus
+
+

@@ -8,42 +8,46 @@ body {
 }
 
 header { 
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
     background-color: lightgoldenrodyellow;
-    border: 5px solid;
-    border-color: darkolivegreen;
-    margin: -7px; /*headerin ympärillä body värejä. Miinus hetkellinen ratkaisu.*/
-    min-width: 100%;
-    max-width: 100%;
-    min-height: 100%;
-    max-height: 100%;
+    border: 5px solid darkolivegreen;
+}
+
+#header-img-and-title {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 header img {
-    margin-top: 10px;
-    margin-left: 10px;
+   width: 200px;
+   height: 200px;
+   object-fit: contain;
 }
 
-h1 { /*Pääotsikko (ARTEMIS | luonnonsuojeorganisaatio*/
+header h1 { /*Pääotsikko (ARTEMIS | luonnonsuojeorganisaatio*/
     color: darkolivegreen;
-    font-size: 40px;
-    float: right;
-    margin-right: 70px;
-    margin-top: 85px;
+    font-size: 2.5rem;
 }
 
-header nav { 
+#header-navigation-bar { 
+    box-sizing: border-box;
     background-color: darkolivegreen;
-    padding-top: 1px;
-    padding-bottom: 1px;
+    padding: 5px;
+    width: 100%;
 }
 
 header nav ul { 
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    list-style-type: none;
-    margin: 0;
-    padding: 1rem;
+    gap: 20px;
+    list-style: none;
+    margin-inline-start: auto;
+    margin: 5px;
+    padding: 5px;
 }
 
 header a {

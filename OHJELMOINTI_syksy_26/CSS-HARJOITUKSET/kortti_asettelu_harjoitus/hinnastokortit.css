@@ -16,6 +16,12 @@ body {
     color: var(--text-color);
 }
 
+main {
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+}
+
 h1 {
     position: sticky;
     top: 0;
@@ -30,17 +36,36 @@ h1 {
     font-family: 'Times New Roman', Times, serif;
 }
 
-main {
+h2 {
     text-align: center;
+    color:brown;
+    margin-top: 0px;
+}
+
+p {
+    text-align: center;
+    color: brown;
+    margin: 20px;
+}
+
+#price-cards {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    gap: 10px;
+    margin: 10px;
 }
 
 .pricing-card {
     box-sizing: border-box;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    padding: 30px;
-    border: 5px dotted;
-    border-color: var(--border-color);
+    padding: 10px;
+    border: 5px dotted var(--border-color);
     background-color: oldlace;
     width: var(--box-width);
     height: var(--box-height);
@@ -52,32 +77,32 @@ main {
     transform: scale(1.01);
 }
 
-#item-x {
-    position: fixed;
-    top: 100px;
-    left: 30px
+.price-button {
+    background-color: brown;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    color: beige;
+    border-radius: 18px;
 }
 
-#item-y {
-    position: fixed;
-    top: 100px;
-    left: 350px
+.price-button:hover {
+    background-color: rgb(173, 87, 44);
+    border: 3px solid rgb(130, 59, 20);
+    transform: scale(1.1);
 }
 
 #item-z {
-    position: fixed;
-    top: 100px;
-    left: 670px
+    position: relative;
 }
 
 #item-z span {
     box-sizing: border-box;
-    display: inline;
+    display: block;
     position: absolute;
+    top: 10px;
+    left: 10px;
     width: var(--note-width);
     height: var(--note-height);
-    top: 12px;
-    left: 12px;
     background-color: brown;
     color:beige;
     font-family: 'Courier New', Courier, monospace;
@@ -85,43 +110,9 @@ main {
     border: 2px solid rgb(111, 50, 17);
 }
 
-h2 {
-    text-align: center;
-    color:brown;
-    margin-top: 50px;
-}
-
-p {
-    text-align: center;
-    color: brown;
-    margin: 20px;
-}
-
-
-
-.price-button {
-    box-sizing: border-box;
-    display: inline-block;
-    position: absolute;
-    top: 70%;
-    left: 96px;
-    bottom: 30%;
-    color: beige;
-    font-family: 'Courier New', Courier, monospace;
-    text-align: center;
-    background-color: brown;
-    height: var(--button-height);
-    width: var(--button-width);
-    padding: 2px;
-    border: 3px solid;
-    border-color:  var(--border-color);
-    border-radius: 0%;
-}
-
-.price-button:hover {
-    background-color: rgb(173, 87, 44);
-    border: 3px solid rgb(130, 59, 20);
-    transform: scale(0.9);
+#content {
+    flex: 1;
+    min-width: 0;
 }
 
 #help {
