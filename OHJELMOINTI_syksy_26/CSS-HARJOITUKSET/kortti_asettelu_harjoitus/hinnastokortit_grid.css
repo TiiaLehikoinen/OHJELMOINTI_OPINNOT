@@ -1,0 +1,28 @@
+.price-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    background-color: darkkhaki;
+    border: 3px solid darkolivegreen;
+    height: 150px;
+}
+
+.content {
+    display: grid;
+    box-sizing: border-box;
+    grid-template-columns: repeat(auto-fit, minmax (20rem, 1fr));
+    text-align: center;
+}
+
+@media (min-width: 700px) {
+    .featured {
+        grid-column: span 2;
+    }
+}
+
+
+
+
