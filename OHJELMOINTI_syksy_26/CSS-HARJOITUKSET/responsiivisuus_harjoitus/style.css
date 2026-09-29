@@ -1,0 +1,27 @@
+.features {
+    display: grid;
+    gap: 1rem;
+}
+
+@media (width >= 48rem)
+    {
+        .features {
+            grid-template-columns: repeat(3, 1fr);
+            font-size: 1.5rem;
+        }
+    }
+
+body {
+    background-color: floralwhite;
+    color: brown;
+}
+
+h1 {
+    font-size: clamp(2rem, 5vw, 4rem);
+}
+
+.card {
+    text-align: center;
+    padding: 1rem;
+    border: 2px solid rosybrown;
+}

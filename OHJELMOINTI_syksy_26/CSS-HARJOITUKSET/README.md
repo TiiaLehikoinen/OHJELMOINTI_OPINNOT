@@ -3,11 +3,15 @@
 ##Sisältää:
 - Osa 1 (Tyylitelty esittelysivu)
 - Osa 2 (Pieni komponenttikirjasto)
+- Osa 3 (Korttigalleria ja Box Model)
 - Osa 4 (Sisältöluettelo normaalivirrassa)
 - Osa 5 (Tuote-esittely positionoinnilla)
+- Osa 6 (Flexbox)
+- Osa 7 (Grid)
+- Osa 8 (Responsiivinen suunnittelu)
 
 ---
 
 ##Tulossa:
-- Osa 3 (Korttigalleria ja Box Model)
-- Osa 5 (Flexbox)
+- Osat 9-20
+
