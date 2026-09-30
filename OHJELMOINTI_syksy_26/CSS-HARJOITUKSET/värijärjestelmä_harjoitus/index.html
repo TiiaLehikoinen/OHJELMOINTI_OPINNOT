@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fi">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Värijärjestelmä | harjoitus</title>
+    </head>
+    <body>
+        <main>
+            <section class="hero">
+                <h1 class="title">Värijärjestelmä harjoitus</h1>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque recusandae rerum obcaecati nisi saepe voluptate impedit pariatur nulla in, quae, odit incidunt quo maiores libero officiis necessitatibus, est unde tempore.</p>
+            </section>
+
+            <section class="card">
+                <h2>Kortti</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, at, odit quod hic facere tenetur perferendis optio, itaque perspiciatis aspernatur suscipit mollitia magnam cumque dignissimos officiis incidunt nesciunt nam veritatis.</p>
+                <button>Avaa</button>
+            </section>
+
+            <section id="pop-up">
+                <button id="open">Avaa ilmoitus</button>
+
+                <dialog id="notice" class="notice">
+                    <h2>Ilmoitus</h2>
+                    <p>Tämä on ilmoitus!</p>
+
+                    <button id="close">Sulje ilmoitus</button>
+                </dialog>
+
+                <script>
+                    const dialog = document.querySelector("#notice");
+                    const open = document.querySelector("#open");
+                    const close = document.querySelector("#close");
+
+                    open.addEventListener("click", function() {
+                        dialog.showModal();
+                    });
+
+                    close.addEventListener("click", function() {
+                        dialog.close();
+                    });
+                </script>
+            </section>
+        </main>
+    </body>
+</html>

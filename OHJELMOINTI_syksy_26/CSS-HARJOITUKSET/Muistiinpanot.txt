@@ -10,7 +10,7 @@ x tai x, z, y {tyyli} = elementti
 .x {tyyli} = class
 #x {tyyli} = id
 
-HEX-värikoodi (heksadesimaalinen värikoodi) = #dbeafe
+HEX-värikoodi (heksadesimaalinen värikoodi) = #dbeafe (0-9 ja a-f = hexadesimaalijärjestelmä, 16 symbolinen.)
 (00-ff, jossa 00 = ei lainkaan kyseistä väriä, 
 - ff = maksimaalinen määrä väriä, 00 00 00 = musta 
 - ff ff ff = valkoinen
@@ -20,11 +20,16 @@ HEX-värikoodi (heksadesimaalinen värikoodi) = #dbeafe
 hae: hex color picker, HTML color picker tai CSS color picker (Coolors, MDN Color Picker, W3Schools HTML Color Picker, Tailwind CSS Colors)
 
 Värien merkintätavat:
--värinimi (purple;)
--HEX (#8b5cf6;)
--RGB (red, green, blue/rgb(51, 65, 85);)
--hsl ((262 83% 58%);)
+-värinimi (purple;) 
+-HEX (#8b5cf6;) Vain väri, ei vaaleus tai tummuus niin kuin hsl on.
+-RGB (red, green, blue #RRGGBB/rgb(51, 65, 85);) (rgb 0-250)
+-hsl ((262 83% 58%);) (0 100% 0%)-(0 100% 100%) (värikehän arvo, kylläisyys/saturaatio, tumma/vaalea)
+-rgb + alpha background: (15 23 42/0.72); (0-1 läpinäkyvyys /x) (koskee vain määriteltyä)
+-opacity: 0-1; (koskee koko elmentin kaikkia jäseniä)
+-OKLCH oklch(vaaleus, värikylläisyys, sävykulma/70% 0.18 285)
+-display-p3 (0.45 0.25 1/mahdollistaa laajemman sRGB:tä laajemman värialueen sitä tukevilla näytöillä)
 
+Värejä oi etsiä: coolor.io ja pletton.com
 
 px = pikseli (border: 1px solid;)
 rem = suhteessa sivun perusfonttikokoon (font-size: 1,5rem;)
@@ -39,6 +44,57 @@ HTML → DOM = Selain rakentaa HTML-elementeistä puurakenteen (DOM).
 CSS → CSSOM = CSS-säännöistä muodostuu selaimen tyylimalli.
 Renderöinti = Selain yhdistää rakenteen ja tyylit, laskee asettelun ja piirtää sivun.
 !CSS ei muuta HTML-tiedostoa — selain tulkitsee molemmat ja muodostaa lopputuloksen.!
+
+Liukuvärit: 
+body {
+    color: #e8eaf6;
+    background: linear-gradient (135deg (kulma), #090b18, #241050);
+}
+
+background. linear-gradient(kulmasta kulmaan)
+background: radial-gradient(luo kskipisteestä ulospäin)
+background: conic-radiant (kiertää keskipistettä [väri mistä% mihin%])
+background: repeating-linear-gradient(kulmasta, väri pikselistä pikseliin, väriin x pikselistä pikseliin)
+
+
+Tekstin gradiaatio: (liukuvärjätty teksti)
+background: linear-gradient()
+background-clip: text; color: transparent;
+
+
+:rootissa kannattaa merkitä värit: --color-background: #aeaeae;, --color-danger: #bfbfa2;...
+käytetään: var(--color-background)
+Käytä kuvaavia nimiä.
+
+Hyödynnetään edellistä väriä:
+.icon-button {
+    color: #ffffff;
+    border:2px solid currentColor;
+}
+.icon {
+    fill: currentColor; (viittaa päätekstin väriin)
+}
+
+Tausta ja foreground tulee suunnitella samaa aikaa, jotta kontrasti varmistetaan.
+
+Kuva taustalla:
+-background-image: url("hero.webp");, background-size: cover (täyttää alueen kokonaan); contain (mahtuu alueelle, mutta alueeseen voi jäädä tyhjää tilaa);, background-attachment: scroll; fixed, local; inherit;(pysyykö paikoillaan vai rullaako sivun mukana) ;, background-position: center;, background-repeat: no-repeat;
+
+Teema:
+-dark
+-light
+rootissa määritellään molemmille omat värit.
+
+Kontrasti: 
+Tavallinen tavoite on 4.5:1, WCAG contrastin mukaan. Vaaleamman värin pitää olla vähintään 4.5x kirkkaampi, kuin tummempi väri.
+WebAIM contrast checker - sivusto jolla tarkistaa.
+
+css värit, taustat. kuvia, läpinäkyvyys, gradient. Yhdistä värit responsiivisesti taustoihin ja komponenttien uudellenkäytettäviin muotoihin.
+hsl() sekä modernit väriavaruudet ja alpha näkyvyys.
+Taustat: background-color, background-image, repeat, position, size, taustakerrokset.
+Gradientit: linear-, radial-, conic-gradient()
+Saavutettavuus: Kontrasti, väristä riippumaton informaatio ja teeman toimivuus eri käyttäjille.
+
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -323,6 +379,8 @@ RANDOM:
 Saavutettavuus: keskustele opettajan kanssa näppäimistö ohjauksesta yms.
 
 virtualbox = virtuaalikone omalle koneelle (lataa MAC)
+
+dialog, popup = ilmoitus
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
