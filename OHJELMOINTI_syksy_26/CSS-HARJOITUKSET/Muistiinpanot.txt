@@ -1,3 +1,4 @@
+
 MUISTIINPANOT
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -374,6 +375,62 @@ em = containerissa määritellyn tekstin kokoon suhteutettu
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+TOPOGRAFIA:
+
+-fonttiperhe:
+fallbackin vuoksi annetaan useampi vaihtoehto. Päätteellinen ja päätteetön, tasavälinen, suhteellinen ja suhteeton fontti.
+sans-serif on yleisin fontti. Pyritään tarjoamaan saman fottiperheen vaihtoetoja.
+(https://fonts.google.com/ joko <link> HTML:llään tai CSS:ään @import url(´...´);) 
+font-display: swap; -käyttää oletus fontia kunnes sivu on latautunut ja sitten vaihto määriteltyyn
+
+-koko
+Nimetään :rootissa myös fonttikoot: esim. --text-lg: 1,25rem;/--text-sm: 0.5rem;
+font-size: clamp(2rem (min), 5vw (*muutoin* 5/100) 4rem (max))
+100-900 fonttikoko skaala.
+
+-tyylit
+italic & oblique = kursiivi ja kallistus, JOS fonttiperheessä on kyseinen ominaisuus.
+text-decoration = alleviivaukset
+text-decoration-thickness: (muuttaa koristeen paksuutta)
+text-underline-offset: (laskee koriste alaviivaa)
+
+-riviväli
+normaaliriviväli (line-height) = 1.6rem
+max-width: 65ch; (1ch = nollan levyinen)
+letter-spacing: .08em;
+text-transform: uppercase; (muuttaa tekstin kirjoitusasua ilman HTML muutoksia)
+word-spacing: normal;
+text-align = inline elementtien keskitys
+white-space: pre-wrap; = näyttää tekstin sellaisena kuin se on HTML:llään syötetty (esim välilyönnit)
+overflow-wrap: break-word; (kun teksti menee rivinyli, niin miten se asetetaan. Hajottaa vai pitää sanan yhdessä, tai tavutus päällä)
+hyphens: auto; (tavutus)
+
+-esim.
+
+.card {
+white-space: no-wrap;
+overflow: hidden;
+text-overflow: ellipsis;
+} (kun teksti ei mahdu ja se halutaan erikseen avattavaan tekstikenttään)
+
+-mahd. virheet
+Ei pikseleitä, ne eivät skaalaannu.
+Liian pitkä tekstirivi.
+Liian monta fonttia.
+Kiinteä korkeus.
+linkit näyttää liikaa tekstiltä.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+LINKIT:
+Fontit - https://fonts.google.com/
+Hover efektejä - prismic.io/blog/css-hover-effects
+Värit - coolor.io, pletton.com, MDN Color Picker, W3Schools HTML Color Picker, Tailwind CSS Colors
+Kontrasti tarkistus - https://webaim.org/resources/contrastchecker/
+Koodaus sanakirja - https://www.w3schools.com/
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 RANDOM:
 
 Saavutettavuus: keskustele opettajan kanssa näppäimistö ohjauksesta yms.
@@ -382,7 +439,8 @@ virtualbox = virtuaalikone omalle koneelle (lataa MAC)
 
 dialog, popup = ilmoitus
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+järjestelmäfontti (?)
 
+rem/em: rem on fonttikokoon suhteutettu, em on isäelementin kokoon suhteutettu
 
-
+::marker 
