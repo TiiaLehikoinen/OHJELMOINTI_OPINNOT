@@ -7,8 +7,7 @@ body {
 
 main {
     display: flex;
-    flex-direction: row;
-    gap: 2rem;
+    flex-direction: column;
 }
 
 :root {
@@ -52,10 +51,18 @@ h1 {
     text-align: center;
 }
 
+#articles {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
 article {
     border-radius: 30px;
-    box-shadow: 20px 20px 40px 10px #22cec0;
+    box-shadow: 0px 0px 30px 5px #22cec0;
     max-width: 75ch;
+    max-height: clamp(150rem, 20vh, 200rem);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -64,11 +71,6 @@ article {
     padding-bottom: 5rem;
     margin: 1.5rem;
     align-items: center;
-    position: relative;
-}
-
-.article-content {
-    max-width: 65ch; 
     position: relative;
 }
 
@@ -100,6 +102,9 @@ p {
 }
 
 details {
+    box-sizing: border-box;
+    display:block;
+    position: relative;
     margin-top: 1rem;
     margin-bottom: 2rem;
     border: 2px solid #876c90;
@@ -112,11 +117,16 @@ details {
 }
 
 code {
+    box-sizing: border-box;
+    display: block;
+    position: sticky;
     font-size: var(--text-code);
     color: var(--accent-text-color);
     font-family: var(--font-family);
     line-height: 1.0;
     white-space: pre-wrap;
+    overflow-wrap: break-word;
+    hyphens: auto; 
 }
 
 small {
@@ -146,6 +156,8 @@ small {
 
 .link:hover {
     color: var(--accent-text-color);
+    transform: scale(1.1);
+    transition: transform 0.5s ease-in-out;
 }
 
 article .link {
@@ -153,13 +165,47 @@ article .link {
     bottom: 1rem;
 }
 
+#contact-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
 
 #contact-button-email, #contact-button-phone { /*TEE VALMIIKSI*/
-    box-sizing: border-box;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
     font-size: var(--text-p);
     color: var(--link-text-color);
-    background-color: var(--link-background-color);
-    border: 2px solid var(--link-border-color);
+    font-family: var(--font-family);
+    line-height: var(--line-height-content);
+    text-decoration: none;
+    background-color: #28afb0;
+    border: 2px solid #ffffff;
+    box-shadow: 10px 10px 4px #b29dbc;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    margin: 1rem;
+}
+
+#contact-button-email:hover {
+    color: var(--accent-text-color);
+    transform: scale(1.1);
+    transition: transform 0.5s ease-in-out;
+}
+
+#contact-button-phone:hover {
+    color: var(--accent-text-color);
+    transform: scale(1.1);
+    transition: transform 0.5s ease-in-out;
+}
+
+#contact-button-phone:disabled {
+    background-color: #b29dbc;
+    color: #f3e4f2;
+    cursor: not-allowed;
+    transition: none;
+    transform: none;
 }
