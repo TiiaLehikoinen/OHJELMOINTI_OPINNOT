@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fi">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Hinnoittelusivusto | harjoitus">
+        <meta name="robots" content="noindex, follow">
+        <meta property="og:title" content="Avaruusmatkat">
+        <meta property="og:description" content="Avaruusmatkailua edullisesti">
+        <meta property="og:image" type="image/jpg" content="kuvat/space-craft.jpg">
+        <link rel="icon" type="image/png" href="kuvat/globe-europe-africa.svg">
+        <link rel="canonical" href="https://tiialehikoinen.github.io/OHJELMOINTI_OPINNOT/OHJELMOINTI_syksy_26/CSS-HARJOITUKSET/kokonaisharjoitus_11_hinnoittelusivu/index.html">
+        <link rel="stylesheet" href="style.css">
+        <title>Hinnoittelusivu</title>
+    </head>
+    <body>
+        <header id="etusivu-header">
+            <section id="pääotsikko">
+                <img class="avaus-kuva" src="kuvat/space-craft.jpg" width="300" height="200">
+                <section id="otsikko-ja-em">
+                    <h1>Avaruusmatkat</h1>
+                    <em>Avaruusmatkailua edullisesti ja entistä eksoottisempiin kohteisiin</em>
+                </section>
+            </section>
+            <nav id="header-navigation">
+                <ul>
+                    <li><a href="index.html">Etusivu</a></li>
+                    <li><a href="muut_sivut/tietoa_meistä.html">Tietoa Meistä</a></li>
+                </ul>
+            </nav>
+        </header>
+
+       <button class="ostoskori">
+            <img id="ostoskori-icon" src="kuvat/basket2-fill.svg" alt="Ostoskori">
+            <span class="ostosten-määrä">0</span>
+       </button>
+
+        <main id="etusivu-main">
+            <section id="avaus">
+                <h2>Lähde seikkailulle</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum error aliquid sunt saepe quod minima veniam debitis cupiditate, excepturi laborum fuga commodi amet nesciunt deserunt, dolore sapiente quaerat ipsa nobis!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis molestias beatae ullam. Accusantium placeat ut ex. Ex incidunt recusandae alias mollitia quaerat et? Dolores saepe magnam fugit optio maxime odit.</p>
+            </section>
+
+            <section class="tuotteet">
+                <card id="mars" class="tuote">
+                    <h3>Matka Marsiin</h3>
+                    <img id="mars-kuva" src="kuvat/mars.jpg" width="300" height="200">
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque et dolores odit tempora in voluptatem, labore magni ipsam laboriosam ducimus eos maxime? Omnis assumenda eveniet hic officiis perferendis praesentium natus.</p>
+                    <span class="hinta">1999,90$</span>
+                    <button class="lisää-ostoskoriin">Lisää ostoskoriin</button>
+                </card>
+
+                <card id="venus" class="tuote">
+                    <h3>Matka Venukseen</h3>
+                    <img id="venus-kuva" src="kuvat/venus.jpg" width="350" height="200">
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum laborum vitae dolorem sint explicabo vel voluptates, id omnis asperiores voluptas possimus fugiat nihil iure officia earum quas architecto quia molestias.</p>
+                    <span class="hinta">3999,90$</span>
+                    <button class="lisää-ostoskoriin">Lisää ostoskoriin</button>
+                </card>
+
+                <card id="vesta" class="tuote">
+                    <h3>Matka Vestaan</h3>
+                    <img id="vesta-kuva" src="kuvat/vesta.jpg" width="300" height="200">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut beatae incidunt quam cupiditate velit exercitationem neque ullam enim, ex facilis a in sed commodi nostrum. Commodi dolor amet nesciunt maxime.</p>
+                    <span class="hinta">6999,90$</span>
+                    <button class="lisää-ostoskoriin">Lisää ostoskoriin</button>
+                </card>
+
+                <card id="proxima-b" class="tuote">
+                    <h3>Matka Proxima-B:hen</h3>
+                    <img id="proxima-b-kuva" src="kuvat/proxima-b.png" width="300" height="200">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, quidem similique culpa rem quis dolor perspiciatis animi laudantium mollitia deserunt dicta quisquam repellat aut, assumenda fugiat! Totam eveniet cumque qui?</p>
+                    <span class="hinta">10 999,90$</span>
+                    <button class="lisää-ostoskoriin">Lisää ostoskoriin</button>
+                </card>
+            </section>
+        </main>
+
+        <footer id="frontpage-footer">
+            <address>
+                <h2 id="footer-h2">Ota yhteyttä</h2>
+                <p class="contact-details">Osoite: 9764 Nordkapp, Norja
+                <br> Puhelinnumero: +47 123456789
+                <br><a id="email" href="mailto: avaruusmatkat@avaruus.com">Sähköposti: avaruusmatkat@avaruus.com</a>
+                <br><img class="social-media-icon" src="kuvat/facebook.svg" alt="facebook"> 
+                <img class="social-media-icon" src="kuvat/whatsapp.svg" alt="whatsapp"> 
+                <img class="social-media-icon" src="kuvat/youtube.svg" alt="youtube"></p>
+            </address>
+        </footer>
+
+        <script> /*Tekoälyn tekemä*/
+            const napit = document.querySelectorAll(".lisää-ostoskoriin");
+            const ostostenMaara = document.querySelector(".ostosten-määrä");
+
+            let maara = Number(localStorage.getItem("ostoskorinMaara")) || 0;
+
+            ostostenMaara.textContent = maara;
+
+            napit.forEach(function(nappi) {
+                nappi.addEventListener("click", function() {
+                    maara++;
+
+                    ostostenMaara.textContent = maara;
+
+                    localStorage.setItem("ostoskorinMaara", maara);
+                });
+            });
+        </script>
+    </body>
+</html>

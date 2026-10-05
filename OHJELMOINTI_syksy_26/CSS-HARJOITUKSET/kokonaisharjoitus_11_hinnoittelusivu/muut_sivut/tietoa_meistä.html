@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fi">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Hinnoittelusivusto | harjoitus">
+        <meta name="robots" content="noindex, follow">
+        <meta property="og:title" content="Avaruusmatkat">
+        <meta property="og:description" content="Avaruusmatkailua edullisesti | Tietoa meistä">
+        <meta property="og:image" type="image/jpg" content="kuvat/space-craft.jpg">
+        <link rel="icon" type="image/png" href="kuvat/globe-europe-africa.svg">
+        <link rel="canonical" href="https://tiialehikoinen.github.io/OHJELMOINTI_OPINNOT/OHJELMOINTI_syksy_26/CSS-HARJOITUKSET/kokonaisharjoitus_11_hinnoittelusivu/index.html">
+        <link rel="stylesheet" href="../style.css">
+        <title>Tietoa meistä</title>
+    </head>
+    <body>
+        <header id="tietoa-meistä-header">
+            <section id="pääotsikko">
+                <img class="avaus-kuva" src="../kuvat/space-craft.jpg" width="300" height="200">
+                <section id="otsikko-ja-em">
+                    <h1>Avaruusmatkat</h1>
+                    <em>Avaruusmatkailua edullisesti ja entistä eksoottisempiin kohteisiin</em>
+                </section>
+            </section>
+            <nav id="header-navigation">
+                <ul>
+                    <li><a href="../index.html">Etusivu</a></li>
+                    <li><a href="tietoa_meistä.html">Tietoa Meistä</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <button class="ostoskori">
+            <img id="ostoskori-icon" src="../kuvat/basket2-fill.svg" alt="Ostoskori">
+            <span class="ostosten-määrä">0</span>
+       </button>
+
+        <main id="tietoa-meistä-main">
+            <article class="esittely">
+                <h2>Tietoa Meistä</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur quibusdam repellat facere rem voluptatibus. Dolorum culpa asperiores doloremque magni consequuntur facere aspernatur exercitationem esse ipsum velit, harum, veritatis nemo repellat.
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima alias, a excepturi dolores veniam, veritatis vel corporis voluptas voluptates rem odit unde nihil, dolorum ipsum odio. Ab voluptatum deserunt quo!
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat vero id quidem dolorem, eaque voluptatem dolorum inventore voluptatibus magnam nemo quasi numquam perspiciatis ratione nisi eveniet minus et nihil! Nobis!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi fugiat assumenda ad ipsa repellendus voluptate autem illum quo animi optio temporibus fugit, sunt quaerat excepturi incidunt dignissimos et eaque? Beatae!
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt sequi dolore aliquam. Alias unde itaque non eos aspernatur voluptas dolore provident quod facilis, aliquid obcaecati aperiam, quasi quibusdam cumque labore?
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi iure tenetur, ducimus illum dolorum maiores possimus libero? Dolore rem molestias saepe illum, consectetur, obcaecati assumenda aliquid voluptatem eum nulla tempora?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae natus quisquam, vel autem maxime ipsum recusandae eos commodi iusto at saepe minus dolorum repellat voluptatibus amet sapiente iste veritatis placeat.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda exercitationem molestias magni debitis, pariatur odit dolorem nam quasi, dignissimos quam asperiores cumque atque voluptatum id at laudantium, deserunt dicta harum?
+                </p>
+            </article>
+
+            <section class="ihmiset-marsissa">
+                <img id="ihmiset-marsissa" src="../kuvat/ihmiset-marsissa.png" width="1000" alt="ihmiset Marsin pinnalla vilkuttamassa kameralle.">
+            </section>
+
+        </main>
+
+        <footer id="tietoa-meistä-footer">
+            <address>
+                <h2 id="footer-h2">Ota yhteyttä</h2>
+                <p class="contact-details">Osoite: 9764 Nordkapp, Norja
+                <br> Puhelinnumero: +47 123456789
+                <br><a id="email" href="mailto: avaruusmatkat@avaruus.com">Sähköposti: avaruusmatkat@avaruus.com</a>
+                <br><img class="social-media-icon" src="../kuvat/facebook.svg" alt="facebook"> 
+                <img class="social-media-icon" src="../kuvat/whatsapp.svg" alt="whatsapp"> 
+                <img class="social-media-icon" src="../kuvat/youtube.svg" alt="youtube"></p>
+            </address>
+        </footer>
+
+        <script> /*Tekoälyn tekemä*/
+            const napit = document.querySelectorAll(".lisää-ostoskoriin");
+            const ostostenMaara = document.querySelector(".ostosten-määrä");
+
+            let maara = Number(localStorage.getItem("ostoskorinMaara")) || 0;
+
+            ostostenMaara.textContent = maara;
+
+            napit.forEach(function(nappi) {
+                nappi.addEventListener("click", function() {
+                    maara++;
+
+                    ostostenMaara.textContent = maara;
+
+                    localStorage.setItem("ostoskorinMaara", maara);
+                });
+            });
+        </script>
+    </body>
+</html>

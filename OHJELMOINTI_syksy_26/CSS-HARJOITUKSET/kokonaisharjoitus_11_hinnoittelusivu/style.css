@@ -1,0 +1,340 @@
+:root {
+    /*teksti/värit*/
+    --h1-text-color: #c70909;
+    --h2-text-color: #c70909;
+    --h3-text-color: #c70909;
+    --em-text-color: #e6e6e6; 
+    --span-text-color: #e6e6e6;
+    --p-text-color: #e6e6e6;
+    --link-text-color: #e6e6e6;
+    --visited-link-text-color: #e6e6e6;
+
+    /*teksti/koko*/
+    --h1-font-size: 5rem;
+    --h2-font-size: 2rem;
+    --h3-font-size: 1.5rem;
+    --em-font-size: 1rem;
+    --span-text-size: 1rem;
+    --p-font-size: 1rem;
+    --link-font-size: 1rem;
+
+    /*reunat ja taustat*/
+    --section-background-color: #000;
+    --button-background-color: #000;
+    --button-borders: 2px solid #fff;
+    --card-shadow: 0px 0px 30px 5px #6c7267;
+
+    /*interaktiot*/ 
+    --hover-link-text-color: #ff8552;
+    --hover-borders: 2px solid #fff;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/*Media query*/
+
+@media (max-width: 800px) { /*tabletti*/
+    #pääotsikko {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #otsikko-ja-em {
+        margin-top: 0;
+        padding-bottom: 2rem;
+    }
+
+    .avaus-kuva {
+        width: 250px;
+        margin-bottom: 1rem;
+    }
+
+    #avaus p {
+        width: 85%;
+    }
+}
+
+@media (max-width: 500px) { /*puhelin*/ /*TÄMÄ TULISI SUUNNITELLA ENSIN!*/
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    .avaus-kuva {
+        width: 200px;
+    }
+
+    #avaus p {
+        width: 90%;
+    }
+
+    .tuote {
+        width: 90%;
+    }
+
+    .ostoskori {
+        margin: 1rem;
+    }
+
+    .esittely {
+        width: 90%;
+    }
+
+    footer {
+        padding: 1rem;
+    }
+}
+
+body {
+    background-image: url(kuvat/stars.jpg);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/*header*/
+
+header { 
+    width: 100%;
+    background: linear-gradient(to top, rgb(0 0 0/70%), rgb(255 255 255 /30%));
+}
+
+button {
+    background-color: #000;
+    color:#fff;
+    padding: 0.5rem;
+    border: 2px solid #fff;
+    box-shadow: 0px 0px 10px #b4b3b3;
+    
+}
+
+#pääotsikko {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.avaus-kuva {
+    align-self: flex-start;
+    border-radius: 20%;
+    margin: 2rem;
+    box-shadow: 0px 0px 10px #000;
+}
+
+#otsikko-ja-em {
+    margin-top: 3rem;
+}
+
+header nav {
+    border-block: 2px solid white;
+    padding: 0.8rem;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header nav li {
+    flex: 1;
+    text-align: center;
+}
+
+header nav li + li {
+    border-left: 2px solid white;
+}
+
+header nav a {
+    display: block; /*tekee koko laatikosta klikattavan*/
+    text-decoration: none;
+    color: var(--link-text-color);
+}
+
+h1 {
+    color: var(--h1-text-color);
+    font-size: var(--h1-font-size);
+    margin: 0.5rem 0 0.5rem;
+    text-shadow: 3px 3px 8px #121212; /*oikealle, alas, tarkkuus*/
+}
+
+/*main*/
+
+main {
+    flex: 1; /*Ottaa jäljelle jäävän tilan ja työntää footerin alas*/
+}
+
+.ostoskori {
+    width: 4rem;
+    padding: 0.2rem;
+    padding-top: 0.5rem;
+    margin: 2rem;
+    align-self: flex-end;
+}
+
+#ostoskori-icon {
+    width: 1.5rem;
+    filter: invert(1);
+}
+
+.ostosten-määrä {
+    font-size: 1.5rem;
+}
+
+#avaus {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto 5rem; /*top, left-right, bottom*/
+    text-align: center;
+    background-color: #000;
+}
+
+#avaus p {
+    width: 100%;
+    text-align: center;
+}
+
+h2 {
+    color: var(--h2-text-color);
+    font-size: var(--h2-font-size);
+    margin: 2rem 0 0;
+}
+
+h3 {
+    color: var(--h3-text-color);
+    font-size: var(--h3-font-size);
+}
+
+em {
+    color: var(--em-text-color);
+    font-size: var(--em-font-size);
+}
+
+span {
+    color: var(--span-text-color)
+}
+
+p {
+    color: var(--p-text-color);
+    font-size: var(--p-font-size);
+}
+
+#email {
+    color: #fff;
+    text-underline-offset: 0.2rem;
+}
+
+.tuotteet {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+    margin: 5rem auto 5rem;
+}
+
+.tuote {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-left: 2rem;
+    background-color: rgb(0, 0, 0, 0.5);
+    padding: 1rem;
+    text-align: center;
+}
+
+#mars-kuva {
+    border-radius: 50%;
+}
+
+#venus-kuva {
+    border-radius: 50%;
+}
+
+#vesta-kuva {
+    border-radius:  50%;
+}
+
+#proxima-b-kuva {
+    border-radius:  50%;
+}
+
+.lisää-ostoskoriin {
+    padding: 0.4rem;
+}
+
+.esittely { 
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto 5rem; /*top, left-right, bottom*/
+    text-align: center;
+    background-color: #000;
+}
+
+.ihmiset-marsissa {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 2rem auto 2rem;
+}
+
+#ihmiset-marsissa {
+    display: block;
+    margin: 2rem auto 2rem;
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+}
+
+.ihmiset-marsissa::after { /*luo kuvan päälle kerroksen johon shadow piirretään*/
+    content: "";
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0px 0px 40px 40px #000; /*x siirtymä, y siirtymä, pehmennys, varjon leviäminen, väri*/
+    pointer-events: none;
+}
+
+/*footer*/
+
+footer {
+    width: 100%;
+    margin: 0;
+    background: linear-gradient(to bottom, rgb(0 0 0/70%), rgb(255 255 255 /30%));
+    /*Miten kiinnitetään sivun alareunaan?*/
+}
+
+#footer-h2 {
+    text-shadow: 3px 3px 8px #121212;
+}
+
+address {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.social-media-icon { 
+    margin: 0.5rem;
+    width: 1.5rem;
+    filter: invert(1);
+}
