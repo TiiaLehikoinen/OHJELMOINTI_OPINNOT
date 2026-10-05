@@ -9,9 +9,12 @@
 - Osa 6 (Flexbox)
 - Osa 7 (Grid)
 - Osa 8 (Responsiivinen suunnittelu)
+- Osa 9
+- Osa 10
+- Osa 11
 
 ---
 
 ##Tulossa:
-- Osat 9-20
+- Osat 12-20
 
