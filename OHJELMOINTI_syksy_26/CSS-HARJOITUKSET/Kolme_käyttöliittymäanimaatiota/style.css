@@ -1,0 +1,105 @@
+* {
+    box-sizing: border-box;
+    font-size: 30px;
+}
+
+body {
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+h1 {
+    color: rgb(183, 121, 6);
+}
+
+h2 {
+    color: orange;
+    margin: 0;
+    position: absolute;
+    top: 0.5rem;
+}
+
+section {
+    background-color: rgb(237, 237, 164);
+    width: 10rem;
+    height: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+    position: relative;
+}
+
+.spinner {
+    color: darkgoldenrod;
+    display: inline-block;
+    animation-name: pyori;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes pyori {
+    from {
+        transform: rotate (0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.panel {
+    color: darkgoldenrod;
+    background-color: beige;
+    width: 5rem;
+    height: 5rem;
+    animation-name: panel-sisaan;
+    animation-duration: 5s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes panel-sisaan {
+    0% {
+        transform: translateX(-200px);
+        opacity: 0;
+    }
+    50% {
+        transform: translateX(15px);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-200px);
+        opacity: 0;
+    }
+}
+
+.notice {
+    color: darkgoldenrod;
+    background-color: beige;
+    border: 2px solid darkgoldenrod;
+    border-radius: 10px;
+    animation-name: attention-pulse;
+    animation-duration: 5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes attention-pulse {
+    0% {
+        transform: scale (1);
+        box-shadow: 0 0 0 0 rgb(117, 69, 24, 0.5);
+    }
+    50% {
+        transform: scale(1.5);
+        box-shadow: 0 0 15px 5px rgb(117, 69, 24, 0.25);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgb(117, 69, 24, 0);
+    }
+}
