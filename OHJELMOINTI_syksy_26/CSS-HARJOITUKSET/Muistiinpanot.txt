@@ -421,6 +421,53 @@ Kiinteä korkeus.
 linkit näyttää liikaa tekstiltä.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Osa 13 (animaatiot ja @keyframes)
+Siirrot ja animaatiot 		
+
+Transformations = Siirtäminen 
+
+Transitions = Sulava värinvaihto 
+
+Scale = Kasvattaa elementtiä (kasvattaminen yli 1 ja pienentäminen alle 1 
+
+	1 on alkuperäinen arvo) 
+
+	Scale x = vaakaan 
+
+	Scale y = alas 
+
+	Z akseli = säädetään akselia päälekkäin, itseä päin 
+
+	Scale = Kasvattaa molempiin suuntaan  
+
+Rotate = Kiertäminen elementin keskipisteen kautta 
+
+Deg = asteittain 
+
+Turn = täysi kierros 
+
+Rad = 2 pii R = ympyrän kehä 
+
+Grad = täysi kierros 
+
+Skew = vinoutus, vinouttaa elementin x tai y akselin suhteen 
+
+JÄRJESTYS MUUTTAA TULOSTA 
+
+Translate -> scale  ensin siirretään, sitten skaalataan 
+
+Transform-Origin = määrittää pisteen, jonka ympärillä kääntö toimii 
+
+Transition-turation = määrittää siirtymän keston 
+
+Suorityskyky = Devtool performans 
+
+animaatio vs transition = transition vaatii css tilassa muutoksen, eli hoverin. Animaatio toimii ilman erilistä toimintoa.
+
+@keyframes on animaation runko
+
+@keyframes bounce { 0% { translate: 0 0;}} /*alkaa jostain, muuttuu*/
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 LINKIT:
 Fontit - https://fonts.google.com/

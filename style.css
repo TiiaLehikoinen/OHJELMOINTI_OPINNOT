@@ -1,36 +1,55 @@
-/*kontrasti määritelty*/
-
-body {
-    background-color: #fdf5e6;
-    background: linear-gradient(to bottom, #fdf5e6, #9c5e5e);
-    background-repeat: no-repeat;
-    margin: 0;
-    min-height: 100vh;
+* {
+    box-sizing: border-box;
 }
 
-h1 {
-    box-sizing: border-box;
-    flex-direction: row;
-    font-family: 'Times New Roman', Times, serif;
-    color: #9c5e5e;
-    text-align: center;
-    font-size: xx-large;
-    text-decoration: none;
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to bottom, rgb(253 245 230/50%), rgb(156 94 94/50%)); 
+    margin: 0;
+    min-height: 100vh;
+    min-width: 100vw;
 }
 
 main {
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100vw;
+    min-height: 100vh;
 }
 
 nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100vw;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    font-family: 'Times New Roman', Times, serif;
+    color: #9c5e5e;
     text-align: center;
+    font-size: 2rem;
+    margin: 0,
 }
 
 li {
     list-style-type: none;
-    margin: 20px;
+    margin: 1rem;
+    text-align: center;
 }
 
 a {
@@ -40,8 +59,10 @@ a {
     font-family: 'Courier New', Courier, monospace;
     border:3px solid #9c5e5e;
     border-radius: 20px;
-    padding: 10px;
+    padding: 1rem;
     white-space: nowrap;
+    text-align: center;
+    transition: transform 0.5s ease-in-out;
 }
 
 a:visited {
@@ -51,17 +72,16 @@ a:visited {
 a:hover {
     background-color: rgb(253 245 230/0.72);
     border: 3px dotted #9c5e5e;
+    transform: scale(1.2);
+    outline: 4px solid white;
 }
 
-@media (max-width: 500px) {/*Sovittuu puhelimen näytölle*/
-    h1 {
-        font-size: 1.5rem;
-    }
-    li {
-        margin: 30px 0;
-    }
-    a {
-        font-size: 0.8rem;
-        padding: 8px;
-    }
+a:focus-visible {
+    background-color: rgb(253 245 230/0.72);
+    border: 3px dotted #9c5e5e;
+    transform: scale(1.2);
+    outline: 3px solid white;
 }
+
+
+
