@@ -72,6 +72,17 @@ article {
     margin: 1.5rem;
     align-items: center;
     position: relative;
+    transition: transform 0.5s ease-out;
+}
+
+article:hover {
+    transform: scale(1.05);
+    outline: 3px solid #fff;
+}
+
+article:focus-visible {
+    transform: scale(1.05);
+    outline: 3px solid #fff;
 }
 
 #cu-periodic {
@@ -209,3 +220,4 @@ article .link {
     transition: none;
     transform: none;
 }
+

@@ -12,6 +12,7 @@
 - Osa 9
 - Osa 10
 - Osa 11
+- osa 12 (transition & transformation)
 
 ---
 
