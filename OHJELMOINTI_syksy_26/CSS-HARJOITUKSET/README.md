@@ -9,13 +9,17 @@
 - Osa 6 (Flexbox)
 - Osa 7 (Grid)
 - Osa 8 (Responsiivinen suunnittelu)
-- Osa 9
-- Osa 10
-- Osa 11
-- osa 12 (transition & transformation)
+- Osa 9 (värijärjestelmät)
+- Osa 10 (typografia)
+- Osa 11 (efektit)
+- Osa 12 (transition & transformation)
+- Osa 13 (Animaatiot ja @keyframes)
+- Osa 14 (CSS-muuttujat)
+
+Nämä löytyvät CSS-harjoituksistani, joskus useampi samassa, joskus omanassaan.
 
 ---
 
 ##Tulossa:
-- Osat 12-20
+- Osat 15-20
 

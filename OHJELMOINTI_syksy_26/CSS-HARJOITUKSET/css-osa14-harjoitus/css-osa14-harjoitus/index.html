@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS-muuttujat – harjoitus</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <p class="eyebrow">CSS Osa 14</p>
+      <h1>Token-järjestelmän harjoitus</h1>
+      <p class="lead">Tämä sivu toimii jo, mutta CSS sisältää paljon toistuvia arvoja. Tehtäväsi on muuttaa ne selkeäksi token-järjestelmäksi.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <h2>Miksi design tokenit?</h2>
+      <p>Kun samat värit, välit ja pyöristykset toistuvat eri komponenteissa, niiden ylläpito vaikeutuu. CSS-muuttujilla yhteiset arvot voidaan nimetä ja hallita yhdestä paikasta.</p>
+    </section>
+
+    <section class="cards" aria-label="Palvelut">
+      <article class="card">
+        <span class="badge">HTML</span>
+        <h2>Selkeä rakenne</h2>
+        <p>Semanttinen HTML tekee sivusta ymmärrettävän sekä käyttäjälle että selaimelle.</p>
+        <a class="button" href="#">Lue lisää</a>
+      </article>
+
+      <article class="card">
+        <span class="badge">CSS</span>
+        <h2>Yhtenäinen ulkoasu</h2>
+        <p>Hyvin suunnitellut yhteiset arvot tekevät komponenteista johdonmukaisia.</p>
+        <a class="button" href="#">Lue lisää</a>
+      </article>
+
+      <article class="card card--important">
+        <span class="badge">Haaste</span>
+        <h2>Responsiivinen sivu</h2>
+        <p>Kokeile lopuksi fluidia typografiaa ja section-välejä clamp()-funktion avulla.</p>
+        <a class="button button--accent" href="#">Aloita</a>
+      </article>
+    </section>
+
+    <section class="notice">
+      <h2>Muista</h2>
+      <p>Tavoite ei ole muuttaa sivun ulkoasua ensimmäisessä vaiheessa. Refaktoroi ensin toistuvat arvot muuttujiksi ja varmista, että sivu näyttää edelleen samalta.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">CSS-muuttujat ja laskentafunktiot</div>
+  </footer>
+</body>
+</html>
+

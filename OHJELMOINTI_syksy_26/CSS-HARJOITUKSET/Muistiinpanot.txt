@@ -467,6 +467,74 @@ animaatio vs transition = transition vaatii css tilassa muutoksen, eli hoverin. 
 @keyframes on animaation runko
 
 @keyframes bounce { 0% { translate: 0 0;}} /*alkaa jostain, muuttuu*/
+
+reduced motion = jotkut ihmiset haluavat vähemmän liikettä näytöllä, ja sellainen asetus on.
+Tehdään animaatioille @keyframesilä. 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CSS-Muuttujat ja laskentafunktiot:
+
+:root (= kaikille tarkoiettu arvo) + var() 
+
+.card = komponenttikotainen arvo, joka periytyy vain kortin sisällä
+
+.card.warning = variantti voi ylikirjoittaa komponentin tokenit
+
+tila/state = :hover/media = myös tila tai media query voi vaihtaa arvon.
+
+Helpottaa johdonmukaisuutta ja luettavuutta.
+
+Fallback = color: var (--normal-color, #f56789) 
+Erotellaan pilkulla SEURAAVA mahdollinen vaihtoehto, jos edeltäviä ei löydy.
+
+Jos on suuria ja toistuvia luokkia (.x), niin voidaan märitellä luokkakohtaisia variantteja:
+.button {--background-color: #fff; ...}
+
+Teemat CSS- muutujilla = 
+
+Design tokeneja (var()) arvoja voi käyttää väreihin, välitykseen ja muotoihin.
+
+Nimetään käyttötarkoituksen mukaan, ei arvon mukaan!
+
+Bootstrap = valmiita CSS designeja, joita voidaan kutsua omaan CSS koodiin.
+
+CSS laskut:
+esim.
+width: calc(100% - 2 rem); tai min-height: calc(100vh - 64px);
+&
+:root {
+    --space: 1rem;
+}
+.card {
+    padding: calc(var(--space)*1.5)
+}
+
+clamp(x, y, z) = minimi, tavoite, maximi.
+
+min(), max().
+
+@media:ssa voidaan muuttaa myös :root arvoa.
+
+@container = koskee vain sitä elemnttiä joka määritellään. 
+@media koskee koko sivustoa.
+
+@property = syntaksin, alkuarvon ja peiytymisen määrrittämiseen custom propertylle.
+esim.
+@property --progress {
+    syntax: "<number>";
+    inherits false;
+    inital-value: 0;
+}
+.bar{
+    scale: var(--progress) 1;
+}
+= .bar arvioi/tarkistaa sopiiko arvo kyseiseen kohtaan, jos ei, se valitsee muun merkityn (1).
+
+Oletarkka missä muuttuja määritellään: yleisesti vai paikallisesti!
+
+
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 LINKIT:
