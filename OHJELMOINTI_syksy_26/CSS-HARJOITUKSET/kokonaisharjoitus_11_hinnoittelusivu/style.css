@@ -108,6 +108,11 @@ header nav a {
     color: var(--link-text-color);
 }
 
+.nav-li:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-out;
+}
+
 h1 {
     color: var(--h1-text-color);
     font-size: var(--h1-font-size);
@@ -127,6 +132,12 @@ main {
     padding-top: 0.5rem;
     margin: 2rem;
     align-self: flex-end;
+}
+
+.ostoskori:hover {
+    transform: scale(1.1);
+    transition: transform 0.4s ease-in-out;
+    box-shadow: 0px 0px 20px #b4b3b3;
 }
 
 #ostoskori-icon {
@@ -221,6 +232,12 @@ p {
 
 .lisää-ostoskoriin {
     padding: 0.4rem;
+}
+
+.lisää-ostoskoriin:hover {
+    transform:scale(1.1);
+    transition: transform 0.4s ease-in-out;
+    box-shadow: 0px 0px 20px #b4b3b3;
 }
 
 .esittely { 

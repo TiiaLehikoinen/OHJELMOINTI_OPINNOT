@@ -41,6 +41,7 @@ section {
     animation-duration: 5s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
+    font-size: 0.8rem;
 }
 
 @keyframes pyori {

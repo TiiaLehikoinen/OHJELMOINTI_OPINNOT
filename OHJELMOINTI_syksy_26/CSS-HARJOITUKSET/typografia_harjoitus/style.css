@@ -1,4 +1,10 @@
-@import url('../../../fontit_yleinen/Gruppo/Gruppo-Regular.ttf');
+
+@font-face {
+    font-family: "Gruppo";
+    src: url("../../../fontit_yleinen/Gruppo/Gruppo-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
 
 body {
     font-size: 15px;
@@ -26,7 +32,7 @@ main {
     --link-border-color: #ffffff;
     --line-height-content: 1.6;
     --line-height-title: 1.1;
-    --font-family: 'Gruppo-Regular', 'Times New Roman', sans-serif;
+    --font-family: "Gruppo", 'Times New Roman', sans-serif;
 }
 
 h1 {
