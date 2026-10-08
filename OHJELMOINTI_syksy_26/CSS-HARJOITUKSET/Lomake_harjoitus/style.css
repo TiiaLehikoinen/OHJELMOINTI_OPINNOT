@@ -1,0 +1,109 @@
+@font-face {
+    font-family: "Dancing";
+    src: url("../../../fontit_yleinen/Dancing_Script/DancingScript-VariableFont_wght.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Kranky";
+    src: url("../../../fontit_yleinen/Kranky-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --font-size-titles: 1.5rem;
+
+    --color-title: #096265;
+    --color-content: #096265;
+    --color-fields-buttons: #cb0d5080;
+
+    --border-radius: 5px;
+    --border-style: 1px solid #cb0d5080;
+
+    --background-field: #ffffff88;
+}
+
+body {
+    background: linear-gradient(180deg, rgba(203, 13, 80, 0.502), rgba(23, 254, 250, 0.5));
+    font-family: "Dancing", "Kranky", Georgia, 'Times New Roman', Times, serif;
+    font-size: 15px;
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+h1 {
+    font-family: "Kranky", Georgia, 'Times New Roman', Times, serif;
+    color: var(--color-title);
+    text-shadow: 0 0 10px #b9e2e2;
+    font-size: clamp(2rem, 3vw, 4rem);
+} 
+
+h2, h3, h4 {
+    font-size: var(--font-size-title);
+    font-family: "Kranky", Georgia, 'Times New Roman', Times, serif;
+    color: var(--color-title);
+}
+
+fieldset {
+    border-radius: var(--border-radius);
+    border: var(--border-style);
+}
+
+label, legend {
+    color: var(--color-content);
+}
+
+select, input, input::placeholder, button {
+    color: var(--color-fields-buttons);
+}
+
+select, input {
+    background-color: var(--background-field);
+    border: var(--border-style);
+    border-radius: var(--border-radius);
+    padding: 3px;
+    margin: 0.5rem;
+    box-shadow: 0 0 10px 3px #ffffff76;
+}
+
+select:hover, input:hover {
+    transition: transform 0.2s ease-out;
+    transform: scale(1.05);
+}
+
+button {
+    background-color: #fff;
+    border: var(--border-style);
+    border-radius: var(--border-radius);
+    padding: 3px;
+    margin: 0.5rem;
+    box-shadow: inset 0 0 2px 1px #e284b6;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    appearance: none;
+    width: 0.8rem;
+    height: 0.8rem;
+    cursor: pointer;
+    background-color: var(--background-field);
+    border: var(--border-style);
+    border-radius: var(--border-radius);
+}
+
+p {
+    color: var(--color-content);
+}
+
+@media (min-width 800px) {
+
+}
+
+@media (min-width 1200px) {
+
+}

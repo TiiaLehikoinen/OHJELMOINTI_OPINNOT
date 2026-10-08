@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fi">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Lomake harjoitus</title>
+    </head>
+    <body>
+        <hero>
+            <h1>Tämä on lomakkeen tyylittely harjoitus!</h1>
+        </hero>
+
+        <form>
+            <fieldset>
+                <legend>Rekisteröidy käyttäjäksi</legend>
+
+                <h2 id="yhteystiedot" class="täytä">Yhteystiedot</h2>
+
+                    <label class="yhteystiedot-label" for="etunimi">Etunimi</label>
+                    <input id="etunimi" class="required" name="nimi" type="text" autocomplete="given-name" placeholder= "*pakollinen" required>
+                    
+                    <label class="yhteystiedot-label" for="sukunimi">Sukunimi</label>
+                    <input id="sukunimi" class="required" name="nimi" type="text" autocomplete="family-name" placeholder= "*pakollinen" required>
+
+                    <label class="yhteystiedot-label" for="sähköposti">Sähköposti</label>
+                    <input id="sähköposti" class="required" name="sähköposti" type="email" autocomplete="email" placeholder="*pakollinen" required>
+
+                <h3 id="ikä" class="valitse">Ikä</h3> <!--VALIKKO TÄHÄN!-->
+                    
+                    <label class="ikä-label" for="syntymäpäivä">Syntymäpäivä</label>
+                    <select id="syntymäpäivä" name="syntymäpäivä" required>
+                        <option value="" selected disabled>Valitse päivä</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                    </select>
+
+
+                    <label class="ikä-label" for="syntymäkuukausi">Syntymäkuukausi</label>
+                    <select id="syntymäkuukausi" name="syntymäkuukausi" required>
+                        <option value="" selected disabled>Valitse kuukausi</option>
+                        <option value="1">Tammikuu</option>
+                        <option value="2">Helmikuu</option>
+                        <option value="3">Maaliskuu</option>
+                        <option value="4">Huhtikuu</option>
+                        <option value="5">Toukokuu</option>
+                        <option value="6">Kesäkuu</option>
+                        <option value="7">Heinäkuu</option>
+                        <option value="8">Elokuu</option>
+                        <option value="9">Syyskuu</option>
+                        <option value="10">Lokakuu</option>
+                        <option value="11">Marraskuu</option>
+                        <option value="12">Joulukuu</option>
+                    </select>
+
+                    <label class="ikä-label" for="syntymävuosi">Syntymävuosi</label>
+                    <select id="syntymävuosi" name="syntymävuosi" required>
+                        <option value="" selected disabled>Valitse vuosi</option>
+                    </select>
+
+                <h4 id="sukupuoli" class="valitse">Sukupuoli</h4> 
+        
+                    <label class="sukupuoli-nappi" for="mies">Mies</label>
+                    <input type="radio" id="mies" name="sukupuoli" value="mies" required>
+
+                    <label class="sukupuoli-nappi" for="nainen">Nainen</label>
+                    <input type="radio" id="nainen" name="sukupuoli" value="nainen" required>
+
+                    <label class="sukupuoli-nappi" for="muu">Muu</label>
+                    <input type="radio" id="muu" name="sukupuoli" value="muu" required>
+
+                <input id="tietojen-tallennus-hyväksyntä" name="tietojen-tallennus" type="checkbox" required> <!--koita luoda tähän joskus lisätieto kenttä joka aukeaa-->
+                <label class="required" for="tietojen-jako">Hyväksyn tietojeni tallentamisen</label>
+                
+                <button id="rekisteröidy-nappi" type="submit">Rekisteröidy</button>
+
+                <p id="lisäohje">*Lähetettyäsi rekisteröitymisen, siirry sähköpostiin vahvistamaan rekisteröityminen.</p>
+
+            </fieldset>
+        </form>
+
+        <script>
+            const vuosivalikko = document.querySelector("#syntymävuosi");
+
+            for (let vuosi = 2026; vuosi >= 1926; vuosi--) {
+                const vaihtoehto = document.createElement("option");
+
+                vaihtoehto.value = vuosi;
+                vaihtoehto.textContent = vuosi;
+
+                vuosivalikko.appendChild(vaihtoehto);
+            }
+        </script>
+    </body>
+</html>
