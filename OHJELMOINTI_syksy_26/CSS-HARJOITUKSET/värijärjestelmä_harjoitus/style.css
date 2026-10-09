@@ -26,7 +26,7 @@ main {
 .hero {
     background-image: linear-gradient(180deg,
             rgba(255, 217, 204, 0.5),
-            rgba(216, 219, 226, 1)), url("../kuvat_css/dusty-pink-roses.jpg");
+            rgba(216, 219, 226, 1)), url("kuvat_css/dusty-pink-roses.jpg");
     background-size: cover;
     padding: 1rem;
     font-family: var(--font-family);

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fi">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Osa 15 | Pseudo-harjoitukset</title>
+    </head>
+    <body>
+        <!--primary ja seconadry painike = hover, focus, focus-visible, active ja disabled.-->
+        <!--Lomake kortti jossa: täytettävä kenttä (sähköposti) ja checkbox. Sekä ohjeet täyttöön-->
+
+        <form>
+            <fieldset>
+                <legend>
+                    <span>L</span>
+                    <span>O</span>
+                    <span>M</span>
+                    <span>A</span>
+                    <span>K</span>
+                    <span>E</span>
+                </legend>
+                <label class="täytä-kenttä" for="sähköposti">Sähköposti</label>
+                <input id="sähköposti" class="required" name="sähköposti" type="email" autocomplete="email" placeholder="*pakollinen" required>
+                <small>esim. nimi@email.com</small>
+
+                <section id="active-checkbox">
+                    <input id="hyväksy" class="required" name="hyväksy-painike" type="checkbox" required>
+                    <label class="valitse-nappi" for="hyväksy">Hyväksyn sähköpostini tallentamisen</label>
+                </section>
+
+                <section id="disabled-checkbox">
+                    <input id="et-voi-hyväksyä" class="not-required" name="et-voi-hyväksyä-painike" type="checkbox" disabled>
+                    <label class="valitse-nappi" for="et-voi-hyväksyä">Tätä et voi valita vaikka haluaisit</label>
+                </section>
+
+                <button id="lähetä" class="form-button">Lähetä</button>
+
+                <small>*Tiedot tallentuvat tällä hetkellä vain selaimen muistiin, ole siis huoleti.</small>
+            </fieldset>
+        </form>
+
+        <section id="buttons">
+            <button id="aktiivinen" class="independent-button">Aktiivinen</button>
+            <button id="poistettu" class="independent-button" disabled>Poistettu</button>
+        </section>
+    </body>
+</html>

@@ -1,0 +1,267 @@
+* {
+    box-sizing: border-box;
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+}
+
+legend {
+    font-size: 1.5rem;
+}
+
+legend span:nth-child(4n + 1) {
+    color: red;
+}
+
+legend span:nth-child(4n + 2) {
+    color: lightgreen;
+}
+
+legend span:nth-child(4n + 3) {
+    color: blue;
+}
+
+legend span:nth-child(4n) {
+    color: yellow;
+}
+
+small {
+    font-size: 0.8rem;
+    color: rgba(3, 3, 3, 0.536);
+}
+
+input {
+    border: 1px solid grey;
+}
+
+input:required {
+    outline: 1.5px dashed red;
+    background-color: white;
+}
+
+#disabled-checkbox input:disabled {
+    outline: 1.5px dashed grey;
+    background-color: rgba(128, 128, 128, 0.10);
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+input[type="email"]:valid {
+    border: 2px solid lightgreen;
+}
+
+input[type="email"]:invalid {
+    /*border: 2px solid red;*/
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:valid {
+    border: 2px solid lightgreen;
+}
+
+input[type="checkbox"]:invalid {
+    /*border: 2px solid red;*/
+}
+
+input[type="checkbox"]:focus {
+    box-shadow: 0 0 8px 2px yellow;
+}
+
+input[type="checkbox"]:focus-visible {
+    box-shadow: 0 0 8px 2px yellow;
+}
+
+input[type="checkbox"]:hover {
+    box-shadow: 0 0 8px 2px yellow;
+}
+
+input[type="checkbox"]:checked {
+    background-color: red;
+}
+
+input::placeholder {
+    color: rgba(142, 2, 2, 0.267);
+}
+
+button {
+    background-color: white;
+    border: 2px solid rgb(235, 235, 235);
+    color: #000;
+}
+
+.täytä-kenttä { /*Sähköposti label*/
+
+}
+
+#sähköposti { /*sähköposti input*/
+    transition: transform 0.3s ease-out;
+}
+
+#sähköposti:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 8px 2px yellow;
+}
+
+#sähköposti:focus {
+    transform: scale(1.1);
+    box-shadow: 0 0 8px 2px yellow;
+}
+
+#sähköposti:focus-visible {
+    transform: scale(1.1);
+    box-shadow: 0 0 8px 2px yellow;
+}
+
+#active-checkbox {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+#disabled-checkbox {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.valitse-nappi { /*checkbox label*/
+    font-size: 0.8rem;
+    color: #000000;
+}
+
+#hyväksy { /*checkbox input*/
+     
+}
+
+#lähetä { /*form button*/
+    box-shadow: 0 0 8px 2px rgb(161, 160, 160); 
+    transition: transform 0.3s ease-out;
+}
+
+#lähetä:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 8px 2px yellow;
+    outline: 2px solid yellow;
+    border: 2px solid rgb(237, 237, 0);
+    background-color: yellow;
+    color: white;
+}
+
+#lähetä:focus {
+    transform: scale(1.2);
+    outline: 2px solid lightgreen;
+    border: 2px solid rgb(119, 236, 119);
+    box-shadow: 0 0 8px 2px lightgreen;
+    background-color: lightgreen;
+    color: white;
+}
+
+#lähetä:focus-visible {
+    transform: scale(1.2);
+    outline: 2px solid blue;
+    border: 2px solid rgb(3, 3, 207);
+    box-shadow: 0 0 8px 2px blue;
+    background-color: blue;
+    color: white;
+}
+
+#lähetä:active {
+    transform: scale(1.2);
+    background-color: red;
+    outline: 2px solid red;
+    border: 2px solid rgb(226, 2, 2);
+    background-color: red;
+    color: white;
+}
+
+#buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    margin: 1rem;
+    justify-content: center;
+}
+
+#aktiivinen {
+    box-shadow: 0 0 8px 2px rgb(161, 160, 160);
+    transition: transform 0.3s ease-out;
+}
+
+#aktiivinen:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 8px 2px yellow;
+    outline: 2px solid yellow;
+    border: 2px solid rgb(237, 237, 0);
+    background-color: yellow;
+    color: white;
+}
+
+#aktiivinen:focus {
+    transform: scale(1.2);
+    outline: 2px solid lightgreen;
+    box-shadow: 0 0 8px 2px lightgreen;
+    border: 2px solid rgb(119, 236, 119);
+    background-color: lightgreen;
+    color: white;
+}
+
+#aktiivinen:focus-visible {
+    transform: scale(1.2);
+    outline: 2px solid blue;
+    border: 2px solid rgb(3, 3, 207);
+    box-shadow: 0 0 8px 2px blue;
+    background-color: blue;
+    color: white;
+}
+
+#aktiivinen:active {
+    transform: scale(1.2);
+    background-color: red;
+    outline: 2px solid red;
+    border: 2px solid rgb(226, 2, 2);
+    background-color: red;
+    color: white;
+}
+
+#poistettu:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#poistettu:focus {
+    /*transform: scale(1.2);
+    outline: 2px solid lightgreen;
+    box-shadow: 0 0 8px 2px lightgreen;
+    background-color: lightgreen;*/
+}
+
+.independet-button {
+    /*transition: transform 0.3s ease-out;*/
+}
+
+.independent-button:not(:disabled):hover {
+    /*transform: scale(1.2);*/
+}
+
+.independent-button:focus { /*hiirellä*/
+    /*outline: 2px solid red;
+    box-shadow: 0 0 8px 2px red;
+    transform: scale(1.2);*/
+}
+
+.independent-button:focus-visible { /*näppäimistöllä*/
+    /*outline: 2px solid blue;
+    box-shadow: 0 0 8px 2px blue;
+    transform: scale(1.2);*/
+}

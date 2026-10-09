@@ -15,11 +15,14 @@
 - Osa 12 (transition & transformation)
 - Osa 13 (Animaatiot ja @keyframes)
 - Osa 14 (CSS-muuttujat)
+- Osa 15 (pseudoluokat ja elementit)
+- Osa 16 (Lomakkeen tyylittely)
+
 
 Nämä löytyvät CSS-harjoituksistani, joskus useampi samassa, joskus omanassaan.
 
 ---
 
 ##Tulossa:
-- Osat 15-20
+- Osat 17-20
 

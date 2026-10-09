@@ -531,7 +531,25 @@ esim.
 }
 = .bar arvioi/tarkistaa sopiiko arvo kyseiseen kohtaan, jos ei, se valitsee muun merkityn (1).
 
-Oletarkka missä muuttuja määritellään: yleisesti vai paikallisesti!
+Ole tarkka missä muuttuja määritellään: yleisesti vai paikallisesti!
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Pseudo-luokat
+= jonkinlainen TILA 
+:hover, :checked, :first-child, :disabled, :active (yhdistetään transformiin kuten hoverkin, mutta käytetään kun on aktiivinen, ei vain tarkasteltu)
+:focus (hiirellä), :focus-visible (näppäimistöllä), :link, :visited
+:required, :optional, :valid, :invalid, :placeholder-shown, :nth-child(even/odd)
+:not(), :is()(specificity 1), :where()(saman kaltainen kuin is, mutta oletuksena specificity 0), :has(), 
+
+Pseudo-elementit
+= esityksellinen virtuaaliosa
+::before, ::after (content ominaisuus liittyy) 
+::marker (kohdistuu lista elementin lista tyyliin), ::selection
+::first-letter, ::first-line, ::placeholder
+
+Näiden tarkoitus on kertoa käyttöliittymän käyttäjälle mitä tapahtuu ja missä.
+
 
 
 
@@ -558,4 +576,4 @@ järjestelmäfontti (?)
 
 rem/em: rem on fonttikokoon suhteutettu, em on isäelementin kokoon suhteutettu
 
-::marker 
+-millä testataan ruudunlukijat?
