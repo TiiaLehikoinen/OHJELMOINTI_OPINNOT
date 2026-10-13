@@ -1,0 +1,32 @@
+/* Design tokenit */
+@layer reset, base, layout, components, utilities;
+@layer reset { *, *::before, *::after { box-sizing:border-box; } }
+@layer base {
+  :root { --brand:#6432bb; --ink:#222; --surface:#fff; --page:#f6f6fb; --border:#d8d4e0; --space:1rem; --radius:.75rem; }
+  body { margin:0; font-family:system-ui,sans-serif; color:var(--ink); background:var(--page); }
+  a { color:var(--brand); }
+  :focus-visible { outline:3px solid #b45309; outline-offset:3px; }
+}
+@layer layout {
+  .site-header { display:flex; flex-wrap:wrap; justify-content:space-between; gap:var(--space); padding:1.25rem; background:var(--surface); }
+  .site-header nav { display:flex; flex-wrap:wrap; gap:1.25rem; }
+  .layout { display:grid; grid-template-columns:minmax(0,16.25rem) minmax(0,1fr); gap:1.5rem; padding:1.5rem; }
+  main, .sidebar { min-width:0; }
+  .course-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr)); gap:1.25rem; }
+  @media (max-width:45rem) { .layout { grid-template-columns:minmax(0,1fr); padding:1rem; } }
+}
+@layer components {
+  .logo { color:var(--brand); font-weight:700; }
+  .sidebar, .hero { background:var(--surface); padding:1.25rem; }
+  .hero { margin-bottom:1.5rem; }
+  .hero h1 { color:var(--brand); font-size:clamp(1.75rem,4vw,2.625rem); }
+  .card-container { container:course / inline-size; min-width:0; }
+  .course-card { display:grid; gap:.5rem; align-content:start; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1.25rem; min-height:14.7rem; }
+  .course-card.featured { border:2px solid var(--brand); }
+  .card-title { color:var(--brand); font-size:clamp(1.2rem,5cqi,1.5rem); margin:.25rem 0; overflow-wrap:anywhere; }
+  .tag { color:#595263; font-size:.875rem; }
+  .button { display:inline-block; width:fit-content; padding:.75rem 1.125rem; background:var(--brand); color:#fff; text-decoration:none; border-radius:.5rem; transition:transform .2s; }
+  .button:hover { transform:translateY(-2px); }
+  @container course (min-width:28rem) { .course-card { grid-template-columns:9rem minmax(0,1fr); } .course-card .tag, .course-card .card-title { grid-column:1; } .course-card p, .course-card .button { grid-column:2; } }
+  @media (prefers-reduced-motion:reduce) { .button { transition:none; } }
+}

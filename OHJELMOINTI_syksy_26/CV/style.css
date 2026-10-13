@@ -3,8 +3,18 @@
     font-size: 20px;
 }
 
+/*VÄRIT OVAT TARKOITUSELLA MUSTA-VALKO-SKAALAA, haluttuja värejä ei ole vielä valittu*/
 :root {
     --font-size-header-title: 1rem;
+
+    --font-color-text: rgb(84, 84, 84);
+    --font-color-title: #000;
+
+    --border-color: rgb(0, 0, 0);
+
+    --box-shadow: 0 0 20px 2.5px rgba(0, 0, 0, 0.5);
+
+    --background-color: #fff;
 }
 
 body {
@@ -16,17 +26,17 @@ body {
 }
 
 header {
-    background-color: rgba(173, 216, 230, 0.242);
+    background-color: var(--background-color);
     min-width: 100vw;
     margin-top: 0;
     padding: 0.75rem;
-    border: 2px solid lightblue;
+    border: 2px solid var(--border-color);
 }
 
 #avatar {
-    border: 5px solid lightblue;
+    border: 5px solid var(--border-color);
     border-radius: 50%;
-    box-shadow: 0 0 20px 7.5px rgb(214, 237, 245);
+    box-shadow: var(--box-shadow);
     min-width: 10rem;
     max-width: 20rem;
     min-height: 10rem;
@@ -35,26 +45,26 @@ header {
 
 h1 {
     font-size: clamp(1.5rem, 5vw,2.5rem);
-    color: lightblue;
+    color: var(--font-color-title);
     margin: 0;
     margin-top: 0.5rem;
 }
 
 #space-styling {
-    color: white;
+    color: var(--font-color-text);
     margin: 0.25rem;
 }
 
 #birth-time, #hometown, #contact {
     font-size: var(--font-size-header-title);
-    color: lightblue;
+    color: var(--font-color-title);
     padding: 0;
     margin: 0.25rem;
 }
 
 .personal-info {
     font-size: 0.75rem;
-    color: white;
+    color: var(--font-color-text);
     padding: 0;
     margin: 0.25rem;
 }

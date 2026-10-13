@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DevTools – CSS-tutkimuslaboratorio</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <header><p class="eyebrow">CHROME DEVTOOLS • HARJOITUS</p><h1>CSS-tutkimuslaboratorio</h1><p>Tutki sääntöjen voittajia, lopullisia arvoja, käyttämätöntä CSS:ää ja renderöinnin kustannuksia.</p></header>
+    <section class="panel"><h2>1. Styles ja Computed</h2><p>Avaa DevTools (F12), valitse alla oleva kortti Elements-välilehdeltä ja tutki <strong>Styles</strong>- ja <strong>Computed</strong>-näkymiä.</p>
+      <article id="kohdekortti" class="kortti korostus" style="border-color: #f97316">
+        <h3>Selvitettävä kortti</h3><p>Mikä on taustaväri? Mikä on tekstin väri? Mikä on reunuksen väri? Miksi?</p>
+      </article>
+      <p class="hint">Vinkki: tarkastele erityisesti ominaisuuksia <code>background-color</code>, <code>color</code>, <code>border-color</code>, <code>padding</code> ja <code>width</code>.</p>
+    </section>
+    <section class="panel"><h2>2. Coverage</h2><p>Avaa DevTools → Ctrl/Cmd + Shift + P → kirjoita <strong>Show Coverage</strong> → valitse toiminto → paina latauksen uudelleenkäynnistyskuvaketta.</p><p>Selvitä, kuinka paljon <code>styles.css</code>-tiedostosta jää käyttämättä. Tiedostossa on tarkoituksella käyttämättömiä luokkia.</p><p class="hint">Coverage näyttää käyttämättömiä CSS-tavuja, ei suoraan käyttämättömien sääntöjen lukumäärää. Tulokset riippuvat sivun tilasta ja käytetyistä toiminnoista.</p></section>
+    <section class="panel"><h2>3. Performance</h2><p>Avaa DevTools → <strong>Performance</strong>. Käynnistä tallennus, paina yhtä painiketta, pysäytä tallennus ja vertaile tapahtumia.</p>
+      <div class="controls"><button id="layoutBtn">Muuta leveyttä (layout)</button><button id="paintBtn">Vaihda taustaväri (paint)</button><button id="transformBtn">Siirrä transformilla</button><button id="resetBtn" class="secondary">Palauta</button></div>
+      <div class="stage"><div id="liikkuva" class="liikkuva">Tutkittava laatikko</div></div>
+      <p id="tila" role="status">Valitse toiminto ja tarkastele selaimen työtä.</p>
+      <p class="hint">Huomaa: transform-animaatio voidaan usein toteuttaa compositing-vaiheessa ilman jokaisen ruudun layout- tai paint-työtä. Toteutus riippuu selaimesta ja tilanteesta.</p>
+    </section>
+    <footer>Opiskelijan tehtävä: kirjoita jokaisesta osiosta havainto ja perustelu.</footer>
+  </main>
+</body>
+<!--1. Performance napit eivät tee mitään, tai ainakaan en huomaa mitään muutoksia "tutkittavassa laatikossa" enkä DEVTOOLS:issa-->
+<!--2. DevTools näyttää 404 java scriptille. Siinäpä syy.-->
+</html>
+

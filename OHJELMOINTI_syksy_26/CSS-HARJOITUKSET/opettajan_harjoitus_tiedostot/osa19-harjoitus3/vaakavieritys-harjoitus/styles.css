@@ -1,0 +1,37 @@
+/* OPISKELIJA: Tutki CSS:ää ja selvitä, mikä aiheuttaa vaakavierityksen.
+   Korjaa syy, älä peitä oiretta overflow-x: hidden -säännöllä. */
+:root { font-family: system-ui, -apple-system, sans-serif; color: #1f2937; background: #f8fafc; }
+* { box-sizing: border-box; }
+body { margin: 0; line-height: 1.6; }
+a { color: inherit; }
+.site-header { background: #17132d; color: white; }
+.header-inner { max-width: 1100px; margin: auto; padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+.logo { font-size: 1.3rem; font-weight: 800; text-decoration: none; }
+nav { display: flex; gap: 1.2rem; }
+nav a { text-decoration: none; }
+.hero { background: linear-gradient(120deg, #312e81, #7c3aed); color: white; }
+.hero-inner { max-width: 1100px; margin: auto; padding: 4rem 1.5rem; }
+.eyebrow { letter-spacing: .15em; font-weight: 700; font-size: .8rem; }
+h1 { max-width: 700px; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.12; }
+.hero p:not(.eyebrow) { max-width: 650px; }
+.button { display: inline-block; margin-top: 1rem; padding: .8rem 1.2rem; border-radius: .6rem; background: white; color: #312e81; font-weight: 700; text-decoration: none; }
+.section { max-width: 1100px; margin: auto; padding: 3rem 1.5rem; }
+h2 { font-size: 1.8rem; line-height: 1.2; }
+.product-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+.product-card { padding: 1.5rem; border-radius: 1rem; background: white; box-shadow: 0 5px 20px #11182712; border: 1px solid #e5e7eb; }
+.product-icon { font-size: 2rem; }
+.product-card h3 { margin-bottom: .4rem; }
+.product-card strong { color: #6d28d9; }
+.benefits { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1rem; }
+.benefits > div { background: #ede9fe; padding: 1.25rem; border-radius: .8rem; }
+.contact { padding-bottom: 5rem; }
+footer { text-align: center; padding: 2rem; background: #17132d; color: white; }
+@media (max-width: 650px) {
+  .header-inner { flex-direction: column; }
+  nav { flex-wrap: wrap; justify-content: center; }
+  .hero-inner { padding-top: 3rem; padding-bottom: 3rem; }
+  .product-grid { grid-template-columns: 1fr; }
+  .benefits { grid-template-columns: 1fr; }
+  /* Tässä harjoituksessa on tarkoituksellinen responsiivisuusvirhe. */
+  .product-card { min-width: 420px; }
+}

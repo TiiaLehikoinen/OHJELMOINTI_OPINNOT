@@ -550,8 +550,30 @@ Pseudo-elementit
 
 Näiden tarkoitus on kertoa käyttöliittymän käyttäjälle mitä tapahtuu ja missä.
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Koodin toimivuus:
 
+Specificity: # = 100, . = 10, elementti = 1 ja kaiken ylittää !important (kirjoitetaan CSS:ssä arvon perään). HTML:ssä määritelty [style=""] ylittää CSS:ssän, mutta ei !important:ia.
+Cascade: ylhäältä alas = heikosta vahvempaan.
+
+@layer toimii samalla idealla, eli ylhäältä alas, heikosta vahvimpaan.
+Layerille voidaan määrittää ns. "luokka", [reset, base, components, utilities = vasemmalta oikealle = heikosta vahvempaan].
+
+Varmista, että komponentti kestää sisällön (overflow-wrap: anywhere;)
+Testaa: pitkä otsikko, puuttuva kuva, 200% zoom, kapea container, eri kieli.
+Kiinteät koot voivat aiheuttaa ylivuotoa. Käytä joustavampia kokoja.
+
+Jos yksi sivu käyttää täysin omia CSS:iä, niin silloin CSS tiedostoja kannattaa olla useampi.
+
+Varjot ja blur lisäävät laskentamäärää. Vältä suuria varjoja.
+Animaatiot myös rederöivät paljon.
+
+content-visibility: auto; (selain voi lykätä ruudun ulkopuolisen materiaalin latauksen siihen, että kyseiselle ruudulle saavutaan)
+
+tarkista ennen julkaisua: rakenne, responsiivisuus, fokus, suorituskyky ja konsoli.
+
+Dokumentoidut päätökset: README.MD
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -561,12 +583,11 @@ Hover efektejä - prismic.io/blog/css-hover-effects
 Värit - coolor.io, pletton.com, MDN Color Picker, W3Schools HTML Color Picker, Tailwind CSS Colors
 Kontrasti tarkistus - https://webaim.org/resources/contrastchecker/
 Koodaus sanakirja - https://www.w3schools.com/
+Tarkista tukeeko selain käytettyjä elementtejä - https://caniuse.com/
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 RANDOM:
-
-Saavutettavuus: keskustele opettajan kanssa näppäimistö ohjauksesta yms.
 
 virtualbox = virtuaalikone omalle koneelle (lataa MAC)
 

@@ -1,0 +1,174 @@
+/* PERUSTYYLIT */
+:root { 
+    font-family: system-ui, sans-serif; 
+    color: #e2e8f0; 
+    background: #0f172a; 
+} /*1. eivät ole muodossa "--x: y;"*/
+/*2. :root [juuri] arvot periytyy jokaiselle HTML elementille, bodyn arvot perityy jokaiselle body:n elementille, * valitse kaikki elementit ja aseta arvo.
+:root ei ylitä muualla määriteltyjä arvoja samoin kuin "*".*/
+
+* { 
+    box-sizing: border-box; 
+}
+
+body { 
+    margin: 0; 
+    line-height: 1.6; 
+}
+
+.container { 
+    max-width: 950px; 
+    margin: auto; 
+    padding: 36px 20px; 
+}
+
+header { 
+    margin-bottom: 32px; 
+}
+
+h1 { 
+    font-size: clamp(2rem, 5vw, 3.4rem); /*400px:ssä 2rem, 800px:ssä 5vw, 1200px:sä 3.4rem*/
+    line-height: 1.15; /*1.Ylittää bodyssä määritellyn*/ /*2. Tarkemmin: KORVAA bodystä PERIYTYVÄN*/
+    margin: 0 0 14px; 
+}
+
+h2 { 
+    color: #c4b5fd; /*1. ylittää rootin harmaan*/ /*2. Tarkemmin: KORVAA :root:sta PERIYTYVÄN*/
+    margin-top: 0; 
+}
+
+.eyebrow { color: #67e8f9; letter-spacing: .15em; font-weight: 800; }
+.panel { background: #1e293b; padding: 25px; border: 1px solid #475569; border-radius: 18px; margin: 22px 0; }
+.hint { color: #cbd5e1; font-size: .94rem; }
+code { color: #f9a8d4; }
+
+/* TAHALLISET RISTIRIIDAT: TUTKI STYLES-VÄLILEHDELTÄ */
+
+.kortti { 
+    background-color: #2563eb; /*#kohdekortti ylittää tämän tyylin, koska # = 100 ja . = 10*/
+    color: #ffffff; /*1. .kortti.korostus ylittää tämän. specificity 10 + 10, kun .korostus on vain 10, SEKÄ tulee uusi määritelmä jälkeen.*/ /*2. Specifity voittaa jo, cascadea perustelua ei tarvita!*/
+    border: 5px solid #38bdf8; /*1. tämän reunan värin ylittää HTML:ssä määritelty style*/ /*2. Sellaista arvoa, issä on useampi arvo, kutsutaan "shorthandiksi".*/
+    padding: 12px; /*tämä ylitetään koska seuraavassa (alempana) märitellän uudelleen sama)*/
+    width: 80%; /*#kohdekortti ylittää tämän tyylin*/
+    border-radius: 14px; 
+}
+
+.kortti { 
+    background-color: #7c3aed; /*#kohdekortti ylittää tämän tyylin, koska # = 100 ja . = 10 SEKÄ seuraavaksi tuleva määritelmä samalle taustalle.*/
+    padding: 24px; 
+}
+
+.korostus { 
+    background-color: #059669; /*#kohdekortti ylittää tämän tyylin, koska # = 100 ja . = 10*/
+    color: #fef08a; /*.kortti.korostus ylittää tämän. specificity 10 + 10, kun .korostus on vain 10*/
+}
+
+#kohdekortti { /*KÄYTÖSSÄ*/
+    background-color: #be123c; 
+    width: 100%; 
+}
+
+.kortti.korostus { /*KÄYTÖSSÄ*/
+    color: #fbcfe8; 
+}
+
+/* Inline-tyyli voittaa border-colorin yllä olevista tavallisista säännöistä. */
+
+.controls { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 10px; 
+    margin: 18px 0; 
+}
+
+button { 
+    cursor: pointer; 
+    border: 0; 
+    border-radius: 10px; 
+    padding: 12px 16px; 
+    background: #a78bfa; 
+    color: #111827; 
+    font-weight: 700; 
+}
+
+button:hover { 
+    background: #c4b5fd; 
+}
+
+button.secondary { 
+    background: #94a3b8; 
+}
+
+.stage { min-height: 170px; 
+    background: #0b1220; 
+    border: 1px dashed #64748b; 
+    border-radius: 12px; 
+    padding: 20px; 
+    overflow: hidden; 
+}
+
+.liikkuva { display: grid; 
+    place-items: center; 
+    width: 180px; 
+    height: 95px; 
+    background-color: #0ea5e9; 
+    border-radius: 12px; 
+    color: #082f49; 
+    font-weight: 800; 
+    transform: translateX(0); 
+}
+
+footer { 
+    padding: 15px 0; 
+    color: #94a3b8; 
+}
+
+/* TAHALLA KÄYTTÄMÄTTÖMÄT SÄÄNNÖT COVERAGE-HARJOITUKSEEN */
+
+/*1. Käytämättä jää 26.2% 2.KYSEISSESSÄ SIVUN TILASSA. Coverage mittaa käyttämättömiä CSS-tavuja eikä sääntöjen lukumäärää.*/
+/*Jos koodissa olisi pseudo-elementtejä kuten :hover, voi coverage näyttää tämän puutuvana, jos se ei ole aktivoituna.*/
+
+.vanha-valikko { /*Tällaista luokkaa ei HTML:ssä ole*/
+    display: flex; 
+    background: tomato; 
+    padding: 40px; 
+}
+
+.vanha-valikko a { /*Tällaista luokkaa ei HTML:ssä ole*/
+    color: yellow; 
+    text-decoration: underline; 
+}
+
+.poistettu-sivupalkki { /*Tällaista luokkaa ei HTML:ssä ole*/
+    position: fixed; 
+    left: 0; 
+    top: 0; 
+    width: 250px; 
+    background: olive; 
+}
+
+.tuotekortti { /*Tällaista luokkaa ei HTML:ssä ole*/
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 32px; 
+}
+
+.tuotekortti img { /*Tällaista luokkaa ei HTML:ssä ole*/
+    width: 100%; 
+    object-fit: cover; 
+    filter: grayscale(1); 
+}
+
+.erikoisanimaatio { /*Tällaista luokkaa ei HTML:ssä ole*/
+    animation: vilku 2s infinite; 
+}
+
+@keyframes vilku { /*Tällaista luokkaa ei HTML:ssä ole*/
+    from { opacity: 0; } to { opacity: 1; } 
+}
+
+@media (max-width: 650px) { 
+    .container { padding: 20px 12px; } 
+    .panel { padding: 18px; } 
+}
+

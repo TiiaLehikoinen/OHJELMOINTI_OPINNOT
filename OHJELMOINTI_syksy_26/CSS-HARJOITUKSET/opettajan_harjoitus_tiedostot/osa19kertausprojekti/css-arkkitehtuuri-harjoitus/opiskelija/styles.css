@@ -1,0 +1,21 @@
+/* TAHALLAAN HEIKKO CSS – älä jaa malliratkaisua heti */
+body { margin:0; font-family:Arial,sans-serif; color:#222; background:#f6f6fb; }
+#main .hero h1 { color:#6432bb !important; font-size:42px; }
+.site-header { display:flex; justify-content:space-between; padding:20px; background:#fff; }
+.site-header nav { display:flex; gap:20px; }
+.logo { color:#6432bb; font-weight:bold; }
+.layout { display:grid; grid-template-columns:260px 1fr; gap:30px; padding:24px; }
+.sidebar { background:#fff; padding:20px; }
+.hero { background:#fff; padding:24px; margin-bottom:30px; }
+#main #courses .course-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.course-card { background:#fff; border:1px solid #ddd; border-radius:12px; padding:20px; height:235px; }
+.sidebar .course-card { background:#fff; border:1px solid #ddd; border-radius:12px; padding:20px; height:235px; }
+#main .course-grid .course-card.featured { border:2px solid #6432bb !important; }
+.sidebar .course-card.featured { border:2px solid #6432bb !important; }
+.card-title { color:#6432bb; font-size:24px; }
+#main .course-grid .card-title { color:#6432bb; font-size:24px; }
+.tag { color:#bbb; font-size:12px; }
+.button { display:inline-block; padding:12px 18px; background:#6432bb; color:white; text-decoration:none; border-radius:8px; transition:all .25s; }
+.button:focus { outline:none; }
+@media (min-width:900px) { .course-card { display:grid; grid-template-columns:1fr 1fr; gap:8px; } }
+@media (max-width:700px) { .layout { grid-template-columns:1fr; } .course-grid { grid-template-columns:1fr !important; } }
