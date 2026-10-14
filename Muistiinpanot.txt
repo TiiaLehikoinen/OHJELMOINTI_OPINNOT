@@ -577,6 +577,62 @@ Dokumentoidut päätökset: README.MD
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Syventävät tekniikat CSS:ssä:
+
+Onko ongelma yksi- vai kaksiulotteinen? -- Flex = yksiuloteinen (navigaatiot, nappirivt, kortin sisäinen asettelu, kskittäminen) vai grid = kaksiulotteine (sivupohja, korttiruudukot, dashbordit, aluepohjaiset layoutit) vai molemmat?
+
+@layer x y z q; 
+
+Nesting = Tarkoittaa sisäkkäisiä sääntöjä {&{&{&}}}. Tulee erityisesti SCSS:ssä. 
+
+@scope (.x [= scope root]) to (.y [= scope limit]) { [jatkuu x:stä niin pitkään kunnes vastaan tulee y]
+    h2 {
+        color: var(--header-color);
+    }
+}
+
+@container 
+
+cqi = 1% containerin inline koosta (ottaa mukaan vain mikä ollaan määritelty containerin kooksi)
+cqb = 1% containerin block koosta (ottaa mukaan mariginin ja paddinging)
+
+Z:has (x:y) { (= jos "Z" elementistä löytyy "()" mainittu, niin sille asetetaan seuraavat arvot "...")
+    ...
+}
+
+Aina pitää määrittää minimi ja maksimi koko! (min, max, auto, fit, clamp...)
+
+CMS = content manage system
+LLM = 
+
+subgrid = ?
+
+yhdistä fluidit mitat, grid/flex ja container queryt HETI kun alat suunnitella sivun CSS.
+
+@media (prefers-reduced-motion: reduce) = vähennetyn liikkeen asetuksiin soveltuva.
+
+@media (prefers-color-scheme: dark) = light7dark teema tyylittely.
+
+debuggaus: 
+1. toista: löydä pienin näkymä tai komponenti. jossa ongelma näkyy.
+2. tarkista cascade: osuuko selector? kuka voittaa+ onko layer tai specifity syynä?
+3. Tarkista layout: mikä containing block, grid, track tai flex constraint vaikutaa?
+4. muuta yksi asia: testaa hypoteesi, varmista vaikutus ja poista tarpeeton kokeilu.
+5. Ota screenshot koodista/lataa githubiin ennen suuria debuggauksia.
+
+koodikatselmoinnin kysymykset:
+1.Onko HTML:n semantiikka säilynyt selkeänä?
+2. Voiko selector olla yksinkertaisempi?
+3. Onko komponentti riippuvainen turhaan ympäröivästä DOM-rakenteesta?
+4. Voiko kovakoodatun arvon korvata tokenilla tai intrinsic sizing -ratkaisulla?
+5. Toimiiko komponentti 200 % zoomilla ja näppäimistöllä?
+6. Onko animaatio tarpeellinen ja huomioiko se reduced motion -asetuksen?
+7. Onko override perusteltu vai merkki arkkitehtuuriongelmasta?
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 LINKIT:
 Fontit - https://fonts.google.com/
 Hover efektejä - prismic.io/blog/css-hover-effects
