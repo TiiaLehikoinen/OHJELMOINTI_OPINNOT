@@ -640,6 +640,7 @@ Värit - coolor.io, pletton.com, MDN Color Picker, W3Schools HTML Color Picker, 
 Kontrasti tarkistus - https://webaim.org/resources/contrastchecker/
 Koodaus sanakirja - https://www.w3schools.com/
 Tarkista tukeeko selain käytettyjä elementtejä - https://caniuse.com/
+HTML tarkastin: https://validator.w3.org/nu/?utm_source=chatgpt.com/
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
