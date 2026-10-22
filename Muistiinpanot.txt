@@ -644,6 +644,55 @@ HTML tarkastin: https://validator.w3.org/nu/?utm_source=chatgpt.com/
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+JavaScript:
+
+const = pysyvä muuttuja
+let = muuttuva muuttuja
+
+Boolean = true (ehto täyttyy)/false (ehto ei täyty) arvot
+    Vertailu esimerkki.
+    concole.log(10>5); //true
+    console.log(3 < 1); //false
+    console.log(7 === 7); //true
+    ---
+    === = yhtäsuuri
+    !== = eri suuria
+    >/< = suurempi/pienempi kuin
+    >= = vähintään
+    <= = enintään
+    ---
+    Tekstinä syötetty `5` ei ole sama asia kuin numerona syötetty 5.
+if = suoritetaan jos ehto on tulkittu todeksi (true)
+    SELAIN:
+    1. arvioi
+    2. muunna tulos tarvittaessa booleaniksi
+    3.jos true, suorita lohko
+    4. jos false, ohita lohko
+if + else = jos lause on false, niin true ehto hypätään yli ja suoritetaan else (false) ehto.
+else if = mahdollistaa useita vaihtoehtoisia ehtoja samassa päätösketjussa
+    esim. 
+    if () {
+
+    }
+    else if () {
+    
+    }
+    else () {
+
+    }
+    Järjestyksellä on väliä, koska kun ehto toteutuu, seuraavia ei enää tarkisteta.
+&& = palauttaa true vain, kun MOLEMMAT ehdot täyttyvät
+|| = palauttaa true, jos JOMPIKUMPI täyttyy
+! = looginen EI
+
+Falsy = false, 0, "", null
+Truthy = 
+
+Ehdot:
+Kirjautuminen, pelit, lomakkeet...
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 RANDOM:
 
 virtualbox = virtuaalikone omalle koneelle (lataa MAC)
