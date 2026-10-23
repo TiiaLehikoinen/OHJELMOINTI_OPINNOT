@@ -680,16 +680,91 @@ else if = mahdollistaa useita vaihtoehtoisia ehtoja samassa päätösketjussa
     else () {
 
     }
-    Järjestyksellä on väliä, koska kun ehto toteutuu, seuraavia ei enää tarkisteta.
+
+Järjestyksellä on väliä, koska kun ehto toteutuu, seuraavia ei enää tarkisteta.
+
 && = palauttaa true vain, kun MOLEMMAT ehdot täyttyvät
 || = palauttaa true, jos JOMPIKUMPI täyttyy
 ! = looginen EI
+% = jakojäännös
+/ = jako
+* = kerto
++ = summa
+- = erotus
 
 Falsy = false, 0, "", null
 Truthy = 
 
 Ehdot:
 Kirjautuminen, pelit, lomakkeet...
+
+= sijoitusarvo
+== tyyppimuunnos (tekstistä numeroks ja numerosta tekstiksi)
+=== ei muunna tyyppiä, vaan vertaa suoraan
+
+Silmukat ja toisto:
+esim. FOR silmukka
+for (let i = 1; i <= 5; i++) //i on 1, ehto on i<= 5 ja i lisääntyy aina yhdellä/kierros.
+{
+    console.log("Kierros ${i}");
+}
+
+määritellään aloitus ja lopetus. Sama logiikka kuin Σ.
+
+i++ = i + 1 (nouseva silmukka)
+i-- = i - 1 (laskeva silmukka)
++=2 = kasvattaa kahdella
+
+Varo ylimääräisiä kierroksi määrittelemällä alku 0/1.
+
+esim.
+while-silmukka:
+let yritykset = 0;
+    while (yritykset <3) { //Tarkistaa ensin, tekee sitten.
+        console.log("Yritys", yritykset + 1);
+        yritykset++;//MUISTA TÄMÄ KASVATUS TAI LOOP JÄÄ PÄÄLLE
+    }
+
+esim.
+do...while-silmukka:
+let valinta = 0;
+    do { //Toteutetaan vähintään kerran, vaikka ehto olisi epätosi. Ensin tekee, sitten tarkistaa.
+        console.log("Valikko näytetään");
+        valinta++;
+    } while (valinta < 1);
+
+break = poistuu silmukasta. Voidaan lopettaa tarkistus kun haluttu arvo saadaan.
+esim.
+for (let i = 1; i <= 100; i++) {
+    if (i === 7) {
+        console.log("Löytyi!");
+        break;
+    }
+}
+
+continue //Jatkaa laskemista ja kokeilemista maximi rajaan asti.
+esim. 
+for (let i = 1; i <= 10; i++) {
+    if (i % 2 === 0) {
+        continue;
+    }
+    console.log(i);
+}
+
+Taulukon läpi for-silmukalla [tämä on taulukko]
+esim. 
+const nimet = ["Aino", "Mika", "Sara"]; //Taulukon ensimmäinen arvo on 0.
+for (let i = 0; i < nimet.length; i++) {
+    console.log(nimet[i]);
+}
+
+for...off
+
+Sisäiset silmukat: silmukan sisällä voi olla toinen silmukka. Sisempi silmukka suoritetaan jokaisella ulomman kierroksen kerralla.
+
+yleiset virheet: 
+< ja <= aiheuttaa helposti off-by-one virheen.
+Taulukon viimeinen indeksi on lenght -1.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
