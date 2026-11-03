@@ -647,6 +647,12 @@ HTML tarkastin: https://validator.w3.org/nu/?utm_source=chatgpt.com/
 JavaScript:
 
 const = pysyvä muuttuja
+
+CONST-LISTA:
+const nimet = ['Tiia'];
+nimet.push('Aino'); // Taulukkoon saa lisätä nimen.
+// Luo ['Tiia'. 'Aino'], mutta varsinainen arvo on 'Tiia'. 'Tiia' on listan nollas jäsen, 'Aino' on listan ensimmäinen jäsen jne...
+
 let = muuttuva muuttuja
 
 Boolean = true (ehto täyttyy)/false (ehto ei täyty) arvot
@@ -758,7 +764,13 @@ for (let i = 0; i < nimet.length; i++) {
     console.log(nimet[i]);
 }
 
-for...off
+for...of - SILMUKAT:
+
+for //aloittaa silmukan
+(const nykyinen //määrittelee tämän kierroksen muuttujan
+of opiskelijat) // kertoo mistä arvot otetaan
+{tulostaOpiskelija(nykyinen);} // sisältää joka kierroksella suoritettavan koodin.
+//Toistuu kunnes of opiskelijat lista on tulostettu. Kun alkiot loppuvat, silmukka päättyy.
 
 Sisäiset silmukat: silmukan sisällä voi olla toinen silmukka. Sisempi silmukka suoritetaan jokaisella ulomman kierroksen kerralla.
 
@@ -767,7 +779,131 @@ yleiset virheet:
 Taulukon viimeinen indeksi on lenght -1.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+JavaScript - funktiot:
 
+- Funktiot vähentävät toistoa (sama koodi voidaan kutsua monta kertaa ilman koodin kopiointia), nimeävät toimintoja ja pilkkovat koodia pienempiin osiin (pienet toiminnalliset osiot on helpompi tarkistaa).
+- Kutsukertoja x() voi olla niin useita, kuin halumme funktion suorituskertoja olevan. Funktiota kutsutaan "funktionNimi()". Jos sulkeisiin laitetaan arvo, se siirtyy funktion parametreille.
+- funktion palauttamia arvoja voidaan tallentaa, tulostaa, väitttää toiselle funktiolle tai käyttää ehdossa.
+- funktiota voi käyttää arvona muuttujissa. const tervehdys = () => console.log('Hei!');
+- Muuttujaa kutsutaan sulkeilla "console.log(muuttuja(arvo))".
+- => (this) toimii funktion tiiviinä kirjoitustapana. nimi + arvot + nuoli. Jos on vain yksi palautettav asia, lisätään palautus käsky nuolen perään sulkujen ja returnin sijaan.
+- Hyvä nimi kertoo tarkoituksen. Alkaa yleensä verbillä. esim. tarkistaSalasana. 
+- Yksi vastuu/funktio.
+
+
+
+MÄÄRITELTY FUNKTIO ILMAN PALAUTUSTA: 
+
+function tervehdi(nimi) { //= koodilohko + funktion nimi + vapaasti nimettävät parametrit
+    console.log('Hei ' + nimi + '!'); //= tulosta konsoliin + mitä tulostetaan (esim. teksti + parametri)
+    }
+
+
+MÄÄRITELTY FUNKTIO PALAUTUKSELLA: 
+
+function tervehdi(nimi) { 
+    return 'Hei ' + nimi + '!'; //= Lopettaa funktion suorittamisen ja antaa arvonsa takaisin kutsukohtaan.
+    }
+const tervehdys = tervehdi('Tiia'); //= Tallentaa palautetun tekstin muuttujaan, kun funktio on kutsuttu.
+console.log(tervehdys); //= tulostaa muuttujaan tallennetus tekstin.
+
+1. tervehdi() kutsuu määritellyn funktion 
+2. 'Tiia' antaa parametrille arvon
+3. return lausekkeen arvo lasketaan ja laskettu/täydennetty arvo palautetaan takaisin kutsun kohtaan tervehdi('Tiia')
+4. console.log(tervehdys) tulostuu, ja sillä on nyt arvo: Hei Tiia!.
+
+
+KUTSUTTU FUNKTIO: 
+
+tervehdi('Tiia'); //= nimetty funktio + paramtereille syötetyt arvot (Tiia = nimi)
+
+
+Parametri = funktion sisällä käytettävä muuttuja (nimi, valtuutus). Täytetään järjestyksessä! x1, x2, x3... Käytetään määrittelyssä.
+Argumentti = kutsun yhteydessä annettu arvo ('Tiia'), käytetään kutsun yhteydessä.
+Funktiokutsu = käsky suorittaa funktio annetuilla argumenteilla.
+
+KAKSI ERI, MUTTA SAMAA, TAPAA KIRJOITTAA:
+
+console.log('Hei ' + nimi + '!');
+console.log(`Hei ${nimi}!`);
+
+
+USEAMMAN PARAMTERIN KÄYTTÖ:
+
+function esittele(nimi, ika) {
+    console.log(`${nimi} on ${ika}-vuotias.`); // Tulostaa (Tiia on 27-vuotias.)
+    }
+esittele('Tiia', 27); // Menee parametreille järjestyksessä, eli Tiia = nimi, 27 = ika.
+
+
+RETURN + IF:
+
+function tarkistaIka(ika) {
+        if (ika < 0) {
+            return 'Virheellinen ikä';  
+        }
+    return ika >= 18 ? 'Täysi-ikäinen' : 'Alaikäinen'; // ? = valitsee sitä seuraavista joko arvoJosTosi : arvoJosEpatosi
+    }
+
+TAI
+
+function tarkistaIka(ika) {
+    if (ika < 0) {
+        return 'Virheellinen ikä';
+    }
+
+    if (ika >= 18) {
+        return 'Täysi-ikäinen';
+    } else {
+        return 'Alaikäinen';
+    }
+}
+
+
+OLETUSARVON MERKITSEMINEN:
+
+function tervehdi(nimi = 'vieras') //Käytetään jos parametrille ei määritellä argumenttia.
+
+
+SCOPE:
+
+function tervehdi() {
+    const viesti = 'Tervetuloa';
+    console.log(viesti);
+}
+
+function hyvastele() {
+    const viesti = 'Näkemiin';
+    console.log(viesti);
+}
+//Eri funktiot voivat käyttää samaa muuttujan nimeä toisistaan riippumatta, kun const määritellään funktion sisällä. Jos const määritellään funktioiden ulkopuolella, toista saman nimistä muuttujaa ei voi olla eri arvolla.
+-let ja const ovat myös lohkokohtaisia: if- ja silmukkalohko voivat luoda oman scopen. const- ja let-muuttujien näkyvyysalue rajoittuu siihen lohkoon, jossa ne määritellään, sekä sen sisällä oleviin lohkoihin.
+
+NUOLI FUNKTIO:
+
+const tervehdi = () => 'Hei!'; // Ei parametreja: () tarvitaan.
+const tuplaa = luku => luku * 2; // Yksi tavallinen parametri: sulkeet voi jättää pois.
+const summa = (a, b) => a + b; // Useita parametreja: sulkeet tarvitaan.
+
+
+KYSYMYKSET:
+-Mitä tarkoittaa että returnin jälkeen saman funktion myöhempiä rivejä ei käytetä? Mitä myöhempiä rivejä?
+-Mitä this tekee?
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 RANDOM:
 
 virtualbox = virtuaalikone omalle koneelle (lataa MAC)
