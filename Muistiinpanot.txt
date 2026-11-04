@@ -892,6 +892,121 @@ KYSYMYKSET:
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Taulukot: 
+
+-Taulukot mahdollistavat datan kompaktimman käsittelyn. Ilman taulukoita jokainen datapiste käsitellään erikseen.
+esim.
+const nimi1 = 'Aino';
+const nimi2 = 'Mika';
+const nimi3 = 'Sara';
+vs.
+const nimet ['Aino','Mika','Sara'];
+
+Taulukossa voi olla useaa tietotyyppiä.
+esim.
+const tiedot ['Aino', 24, true, {kaupunki: 'Kerava'}]; //{objekti}
+
+indeksi, eli taulukku/array/lista, alkaa nollasta. 
+esim. 
+const nimet ['Aino','Mika','Sara'];
+
+Aino = 0
+Mika = 1
+Sara = 2
+
+Alkioita on 3, mutta ensimmäisen alkion indeksi on 0, toinen on 1 ja kolmas on 2.
+
+
+HAKU:
+const nimet ['Aino','Mika','Sara'];
+
+const ensimmäinen = nimet[0]
+console.log(ensimmäinen); //palauttaa: Aino.
+
+const puuttuva = nimet[10];
+console.log(puuttuva); //palauttaa: undefined, koska kymmenennettä alkiota ei ole määritelty taulukossa.
+
+console.log(nimet.length); //kertoo taulukon pituuden. Tässä; 3.
+console.log(nimet[nimet.length - 1]); //kertoo taulukon viimeisen alkion. Tässä; Sara.
+
+
+KORVAUS:
+nimet[1] = 'Oskari'; //nyt taulukon nimi 'Mika' on vaihdettu 'Oskari':ksi.
+-taulukon sisältöä voi muokata, vaikka const arvoa ei voi. Pysymme silti yhdessä määritellyssä taulukossa, emmekä aloita uutta.
+nimet = ['Oskari']; //Ei toimi. Se koittaa muokata jo määriteltyä muuttujaa.
+
+
+LISÄYS JA POISTO:
+nimet.push('Oskari'); //Lisää Oskarin listan loppuun.
+console.log(nimet); // palauttaa nyt: Aino, Mika, Sara, Oskari.
+
+nimet.pop(); //Poistaa listan lopusta alkion.
+console.log(nimet); //palauttaa nyt: Aino, Mika, Sara.
+
+const uusiNimi = nimet.unshift('Oskari'); //lisää taulukon alkuun
+console.log(nimet); //palauttaa nyt: Oskari, Aino, Mika, Sara.
+console.log(uusiNimi); //palauttaa taulukon uuden pituuden. Tässä; 4.
+
+const poisto = nimet.shift(); //poistaa taulukon alusta alkion.
+console.log(nimet); //palauttaa nyt Aino, Mika, Sara.
+console.log(poisto); //palauttaa: 'Oskari'.
+
+
+SISÄLTÖ:
+console.log(nimet.includes('Aino')); //Boolean arvo true
+console.log(nimet.includes('Tiia')); //Boolean arvo false
+
+console.log(nimet.indexOf('Mika')); //1, koska Mika on yhdes alkio taulukossa. Palauttaa ensimmäisen indexOf:issa määritellyn true arvon.
+console.log(ninet.indexOf('Tiia')); //-1, koska Tiiaa ei ole listalla.
+
+const pisteet = [50, 83, 90, 77, 62, 100];
+const ensimmäinenYli80 = pisteet.find(p => p > 80);
+console.log(ensimmäinenYli80); //palauttaa: 83. Palauttaa vain yhden ja ensimmäisen. Jos ei löydy, palauttaa -1.
+
+const indeksi = pisteet.findIndex(p => p > 80);
+consol.log(indeksi); //palauttaa: 1. 83 = listan 1 alkio. Jos ei löydy, palauttaa -1.
+
+
+OSIIN JAKO:
+const osa = nimet.slice(1,2); //Ottaa taulukosta määrätyn osan alkioita ja luo uuden taulukon nimellä 'osa'.
+console.log(osa); //palauttaa: Mika, Sara. 
+
+nimet.splice(1,1,'Oskari'); //(alku, poistomäärä, lisättävät). Muuttaa taulukkoa ja palauttaa poistetut alkiot korvatuilla.
+console.log(nimet); //palauttaa: Aino, Oskari, Sara.
+
+
+YHDISTYS:
+console.log(nimet.join(' <3 ')); //palauttaa: Aino <3 Mika <3 Sara. Liittämis merkin saa valita vapaasti.
+
+
+JÄRJESTÄMINEN:
+nimet.sort((a, b) => a-b);
+console.log(nimet); // SELVITÄ??
+
+nimet.reverse(); //kääntää järjestyksen.
+console.log(nimet); //palauttaa nyt: Sara, Mika, Aino.
+
+const uusiJärjestys = nimet.slice().reverse(); //Luo uuden taulukon nimistä, käännettynä.
+
+
+KOPIO:
+const kopio = [...nimet, 'Oskari'];
+console.log(kopio); //palauttaa: Aino, Mika, Sara, Oskari. Alkuperäinen, jossa Okaria ei ole, säilyy.
+
+
+SISÄKKÄISET TAULUKOT:
+const ruudukko = [
+    ['A1','A2'],
+    ['B1','B2']
+];
+console.log(ruudukko[1][0]); //palauttaa: B1. Koska 1 = 1 alkio ja 0 = 1 alkion ensimmäinen alkio.
+
+
+SILMUKAT & TAULUKOT:
+taulukko + for =
+for...of =
+foreach =
+
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
