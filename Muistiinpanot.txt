@@ -1009,6 +1009,59 @@ foreach =
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Taulukkometodit:
+esim.
+const esimerkki = [
+    {id: 1, nimi: 'Tiia', pisteet: 90, status: 'aktiivinen'},
+    {id: 2, nimi: 'Emma', pisteet: 75, status: 'aktiivinen'},
+    {id: 3, nimi: 'Laura', pisteet: 50, status: 'ei aktiivinen'},
+];
+
+---
+FILTER = haku taulukosta
+
+const halututPisteet = esimerkki.filter(
+    opiskelija => opiskelija.pisteet >= 70
+); 
+
+//jossa: 
+-filter() käy taulukon alkiot läpi yksi kerrallaan.
+-'opiskelija' on parametri, joka viittaa opiskelija alkioon
+-'opiskelija.pisteet' >= 70 on ehto, joka antaa boolean arvon true/false.
+-jos true, alkio otetaan mukaan halututPisteet taulukkoon.
+
+TAI
+
+const halututPisteet = esimerkki.filter(
+    (opiskelija) => {
+        return opiskelija.pisteet >= 70;
+    }
+)
+
+TAI 
+
+const halututPisteet = esimerkki.filter(
+    function halutut(opiskelija) {
+        return opiskelija.pisteet >= 70;
+    }
+)
+
+//jossa: 
+-funtion(opiskelija) = opiskelija =>
+-ehto funktion {} sisällä = ehto suoraan nuolen => jälkeen
+-return-lause = automaattinen palautus 
+
+TAI 
+
+function halutut(opiskelija) {
+    return opiskelija.pisteet >= 70;
+}
+
+const halututPisteet = esimerkki.filter(halutut); // muuttuja + taulukko + komento + funktio joka toteuttaa toiminnan.
+
+---
+
+JATKA.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
