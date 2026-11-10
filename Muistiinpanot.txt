@@ -1026,7 +1026,7 @@ const summa = (a, b) => a + b; // Useita parametreja: sulkeet tarvitaan.
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Taulukot: 
+JavaScript Osa 5 - Taulukot:
 
 -Taulukot mahdollistavat datan kompaktimman käsittelyn. Ilman taulukoita jokainen datapiste käsitellään erikseen.
 esim.
