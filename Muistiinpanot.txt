@@ -629,8 +629,6 @@ koodikatselmoinnin kysymykset:
 6. Onko animaatio tarpeellinen ja huomioiko se reduced motion -asetuksen?
 7. Onko override perusteltu vai merkki arkkitehtuuriongelmasta?
 
-
-
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 LINKIT:
@@ -643,70 +641,211 @@ Tarkista tukeeko selain käytettyjä elementtejä - https://caniuse.com/
 HTML tarkastin: https://validator.w3.org/nu/?utm_source=chatgpt.com/
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+JavaScript osa 1 - Perusteet
 
-JavaScript:
+HTML = rakenne, CSS = ulkoasu, JavaScript = toiminnallisuus.
 
-const = pysyvä muuttuja
+JavaScript reagoi käyttäjään. (käyttöliittymät, tapahtumat, DOM (document object model = rakenne, jota JavaScriptillä voidaan muokata ilman sivun uudelleen latausta.) ja verkkopyynnöt)
 
+Toiminta selaimessa:
+1. HTML ladataan
+2. JavaScript löydetään
+3. JavaScript käsitellään ja se parsii koodin kokoon
+4. Koodi suoritetaan (komennon saapuessa)
+5. sivu voi muuttua ajon aikana.
+
+Voidaan: rakentaa HTML sivuun <script></script> komennon sisään, linkittää erilinen x.js tiedosto <script></script> sisään, tai linkittää tiedosto <head> osioon (<link src="x.js" defer></script> jossa defer antaa HTML rakenteen rakentua ennen Javan lataamista.)
+
+JavaScript koostuu lauseista, jotka päätetään ";".
+
+//yksirivinen kommentti
+/*usea rivinen kommentti*/
+
+Muuttujat:
+const = määrittää arvon, jota ei voida muuttaa.
+let = määrittää arvon, jota voidaan myöhemmin muuttaa.
+Muuttujat tallentavat yksilöidyn muuttujan nimen alle siihen määritellyt arvot, ja näin muuttuja on uudelleen käytettävä.
+esim. const nimet = 'Tiia', 'Jonna', 'Sebastian'; nimet muuttujalla on nyt 3 määriteltyä ja tallennettua arvoa.
+
+-Käytä 'const' kun muuttujan arvon ei tarvitse muuttua.
+-Käytä 'let' pistemääriin, kierrosnumeroihin tai muihin muuttuviin tiloihin.
+-Käytä kuvaavia nimiä, sekä camelCasea (=ensimmäinen sana pienellä, seuraavat isolla alkukirjaimella.)
+
+Strings:
+'tämä sisältää tekstiä', "myös tämä sisältää tekstiä". `Tämän tekstin kanssa tulee käyttää ${muutujille}`(=Interpolointi. Muuttuja suoritetaan ja tulos sijoitetaan tekstin sisään). 
+
+Number:
++, nimet, /, *, -, % ovat komentoja ja muuttujia, eivät tarvitse lainausmerkkejä.
+
+Undefined & null:
+
+let vastaus;
+console.log(vastaus); // undefined (= Muuttuja on luotu, mutta sille ei ole vielä annettu arvoa.)
+
+let valittuTuote = null;
+console.log(valittuTuote); // null (= Ohjelmoija ilmaisee tarkoituksella, että valittua tuotetta ei ole. null kirjoitetaan ilman lainausmerkkejä.)
+
+TYPEOF:
+typeof auttaa tutkimaan arvon tietotyyppiä.
+esim.
+console.log(typeof 'Hei'); // string
+console.log(typeof 42); // number
+console.log(typeof true); // boolean
+console.log(typeof undefined); // undefined
+
+JAVASCRIPTIN SUUNNITTELU VAIHE VAIHEELTA:
+Kannattaa edetä konkreettisesta esimerkistä sanallisiin vaiheisiin ja vasta sitten koodiin.
+    1. Määrittele toiminnon tavoite. (Kirjoita yhdellä lauseella, mitä toiminnon pitäisi tehdä. Esim. ”Kun käyttäjä painaa painiketta, näytetään varastossa olevien tuotteiden nimet.”)
+    2. Selvitä, mikä käynnistää toiminnon. (Käynnistääkö sen esimerkiksi painikkeen painaminen, lomakkeen lähettäminen vai toinen funktio? Esim. ”Käyttäjä painaa Näytä tuotteet -painiketta.”)
+    3. Määrittele lähtötiedot eli syöte. (Mitä tietoa toiminto tarvitsee, mistä tieto saadaan ja missä muodossa se on? Esim. ”Tuotteet ovat taulukossa. Jokainen tuote on olio, jolla on nimi ja saldo.”)
+    4. Määrittele odotettu lopputulos. (Mitä toiminnon suorittamisen jälkeen pitäisi olla olemassa tai näkyvissä? Erota tarvittaessa funktion palauttama arvo ja käyttöliittymässä tapahtuva muutos. Esim. ”Muodostetaan nimitaulukko ja näytetään sen nimet verkkosivulla.”)
+    5. Käy yksi pieni esimerkki läpi käsin. (
+        Valitse lähtötiedot ja päättele oikea tulos ilman koodia.
+            Esim.
+            - Näyttö: saldo 0
+            - Hiiri: saldo 10
+            - Näppäimistö: saldo 5
+            Odotettu nimitaulukko: ["Hiiri", "Näppäimistö"].
+        Tämä antaa konkreettisen vertailukohdan koodin toimivuudelle.
+        )
+    6. Kirjoita ratkaisun vaiheet tavallisella kielellä. (
+        Tämä on algoritmin luonnos. Voit kirjoittaa sen myös pseudokoodina eli koodia muistuttavana kuvauksena, jonka ei tarvitse noudattaa JavaScriptin syntaksia.
+            Esim.
+            - Ota tuotteiden taulukko.
+            - Valitse tuotteet, joiden saldo on suurempi kuin nolla.
+            - Kerää valittujen tuotteiden nimet uuteen taulukkoon.
+            - Näytä nimet sivulla.
+        )
+    7. Valitse vaiheisiin sopivat JavaScriptin välineet. (
+        Valitse rakenne sen perusteella, mitä vaiheessa tarvitaan:
+            - Tiedon säilyttäminen → muuttuja, taulukko tai olio
+            - Ehdon perusteella haarautuminen → if / else
+            - Toistaminen → silmukka tai sopiva taulukkometodi
+            - Taulukon alkioiden valitseminen → filter()
+            - Taulukon alkioiden muuntaminen → map()
+            - Käyttäjän toimintaan reagoiminen → addEventListener()
+            Esimerkin tuotteiden käsittelyyn sopivat filter() ja map().
+        )
+    8. Jaa toiminto tarvittaessa pienempiin osiin. (Erota selvästi erilaiset tehtävät, jos se helpottaa ymmärtämistä ja testaamista. Esim. yksi funktio muodostaa nimitaulukon, toinen näyttää nimet sivulla. Hyvin pientä toimintoa ei tarvitse pilkkoa väkisin.)
+    9. Huomioi olennaiset poikkeus- ja rajatapaukset. (Mitä tapahtuu, jos tietoa ei ole tai se poikkeaa tavallisesta? Esim. ”Jos yhtään tuotetta ei ole varastossa, näytetään viesti: Ei saatavilla olevia tuotteita.” Mieti myös, voiko painiketta painaa uudelleen: 
+        korvataanko vanha lista vai lisätäänkö vahingossa sama lista monta kertaa?)
+    10. Kirjoita ja kokeile koodia yksi osa kerrallaan. (Aloita tietojen käsittelystä. Tarkista välitulokset esimerkiksi console.log()-kutsuilla. Lisää sen jälkeen sivulle näyttäminen ja painikkeen tapahtumankäsittely. Näin mahdollinen virhe on helpompi paikantaa.)
+    11. Vertaa toteutunutta tulosta odotettuun. (Testaa ainakin tavallinen tilanne ja olennaiset rajatapaukset. Esim. mukana on sekä saatavilla olevia että loppuneita tuotteita; kaikki ovat loppuneet; taulukko on tyhjä.)
+    12. Selkeytä toimiva koodi. (Tarkista, kuvaavatko muuttujien ja funktioiden nimet niiden tarkoitusta. Poista tarpeeton toisto ja vanhat kokeilut. Lisää kommentteja erityisesti silloin, kun ratkaisun syy ei muuten käy ilmi.)
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+JavaScript Osa 2 - Ehdot ja Boolean logiikka
+
+BOOLEAN:
+Boolean = vain true/false arvot.
+
+VERTAILU:
+esim.
+    const kirjautunut = true; (ehto täyttyy)
+    const admin = false; (ehto ei täyty)
+    concole.log(10 > 5); //true (ehto täyttyy)
+    console.log(3 < 1); //false (ehto ei täyty)
+    console.log(7 === 7); //true (ehto täyttyy)
+eli onko vasen arvo suhteessa oikeaan true or false?
+
+vertailuoperaattorit:
+    == : Yhtäsuuruus: voi muuntaa arvojen tyyppejä ennen vertailua (5 == '5', eli number 5 == string 5)
+    === : Tiukka yhtäsuuruus: tyyppienkin täytyy olla samat (5 === 5 = true, 5 === '5' = false) [KÄYTÄ OLETUKSENA]
+    != : Erisuuruus: voi muuntaa arvojen tyyppejä ennen vertailua (6 != '5', eli number 6 != string 5 palauttaa true)
+    !== : Tiukka erisuuruus: eri tyyppi riittää eroksi (6 !== 5 = true, 6 !== '6' = true)
+    > : suurempi kuin
+    < : pienempi kuin
+    >= : suurempi tai yhtäsuuri kuin, eli vähintään.
+    <= : pienempi kuin, tai yhtäsuuri, eli enintään.
+
+sijoitusoperaattorit:
+    = : sijoita (Sijoita oikealla oleva arvo vasemmalla olevaan muuttujaan esim. x = 5)
+    %= : laske jakojäännös ja sijoita (esim. x %= 3  =  x = x % 3)
+    /= : jaa ja sijoita (esim. x /= 3  =  x = x / 3)
+    *= : kerro  ja sijoita
+    += : lisää ja sijoita (voi myös yhdistää merkkijonoja)
+    -= : vähennä ja sijoita
+    **= : korota potenssiin ja sijoita
+
+aritmeettiset-, eli laskuoperaattorit:
+    % : jakojäännös (esim. 10 % 3 → 1)
+    / : jako
+    * : kerto
+    + : summa (voi myös yhdistää merkkijonoja)
+    - : erotus
+    ** : potenssiin korotus (esim. 2 ** 3 → 8)
+
+loogiset operaattorit totuusarvojen kuvaamisessa:
+    && : JA -palauttaa true vain, kun MOLEMMAT ehdot täyttyvät. (esim. ika >= 18 && ika <= 65)
+    || : TAI -palauttaa true, jos vähintään yksi ehto täyttyy. (esim. ika < 18 || ika > 65)
+    ! : EI -kääntää totuusarvon vastakkaiseksi. (esim. (ika >= 18) on käännettynä !(ika >= 18))
+
+EHTO LAUSEKKEET:
+if + else = jos if lause on false, niin hypätään yli ja suoritetaan else ehto.
+else if = mahdollistaa useita vaihtoehtoisia ehtoja samassa päätösketjussa.
+esim. 
+const x = y;
+    if (muuttuja johon viitataan & ehto) {
+        Aaltosulkeiden sisällä on ehdollisesti suoritettava koodi.
+        esim. console.log();
+    }
+    else if (muuttuja johon viitataan & ehto) {
+        Aaltosulkeiden sisällä on ehdollisesti suoritettava koodi.
+        esim. console.log();
+    }
+    else (muuttuja johon viitataan & ehto) {
+        Aaltosulkeiden sisällä on ehdollisesti suoritettava koodi.
+        esim. console.log();
+    }
+
+-Hyvä ehto voidaan lukea kysymyksenä, jonka vastaus on kyllä tai ei.
+-Ilman ehtoja ohjelma suorittaisi aina samat lauseet samassa järjestyksessä ja pääsyä tiettyyn sisältöön ei tulisi rajattua ehdollisena. (esim. kirjautuneet, pelaajan pisteet tai oikein täytetyt kentät).
+-Järjestyksellä on väliä, koska kun ehto toteutuu, seuraavia ei enää tarkisteta.
+-IF ehtojakin voi olla sisäkkäin, mtta nämä tulee pitää lyhyenä luettavuuden takaamiseksi.
+-Monimutkaisempi päätös syntyy useasta pienestä ehdosta.
+esim.    
+    const ika = 20
+    const opiskelija = true;
+    const vip = false;
+        if ((ika >= 18 && opiskelija) || vip) {
+            console.log('Alennus käytössä');
+        }
+
+
+TRUTHY & FALSY:
+if ei vaadi kirjaimellista boolean-arvoa — JavaScript tulkitsee monia arvoja todeksi tai epätodeksi
+
+FALSY: false, 0, ''(Tyhjä teksti on falsy. Pelkkä välilyönti on kuitenkin truthy), null, undefined ja NaN (virheellisen lukumuunnoksen tulos).
+TRUTHY: 'Hei', 42, '0' ja 'false'. Myös tyhjä taulukko [] ja olio {} ovat truthy.
+NULLISH COALESCING: a ?? b palauttaa arvon b vain, jos a on null tai undefined. Muuten tulos on a.
+TERNARY-OPERAATTORI: ehto ? arvo1 : arvo2, tosi ehto valitsee arvo1:n, epätosi arvo2:n. Ternary sopii lyhyeen kahden vaihtoehdon arvon valintaan. (esim. const status = ika >= 18 ? 'aikuinen' : 'alaikäinen';)
+SWITCH: switch sopii tilanteisiin, joissa yhtä arvoa verrataan useisiin tarkkoihin vaihtoehtoihin. 
+(esim. 
+const rooli = 'opettaja';
+    switch (rooli) {
+        case 'admin':
+            console.log('Kaikki oikeudet');
+            break;
+        case 'opettaja':
+            console.log('Opettajan näkymä');
+            break;  
+        default:
+            console.log('Peruskäyttäjä');
+    }
+jossa: case määrittää vaihtoehdon. break lopettaa switchin. default suoritetaan, jos mikään case ei vastaa arvoa. Casejä voi olla useampi break pointtiin asti.)
+
+SWITCH vs IF:
+SWITCH sopii === tarkkaan vertailuun, jossa case on tarkoin määritelty true or false. Break lopettaa vertailun ja default käsittelee muut arvot.
+IF sopii muihin vertailuihin, jossa raja-arvoja (<=) ja yhdistettyjä ehtoja (ika <= 65 && lupa) tutkitaan. Ensimmäinen true ehto määrittää tutkimisen jatkuvuuden ja else käsittelee jäljelle jäävät ehhdot.
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+JavaScript Osa 3 - Silmukat ja toisto (ei vielä käyty uudelleen.)
 CONST-LISTA:
 const nimet = ['Tiia'];
 nimet.push('Aino'); // Taulukkoon saa lisätä nimen.
 // Luo ['Tiia'. 'Aino'], mutta varsinainen arvo on 'Tiia'. 'Tiia' on listan nollas jäsen, 'Aino' on listan ensimmäinen jäsen jne...
 
-let = muuttuva muuttuja
-
-Boolean = true (ehto täyttyy)/false (ehto ei täyty) arvot
-    Vertailu esimerkki.
-    concole.log(10>5); //true
-    console.log(3 < 1); //false
-    console.log(7 === 7); //true
-    ---
-    === = yhtäsuuri
-    !== = eri suuria
-    >/< = suurempi/pienempi kuin
-    >= = vähintään
-    <= = enintään
-    ---
-    Tekstinä syötetty `5` ei ole sama asia kuin numerona syötetty 5.
-if = suoritetaan jos ehto on tulkittu todeksi (true)
-    SELAIN:
-    1. arvioi
-    2. muunna tulos tarvittaessa booleaniksi
-    3.jos true, suorita lohko
-    4. jos false, ohita lohko
-if + else = jos lause on false, niin true ehto hypätään yli ja suoritetaan else (false) ehto.
-else if = mahdollistaa useita vaihtoehtoisia ehtoja samassa päätösketjussa
-    esim. 
-    if () {
-
-    }
-    else if () {
-    
-    }
-    else () {
-
-    }
-
-Järjestyksellä on väliä, koska kun ehto toteutuu, seuraavia ei enää tarkisteta.
-
-&& = palauttaa true vain, kun MOLEMMAT ehdot täyttyvät
-|| = palauttaa true, jos JOMPIKUMPI täyttyy
-! = looginen EI
-% = jakojäännös
-/ = jako
-* = kerto
-+ = summa
-- = erotus
-
-Falsy = false, 0, "", null
-Truthy = 
-
-Ehdot:
-Kirjautuminen, pelit, lomakkeet...
-
-= sijoitusarvo
-== tyyppimuunnos (tekstistä numeroks ja numerosta tekstiksi)
-=== ei muunna tyyppiä, vaan vertaa suoraan
 
 Silmukat ja toisto:
 esim. FOR silmukka
@@ -779,7 +918,7 @@ yleiset virheet:
 Taulukon viimeinen indeksi on lenght -1.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-JavaScript - funktiot:
+JavaScript Osa 4 - funktiot:
 
 - Funktiot vähentävät toistoa (sama koodi voidaan kutsua monta kertaa ilman koodin kopiointia), nimeävät toimintoja ja pilkkovat koodia pienempiin osiin (pienet toiminnalliset osiot on helpompi tarkistaa).
 - Kutsukertoja x() voi olla niin useita, kuin halumme funktion suorituskertoja olevan. Funktiota kutsutaan "funktionNimi()". Jos sulkeisiin laitetaan arvo, se siirtyy funktion parametreille.
@@ -884,11 +1023,6 @@ NUOLI FUNKTIO:
 const tervehdi = () => 'Hei!'; // Ei parametreja: () tarvitaan.
 const tuplaa = luku => luku * 2; // Yksi tavallinen parametri: sulkeet voi jättää pois.
 const summa = (a, b) => a + b; // Useita parametreja: sulkeet tarvitaan.
-
-
-KYSYMYKSET:
--Mitä tarkoittaa että returnin jälkeen saman funktion myöhempiä rivejä ei käytetä? Mitä myöhempiä rivejä?
--Mitä this tekee?
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
