@@ -840,82 +840,139 @@ IF sopii muihin vertailuihin, jossa raja-arvoja (<=) ja yhdistettyjä ehtoja (ik
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-JavaScript Osa 3 - Silmukat ja toisto (ei vielä käyty uudelleen.)
-CONST-LISTA:
-const nimet = ['Tiia'];
-nimet.push('Aino'); // Taulukkoon saa lisätä nimen.
-// Luo ['Tiia'. 'Aino'], mutta varsinainen arvo on 'Tiia'. 'Tiia' on listan nollas jäsen, 'Aino' on listan ensimmäinen jäsen jne...
+JavaScript Osa 3 - Silmukat ja toisto 
+
+Silmukan avulla sama koodilohko voidaan suorittaa monta kertaa ilman, että kirjoitat samoja rivejä uudelleen.
+Silmukan tärkein kysymys: mikä muuttuu jokaisella kierroksella ja milloin toisto loppuu?
+
+HYÖDYT:
+Listat: Käy läpi tuotteet, opiskelijat tai tehtävät.
+Pelit: Päivitä liikettä, pisteitä tai pelimaailmaa toistuvasti.
+Data: Laske summia, etsi arvoja ja käsittele aineistoa.
+Käyttöliittymä: Luo useita samanlaisia elementtejä datan perusteella, koska JavaScript käy silmukalla datan läpi ja luo sen perusteella verkkosivulle toistuvia HTML-elementtejä.
+    (esim. 
+        1.Tallennetaan kappaleiden tiedot taulukkoon.
+        2. Käydään taulukko läpi silmukalla.
+        3. Luodaan jokaiselle kappaleelle oma HTML-osio.
+        4. Lisätään osiot sivulle.
+    )
 
 
-Silmukat ja toisto:
-esim. FOR silmukka
-for (let i = 1; i <= 5; i++) //i on 1, ehto on i<= 5 ja i lisääntyy aina yhdellä/kierros.
-{
-    console.log("Kierros ${i}");
-}
+FOR-SILMUKKA:
+for (let i = 1; i <= 5; i++) { //muuttujan määrittely/alustus (i = 1), jatkamisehto (i<= 5) ja kasvatusoperaattori/päivityslauseke (i++, tai i = i + 1, tai i += 1).
+        console.log(`Kierros ${i}`); // for-rakenteen jälkeen tuleva { ... } on silmukan runko, eli siinä oleva koodi suoritetaan jokaisella kierroksella.
+    }
+*Silmukan käsittely loppuu kun määritelty jatkamisehto palauttaa false.
 
-määritellään aloitus ja lopetus. Sama logiikka kuin Σ.
-
-i++ = i + 1 (nouseva silmukka)
-i-- = i - 1 (laskeva silmukka)
-+=2 = kasvattaa kahdella
-
-Varo ylimääräisiä kierroksi määrittelemällä alku 0/1.
-
-esim.
-while-silmukka:
-let yritykset = 0;
-    while (yritykset <3) { //Tarkistaa ensin, tekee sitten.
-        console.log("Yritys", yritykset + 1);
-        yritykset++;//MUISTA TÄMÄ KASVATUS TAI LOOP JÄÄ PÄÄLLE
+Suoritus etenee näin:
+    1. Alustus: let i = 1 luo muuttujan. Tämä tehdään vain kerran.
+    2. Ehdon tarkistus: onko i <= 5? On, joten mennään aaltosulkeiden sisälle.
+    3. Rungon suoritus: console.log tulostaa Kierros 1, koska i on sillä hetkellä 1.
+    4. Muuttujan päivitys: i++ kasvattaa arvon kahteen.
+    5. Paluu ehdon tarkistukseen: onko 2 <= 5? On, joten runko suoritetaan uudelleen.
+Näin jatketaan, kunnes i on 6 ja ehto ei enää täyty.
+*Vaikka i++ on kirjoitettu ennen aaltosulkeita, se suoritetaan vasta rungon jälkeen. Tämä suoritusjärjestys on osa for-rakenteen määritelmää.
+*FOR LOOP JÄÄ PÄÄLLE JOS: 
+    for (;;) {
+        console.log("Toistuu");
     }
 
+
+WHILE-SILMUKKA:
+Sopii hyvin tilanteeseen, jossa toisto jatkuu niin kauan kuin jokin ehto on voimassa.
+Vastaa FOR silmukan toimintaa, mutta FOR silmukan osat on jaettu eritavalla. WHILE ottaa vastaan alustuksen ja sille ehdon, aaltosulkeissa määritellään tulostus ja kasvatus.
+
+let yritykset = 0;
+    while (yritykset < 3) { 
+        console.log("Yritys", yritykset + 1); // Numerointiin lisätään yksi, jotta käyttäjälle näkyvät yritykset alkavat ykkösestä, vaikka muuttuja alkaa nollasta. Muuttujan arvo muuttuu vasta seuraavalla rivillä.
+        yritykset++; 
+    }
+*Tässä:
+    yritykset kertoo, montako yritystä on jo tehty.
+    yritykset + 1 kertoo, monesko yritys on nyt vuorossa.
+    yritykset++ kasvattaa tehtyjen yritysten laskuria yhdellä.
+    Ensimmäisellä kierroksella on siis tehty 0 yritystä, ja vuorossa on yritys 1.
+*MUISTA MÄÄRITTÄÄ KASVATUS JA KASVATUKSEEN SUHTEUTETTU EHTO TAI BREAK, MUUTOIN LOOP JÄÄ PÄÄLLE. Toisto jatkuu niin kauan kun ehto on true.
+
+
+DO WHILE-silmukka:
+Valitse, jos toiminto pitää suorittaa vähintään kerran.
 esim.
-do...while-silmukka:
 let valinta = 0;
-    do { //Toteutetaan vähintään kerran, vaikka ehto olisi epätosi. Ensin tekee, sitten tarkistaa.
+    do { //Toteutetaan vähintään kerran, vaikka ehto olisi epätosi. 
         console.log("Valikko näytetään");
         valinta++;
-    } while (valinta < 1);
+    } while (valinta < 1); // Jatkuu jos while ehto sen vielä sallii. 
 
-break = poistuu silmukasta. Voidaan lopettaa tarkistus kun haluttu arvo saadaan.
+
+BREAK:
+Break lopettaa lähimmän silmukan välittömästi.
+Esimerkiksi hakusilmukka voidaan lopettaa heti, kun arvo löytyy.
 esim.
 for (let i = 1; i <= 100; i++) {
     if (i === 7) {
-        console.log("Löytyi!");
+    console.log('Löytyi!');
         break;
     }
 }
 
-continue //Jatkaa laskemista ja kokeilemista maximi rajaan asti.
+
+CONTINUE:
+continue ohittaa nykyisen kierroksen lopun. 
 esim. 
 for (let i = 1; i <= 10; i++) {
     if (i % 2 === 0) {
-        continue;
+        continue; // Ohittaa nykyisen silmukkakierroksen jäljellä olevan koodin ja siirtää suorituksen seuraavan kierroksen valmisteluun.
     }
     console.log(i);
 }
 
-Taulukon läpi for-silmukalla [tämä on taulukko]
+
+TAULUKON LÄPI SILMUKALLA:
 esim. 
-const nimet = ["Aino", "Mika", "Sara"]; //Taulukon ensimmäinen arvo on 0.
-for (let i = 0; i < nimet.length; i++) {
-    console.log(nimet[i]);
+const nimet = ["Aino", "Mika", "Sara"]; // Taulukon ensimmäinen alkio = 0 
+    for (let i = 0; i < nimet.length; i++) { // Indeksit (alkiot) ovat 0, 1 ja 2. Ehto i < nimet.length estää ylimääräisen kierroksen. Älä kovakoodaa taulukon pituutta, jos data voi muuttua.
+        console.log(nimet[i]);
+    }
+*Tulostaa taulukon indeksin (monesko alkio on taulukossa)
+
+
+FOR ... OF - silmukat:
+esim.
+const nimet = ['Aino', 'Mika', 'Sara'];
+    for (const nimi of nimet) { //of nimet: ota arvot nimet-taulukosta yksi kerrallaan. Kun arvot loppuvat, silmukka päättyy.
+        console.log(nimi);
+    }
+*Tulostaa indeksin arvon (mikä arvo indeksin arvolle on määritelty)
+
+esim. 
+const sana = 'HTML'; //Iterable tarkoittaa arvoa, jonka osat voidaan käydä läpi järjestyksessä.
+    for (const kirjain of sana) {
+        console.log(kirjain);
+    }
+*Käy läpi merkkijonon ja tulostaa H T M L.
+
+SISÄKKÄISET SILMUKAT: 
+silmukan sisällä voi olla toinen silmukka. Sisempi silmukka suoritetaan jokaisella ulomman kierroksen kerralla.
+esim.
+for (let rivi = 1; rivi <= 3; rivi++) {
+    for (let sarake = 1; sarake <= 4; sarake++) {
+        console.log(rivi, sarake);
+    }
 }
 
-for...of - SILMUKAT:
+ACCUMULATOR:
+let summa = 0; // tämä on accumulator eli kerryttäjä
+    for (let i = 1; i <= 5; i++) {
+            summa += i;
+        }
+        console.log(summa); // 15
 
-for //aloittaa silmukan
-(const nykyinen //määrittelee tämän kierroksen muuttujan
-of opiskelijat) // kertoo mistä arvot otetaan
-{tulostaOpiskelija(nykyinen);} // sisältää joka kierroksella suoritettavan koodin.
-//Toistuu kunnes of opiskelijat lista on tulostettu. Kun alkiot loppuvat, silmukka päättyy.
 
-Sisäiset silmukat: silmukan sisällä voi olla toinen silmukka. Sisempi silmukka suoritetaan jokaisella ulomman kierroksen kerralla.
-
-yleiset virheet: 
+YLEISET VIRHEET: 
 < ja <= aiheuttaa helposti off-by-one virheen.
-Taulukon viimeinen indeksi on lenght -1.
+Taulukon viimeinen indeksi on length -1. // Koska indeksit ovat 0 ... length - 1.
+
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 JavaScript Osa 4 - funktiot:
@@ -1027,6 +1084,11 @@ const summa = (a, b) => a + b; // Useita parametreja: sulkeet tarvitaan.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 JavaScript Osa 5 - Taulukot:
+
+CONST-LISTA:
+const nimet = ['Tiia'];
+nimet.push('Aino'); // Taulukkoon saa lisätä nimen.
+// Luo ['Tiia'. 'Aino'], mutta varsinainen arvo on 'Tiia'. 'Tiia' on listan nollas jäsen, 'Aino' on listan ensimmäinen jäsen jne...
 
 -Taulukot mahdollistavat datan kompaktimman käsittelyn. Ilman taulukoita jokainen datapiste käsitellään erikseen.
 esim.
