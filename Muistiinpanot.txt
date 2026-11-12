@@ -977,109 +977,148 @@ Taulukon viimeinen indeksi on length -1. // Koska indeksit ovat 0 ... length - 1
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 JavaScript Osa 4 - funktiot:
 
+Rakenne:
+function tunniste(parametrit) {Suoritettava koodi;} 
+*Tämä on funktion määrittely
+
 - Funktiot vähentävät toistoa (sama koodi voidaan kutsua monta kertaa ilman koodin kopiointia), nimeävät toimintoja ja pilkkovat koodia pienempiin osiin (pienet toiminnalliset osiot on helpompi tarkistaa).
-- Kutsukertoja x() voi olla niin useita, kuin halumme funktion suorituskertoja olevan. Funktiota kutsutaan "funktionNimi()". Jos sulkeisiin laitetaan arvo, se siirtyy funktion parametreille.
-- funktion palauttamia arvoja voidaan tallentaa, tulostaa, väitttää toiselle funktiolle tai käyttää ehdossa.
-- funktiota voi käyttää arvona muuttujissa. const tervehdys = () => console.log('Hei!');
-- Muuttujaa kutsutaan sulkeilla "console.log(muuttuja(arvo))".
-- => (this) toimii funktion tiiviinä kirjoitustapana. nimi + arvot + nuoli. Jos on vain yksi palautettav asia, lisätään palautus käsky nuolen perään sulkujen ja returnin sijaan.
+- Kutsukertoja voi olla niin useita, kuin halumme funktion suorituskertoja olevan. Funktiota kutsutaan "funktionNimi()". 
 - Hyvä nimi kertoo tarkoituksen. Alkaa yleensä verbillä. esim. tarkistaSalasana. 
 - Yksi vastuu/funktio.
+- funktion palauttamia arvoja voidaan tallentaa, tulostaa, välittää toiselle funktiolle tai käyttää ehdossa.
+//- funktiota voi käyttää arvona muuttujissa. const tervehdys = () => console.log('Hei!');
+//- => (this) toimii funktion tiiviinä kirjoitustapana. nimi + arvot + nuoli. Jos on vain yksi palautettava asia, lisätään palautus käsky nuolen perään sulkujen ja returnin sijaan.
 
 
+FUNKTIO ILMAN PARAMETREJÄ: 
+esim.
+function tervehdi() {
+  console.log('Hei!');
+  console.log('Tervetuloa!');
+}
+tervehdi(); // Palauttaa: Hei! Tervetuloa!
 
-MÄÄRITELTY FUNKTIO ILMAN PALAUTUSTA: 
-
-function tervehdi(nimi) { //= koodilohko + funktion nimi + vapaasti nimettävät parametrit
-    console.log('Hei ' + nimi + '!'); //= tulosta konsoliin + mitä tulostetaan (esim. teksti + parametri)
-    }
-
-
-MÄÄRITELTY FUNKTIO PALAUTUKSELLA: 
-
-function tervehdi(nimi) { 
-    return 'Hei ' + nimi + '!'; //= Lopettaa funktion suorittamisen ja antaa arvonsa takaisin kutsukohtaan.
-    }
-const tervehdys = tervehdi('Tiia'); //= Tallentaa palautetun tekstin muuttujaan, kun funktio on kutsuttu.
-console.log(tervehdys); //= tulostaa muuttujaan tallennetus tekstin.
-
-1. tervehdi() kutsuu määritellyn funktion 
-2. 'Tiia' antaa parametrille arvon
-3. return lausekkeen arvo lasketaan ja laskettu/täydennetty arvo palautetaan takaisin kutsun kohtaan tervehdi('Tiia')
-4. console.log(tervehdys) tulostuu, ja sillä on nyt arvo: Hei Tiia!.
+*tervehdi() kutsuu funktiota ja käynnistää sen toiminnan.
+    1. JavaScript lukee funktion määrittelyn
+    2. Funktiosta tulee käytettävissä oleva toiminto
+    3. Ohjelma kohtaa funktion kutsun
+    4. Suoritus siirtyy funktion sisälle
+    5. Funktion päätyttyä suoritus jatkuu kutsukohdassa.
 
 
-KUTSUTTU FUNKTIO: 
+FUNKTIO PARAMETREILLÄ: 
+esim.
+function tervehdi(nimi) {
+  console.log('Hei, ' + nimi + '!');
+  console.log('Tervetuloa!');
+}
+tervehdi('Tiia'); // Tulostaa: Hei, Tiia! Tervetuloa!
 
-tervehdi('Tiia'); //= nimetty funktio + paramtereille syötetyt arvot (Tiia = nimi)
+*nimi on parametri, eli funktion määrittelyssä annettu nimi, joilla funktio vastaanottaa tietoa, jota se voi käyttää rungossa määritellyllä paikalla. Parametri toimii funktion sisäisenä muuttujana.
+*'Tiia' on argumentti, eli kutsussa annettu konkreettinen arvo, jonka nimi-parametri saa tämän suorituksen ajaksi.
 
-
-Parametri = funktion sisällä käytettävä muuttuja (nimi, valtuutus). Täytetään järjestyksessä! x1, x2, x3... Käytetään määrittelyssä.
-Argumentti = kutsun yhteydessä annettu arvo ('Tiia'), käytetään kutsun yhteydessä.
-Funktiokutsu = käsky suorittaa funktio annetuilla argumenteilla.
-
-KAKSI ERI, MUTTA SAMAA, TAPAA KIRJOITTAA:
-
-console.log('Hei ' + nimi + '!');
-console.log(`Hei ${nimi}!`);
-
-
-USEAMMAN PARAMTERIN KÄYTTÖ:
-
+esim.
 function esittele(nimi, ika) {
-    console.log(`${nimi} on ${ika}-vuotias.`); // Tulostaa (Tiia on 27-vuotias.)
+    console.log(`${nimi} on ${ika}-vuotias.`);
     }
-esittele('Tiia', 27); // Menee parametreille järjestyksessä, eli Tiia = nimi, 27 = ika.
+    esittele('Tiia', 27);
+*Parametrit täytetään järjestyksessä. Jos Argumenttejä on siis vähemmän kuin parametrejä, voi paikkaan vaikuttaa kirjoittamalla 'undefined'.
 
 
-RETURN + IF:
-
-function tarkistaIka(ika) {
-        if (ika < 0) {
-            return 'Virheellinen ikä';  
-        }
-    return ika >= 18 ? 'Täysi-ikäinen' : 'Alaikäinen'; // ? = valitsee sitä seuraavista joko arvoJosTosi : arvoJosEpatosi
+FUNKTIO PALAUTUKSELLA: 
+esim.
+function summa(a, b) {
+    return a + b;
     }
+const tulos = summa(4, 7);
+console.log(tulos); // Tulostaa: 11
+*return palauttaa funktion tuottaman arvon kutsukohtaan. Funktio voi laskea arvon, jota muu ohjelma käyttää. 
 
-TAI
-
+esim.
 function tarkistaIka(ika) {
     if (ika < 0) {
         return 'Virheellinen ikä';
     }
-
-    if (ika >= 18) {
-        return 'Täysi-ikäinen';
-    } else {
-        return 'Alaikäinen';
-    }
+    return ika >= 18 ? 'Täysi-ikäinen' : 'Alaikäinen';
 }
+*Kun JavaScript kohtaa returnin, funktion suoritus päättyy siihen.
 
 
 OLETUSARVON MERKITSEMINEN:
-
-function tervehdi(nimi = 'vieras') //Käytetään jos parametrille ei määritellä argumenttia.
+esim.
+function tervehdi(nimi = 'vieras') 
+*Jos parametrille ei määritellä argumenttia, parametri saa oletusarvona määritellyn arvon.
 
 
 SCOPE:
+Aaltosulkeiden sisäinen alue voi rajata muuttujan näkyvyyttä.
 
+esim.
+const viesti = 'Tervetuloa';
 function tervehdi() {
-    const viesti = 'Tervetuloa';
     console.log(viesti);
 }
+tervehdi(); // Tulostaa: Tervetuloa
+console.log(viesti); // Tulostaa: Tervetuloa
+*viesti muuttujaa voi käyttää muuallakin kuin funktion sisällä. ULKOPUOLINEN
+
+vs.
 
 function hyvastele() {
     const viesti = 'Näkemiin';
     console.log(viesti);
 }
-//Eri funktiot voivat käyttää samaa muuttujan nimeä toisistaan riippumatta, kun const määritellään funktion sisällä. Jos const määritellään funktioiden ulkopuolella, toista saman nimistä muuttujaa ei voi olla eri arvolla.
--let ja const ovat myös lohkokohtaisia: if- ja silmukkalohko voivat luoda oman scopen. const- ja let-muuttujien näkyvyysalue rajoittuu siihen lohkoon, jossa ne määritellään, sekä sen sisällä oleviin lohkoihin.
+hyvastele(); // Tulostaa: Näkemiin
+console.log(viesti); // ReferenceError: viesti is not defined
+*viesti muuttujaa ei voi käyttää muualla kuin funktion sisällä. PAIKALLINEN
+
+JavaScript suoritus järjestys:
+    1. Jäsentäminen: JavaScript tunnistaa koodin rakenteen: missä on muuttujien määrittelyjä, funktioita, kutsuja ja muita lauseita. Samalla tarkistetaan syntaksia.
+    2. Valmistelu: funktiojulistukset tehdään käytettäviksi. Myös const- ja let-muuttujille luodaan sidokset, mutta niitä ei vielä alusteta, joten niitä ei vielä saa käyttää.
+    3. Suoritus: käskyjä suoritetaan järjestyksessä. Kutsut, ehdot ja silmukat määräävät, mihin suoritus etenee.
+
+
+FUNKTIO ARVONA:
+esim.
+const summa = function(a, b) {
+    return a + b;
+    };
+console.log(summa(2, 3));
+*Tietty muuttuja viittaa anonyymiin funktioon, joka käynnistetään kutsumalla muuttujaa ja (). 
+
+
+FUNKTION DECLARATION: ”Julista funktio nimeltä summa.” 
+    esim.
+    function summa(a, b) {
+        return a + b;
+    }
+    *Voidaan kutsua samassa näkyvyysalueessa jo ennen määrittelyrivin suorittamista.
+
+FUNKTION EXPRESSION: ”Luo funktio ja alusta muuttuja summa tällä funktiolla.”
+    esim.
+    const summa = function(a, b) {
+        return a + b;
+    };
+    *Voidaan kutsua muuttujan nimen kautta vasta, kun sen alustusrivi on suoritettu.
+
 
 NUOLI FUNKTIO:
+Rakenne: (parametrit) => {suoritettava runko}; 
+    *=> korvaa sanan function.
+
+Nuolifunktio on tiivis funktion kirjoitustapa.
+Arrow-funktio sijoitetaan usein const-muuttujaan.
+esim.
+const summa = (a, b) => {
+    return a + b;
+    };
+console.log(summa(4, 6));
+*Kun nuolen jälkeen on suoraan lauseke ilman aaltosulkeita, sen arvo palautetaan automaattisesti. Jos käytät aaltosulkeita, palautus kirjoitetaan return-sanalla.
 
 const tervehdi = () => 'Hei!'; // Ei parametreja: () tarvitaan.
 const tuplaa = luku => luku * 2; // Yksi tavallinen parametri: sulkeet voi jättää pois.
-const summa = (a, b) => a + b; // Useita parametreja: sulkeet tarvitaan.
+const summa = (a, b) => a + b; // Useita parametreja: () tarvitaan.
+    *Tämä on palautus ilman aaltosulkeita.
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
