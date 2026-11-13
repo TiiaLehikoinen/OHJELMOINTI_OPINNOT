@@ -1121,8 +1121,43 @@ const summa = (a, b) => a + b; // Useita parametreja: () tarvitaan.
     *Tämä on palautus ilman aaltosulkeita.
 
 
+THIS:
+Tavallisella funktion suorituksella on this-arvo, vaikka funktion koodissa ei käytettäisi this-sanaa. this-sanan kirjoittaminen ottaa tämän arvon käyttöön; se ei luo sitä.
+nuolifunktio käyttää ympäröivän metodin suorituksen this-arvoa. Ympäröivän metodin ei tarvitse itse käyttää this-sanaa, jotta arvo olisi nuolifunktion käytettävissä.
+
+Tavallinen funktio ja this-arvo:
+esim.
+const opiskelija = { 
+    nimi: "Tiia",
+    pisteet: 99,
+    esittele: function () {
+        console.log(this.nimi);
+    }
+};
+opiskelija.esittele(); // Tiia
+
+    *olio/object = {...} johon opiskelija muuttuja viittaa: opiskelija = {...}
+    ominaisuus/ property= nimi, pisteet, esittele
+    ominaisuuden arvo / property value = "Tiia", 99, function () {...}
+    metodi /method = olion ominaisuutena oleva funktio: function () {...}
+    this = funktiolla, johon esittele ominaisuus viittaa, on this-arvo, joka viittaa olioon, jonka sisällä se on.
+
+Nuolifunktio ja this-arvo:
+esim.
+const opiskelija = {
+    nimi: "Tiia",
+    esittele: function () {
+        const tulostaNimi = () => {
+            console.log(this.nimi);
+        };
+        tulostaNimi();
+    }
+};
+opiskelija.esittele();
+
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-JavaScript Osa 5 - Taulukot:
+JavaScript Osa 5 - Taulukot: // ei vielä käyty uudelleen.
 
 CONST-LISTA:
 const nimet = ['Tiia'];
@@ -1244,7 +1279,7 @@ foreach =
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Taulukkometodit:
+Taulukkometodit: // ei vielä käyty uudelleen.
 esim.
 const esimerkki = [
     {id: 1, nimi: 'Tiia', pisteet: 90, status: 'aktiivinen'},
