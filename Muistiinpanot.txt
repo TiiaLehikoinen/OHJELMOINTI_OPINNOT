@@ -1160,7 +1160,8 @@ opiskelija.esittele();
 JavaScript Osa 5 - Taulukot (array)
 
 [..., ..., ...];
-    *Taulukkoliteraali kirjoitetaan hakasulkeilla. Arvot erotetaan pilkuilla
+    *Taulukkoliteraali kirjoitetaan hakasulkeilla. Arvot erotetaan pilkuilla.
+-Taulukko on JavaScriptissä olio.
 -Taulukot mahdollistavat datan kompaktimman käsittelyn. Ilman taulukoita jokainen datapiste käsitellään erikseen.
 -Yksi muuttuja voi sisältää monta arvoa.
     esim.
@@ -1484,9 +1485,234 @@ Miten edetä taulukon tutkinnan kanssa?
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-JavaScript - Objektit ja olioiden käsittely:
+JavaScript - Objektit ja olioiden käsittely: {...} * Object literal eli aaltosulkusyntaksi on yleisin tapa luoda tavallinen JavaScript-objekti.
+
+-Objektin avulla voidaan kuvata tarkemmin yhden kokonaisuuden sisältämiä tietoja.
+-Objekti eli olio kokoaa samaan kokonaisuuteen liittyvät arvot nimetyiksi ominaisuuksiksi.
+    esim.
+        const opiskelija = {
+            nimi: 'Aino',
+            pisteet: 82,
+            aktiivinen: true
+        };
+
+        console.log(opiskelija.nimi); // objekti.ominaisuus on helppo lukea.
+
+-Objekti/object: kuvaa yhtä asiaa ominaisuuksien avulla. opiskelija = {...}
+-Ominaisuus/property: Jokaisella arvolla on nimi eli avain. nimi:, pisteet:,aktiivinen:.
+-Objekti voi sisältää myös funktioita eli metodeja. 
+    esim.
+        esittele: function () {
+            console.log(this.nimi);
+        }
+    opiskelija.esittele(); 
+
+-Taulukko sopii monelle samantyyppiselle arvolle. Objekti sopii yhden asian kuvaamiseen nimettyjen ominaisuuksien avulla.
+-Objektin ominaisuuden arvo voi olla toinen objekti. Näin voidaan kuvata luonnollisia tietorakenteita. 
+    esim.
+        const opiskelija = {
+            nimi: 'Aino',
+            osoite: {
+                kaupunki: 'Kerava',
+                postinumero: '04200'
+            }
+        };
+
+        console.log(opiskelija.osoite.kaupunki);
+
+
+OMINAISUUDEN MUUTTAMINEN:
+    Objektin olemassa olevan ominaisuuden arvo voidaan päivittää sijoitusoperaattorilla.
+        esim.
+            const tuote = {
+            nimi: 'Näyttö',
+            hinta: 240
+            };
+
+            tuote.hinta = 219;
+            console.log(tuote.hinta);
+
+    JavaScript-objektiin voidaan lisätä uusia ominaisuuksia myös sen luomisen jälkeen.
+        esim. 
+            const opiskelija = { nimi: 'Sara' };
+
+            opiskelija.pisteet = 91;
+            opiskelija['aktiivinen'] = true;
+
+            console.log(opiskelija);
+
+    delete-operaattorilla voidaan poistaa objektin oma ominaisuus.
+        esim.
+            const käyttäjä = {
+                nimi: 'Aino',
+                väliaikainen: true
+            };
+            delete käyttäjä.väliaikainen;
+            console.log(käyttäjä); // { nimi: 'Aino' }
+            console.log(
+                Object.hasOwn(käyttäjä, 'väliaikainen') // Object.hasOwn() tarkistaa olemassaolon.
+
+            ); // false
+
+    Tavallisen objektin puuttuvan ominaisuuden lukeminen palauttaa arvon undefined
+        esim.
+            const käyttäjä = { nimi: 'Mika' };
+            console.log(käyttäjä.email); // undefined
+
+
+HAKU:
+    IN-OPERAATTORI JA HASOWN()
+        Voit tarkistaa, löytyykö objektilta tietty ominaisuus.
+        in = Etsii myös perityistä ominaisuuksista eli prototyyppiketjusta.
+        hasOwn() = Tarkistaa, onko ominaisuus objektin oma
+            esim.
+                const user = { nimi: 'Aino', email: undefined };
+                console.log('nimi' in user); // true
+                console.log(Object.hasOwn(user, 'email')); // true
+                console.log(Object.hasOwn(user, 'ika')); // false
+
+                console.log('toString' in user); // true
+                console.log(Object.hasOwn(user, 'toString')); // false
+
+    ?. ja ??
+        -const kaupunki = opiskelija.osoite?.kaupunki; // Jos vasemmalla puolellani oleva arvo ei ole null eikä undefined, jatka seuraavan ominaisuuden lukemiseen. Muussa tapauksessa keskeytä ketju ja palauta undefined
+        -const nimi = 'Aino' ?? 'Tuntematon'; // Jos vasemmalla puolellani oleva arvo on null tai undefined, käytä oikealla puolellani olevaa arvoa. Muussa tapauksessa säilytä vasemmalla puolellani oleva arvo.
+        -Turvallinen luku ja selkeä oletusarvo toimivat hyvin yhdessä.
+
+    OBJEKTIN AVAIMET, ARVOT JA PARIT
+        *Luovat uuden taulukon hakiessaan dataa. 
+            esim.
+            const user = { nimi: 'Aino', pisteet: 82 };
+            console.log(Object.keys(user)); // ['nimi', 'pisteet']
+            console.log(Object.values(user)); // ['Aino', 82]
+            console.log(Object.entries(user)); // [['nimi', 'Aino'], ['pisteet', 82]]
+        -Object.keys() palauttaa ominaisuuksien nimet.
+        -Object.values() palauttaa ominaisuuksien arvot.
+        -Object.entries() tekee jokaisesta ominaisuudesta [avain, arvo] -parin, jonka voi purkaa destructuringilla.
+            *Kyseessä on taulukko, jonka alkiot ovat myös taulukoita.
+                esim.
+                    [
+                        ['teema', 'dark'],
+                        ['kieli', 'fi']
+                    ]
+            *for...of käy taulukkoa läpi alkio kerrallaan. Destructuring puolestaan purkaa kulloinkin käsiteltävän alkion kahteen muuttujaan.
+                esim.
+                    const asetukset = { teema: 'dark', kieli: 'fi' };
+                    const parit = Object.entries(asetukset);  
+                    
+                    for (const [avain, arvo] of parit) {
+                        console.log(avain, arvo);
+                    }
+                    // teema dark
+                    // kieli fi
+            
+        -Object destructuring poimii nimetyt ominaisuudet suoraan omiksi muuttujikseen.
+            esim.
+                const opiskelija = { nimi: 'Aino', pisteet: 82};
+                const { nimi, pisteet } = opiskelija;
+
+                console.log(nimi); // 'Aino'
+                console.log(pisteet); // 82
+
+
+FUNKTIOT:
+    Objektin ominaisuuden arvona voi olla funktio. Tällöin sitä kutsutaan metodiksi.
+    -Metodia kutsutaan yleensä muodossa objekti.metodi().
+
+    Objektiparametri:
+        Objekti on hyödyllinen funktion parametrina, kun tietoja on useita ja niiden järjestystä ei haluta sitoa kutsuun.
+            esim.
+                const opiskelija = {
+                id: 1,
+                nimi: 'Aino',
+                pisteet: 82,
+                ika: 26,
+                aktiivinen: true
+            };
+
+            function tulostaOpiskelija({ nimi, pisteet }) {
+                console.log(`${nimi}: ${pisteet} p`);
+            }
+
+            tulostaOpiskelija(opiskelija);
+        *Funktiolle välitetään koko olio, mutta parametrilistassa puretaan ainoastaan nimi ja pisteet omiksi muuttujikseen.
+        *Funktio vastaanottaa olion, jonka ominaisuuksia voidaan käsitellä niiden nimien perusteella.
+
+
+KOPIO:
+    Spread ja Object.assign() kopioivat vain ensimmäisen tason. 
+        -Luo uuden ulomman olion. Kopioi ominaisuuksien arvot, mukaan lukien viittaukset sisempiin olioihin. Mutta ei niiden arvoja// const B = { ...A };
+        -Objektin spread-syntaksi ... kopioi ominaisuuksia uuteen objektiin.
+        esim.
+            const user = { nimi: 'Aino', pisteet: 82 };
+            const päivitetty = {
+                ...user,
+                pisteet: 90
+            };
+
+            console.log(user.pisteet);      // 82
+            console.log(päivitetty.pisteet); // 90
+
+    StructuredClone() voi tehdä monista tavallisista rakenteista syvän kopion.
+    -Luo uuden olion ja uudet kopiot myös sen sisältämistä sisemmistä olioista. // const B = structuredClone(A);
+    esim.
+        const alku = {
+            nimi: 'Aino',
+            asetukset: { teema: 'dark' }
+        };
+        const kopio = structuredClone(alku);
+        kopio.asetukset.teema = 'light';
+        console.log(alku.asetukset.teema); // 'dark'
+        console.log(kopio.asetukset.teema); // 'light'
+
+    VANHA VS. UUSI OBJEKTI:
+        vanha:
+        const a = { pisteet: 80 };
+        const b = a;
+        b.pisteet = 90;
+
+        console.log(a.pisteet); // 90
+        console.log(a === b); // true
+
+        vs.
+
+        uusi:
+        const a = { pisteet: 80 };
+        const b = { ...a };
+        b.pisteet = 90;
+
+        console.log(a.pisteet); // 80
+        console.log(b.pisteet); // 90
+        console.log(a === b); // false
+
+
+        Object destructuringissa rest-syntaksi kerää kaikki muut kuin erikseen puretut ominaisuudet uuteen objektiin.
+            esim.
+                const user = {id: 1, nimi: 'Aino', väliaikainen: true};
+                const { väliaikainen, ...pysyvät } = user;
+                console.log(pysyvät); // { id: 1, nimi: 'Aino' }
+                console.log(user.väliaikainen); // true
+
+
+TAULUKKO & OBJEKTI:
+    Usein sovellus käsittelee taulukkoa, jonka jokainen alkio on yksi objekti.
+        esim.
+            const opiskelijat = [
+            { id: 1, nimi: 'Aino', pisteet: 82 },
+            { id: 2, nimi: 'Mika', pisteet: 67 },
+            { id: 3, nimi: 'Sara', pisteet: 94 }
+            ];
+
+            TAULUKON EHDOLLINEN PÄIVITYS:
+            const uusiTaulukko = taulukko.map(alkio =>
+                ehto ? { ...alkio, ominaisuus: uusiArvo } : alkio
+            );
+
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Merkkijonot - JavaScript
+String on yksi JavaScriptin tärkeimmistä tietotyypeistä – lähes kaikki käyttöliittymät käsittelevät tekstiä.
+
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
