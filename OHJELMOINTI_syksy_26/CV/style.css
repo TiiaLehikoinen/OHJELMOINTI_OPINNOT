@@ -23,6 +23,7 @@ body {
     align-items: center;
     text-align: center;
     margin: 0;
+    flex: 1;
 }
 
 header {
@@ -34,13 +35,13 @@ header {
 }
 
 #avatar {
-    border: 5px solid var(--border-color);
+    border: 3px solid var(--border-color);
     border-radius: 50%;
-    box-shadow: var(--box-shadow);
-    min-width: 10rem;
-    max-width: 20rem;
-    min-height: 10rem;
-    max-height: 20rem;
+    /*box-shadow: var(--box-shadow);*/
+    min-width: 5rem;
+    max-width: 7.5rem;
+    min-height: 5rem;
+    max-height: 7.5rem;
 }
 
 h1 {
