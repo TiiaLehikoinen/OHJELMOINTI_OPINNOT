@@ -1711,7 +1711,151 @@ TAULUKKO & OBJEKTI:
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Merkkijonot - JavaScript
-String on yksi JavaScriptin tärkeimmistä tietotyypeistä – lähes kaikki käyttöliittymät käsittelevät tekstiä.
+
+-String on yksi JavaScriptin tärkeimmistä tietotyypeistä – lähes kaikki käyttöliittymät käsittelevät tekstimuotoista dataa.
+    esim.
+        const nimi = 'Aino';
+        const viesti = `Hei ${nimi}!`;
+        console.log(viesti);
+
+-Lomakekentät, käyttäjän nimet, URL-osoitteet, hakusanat, viestit ja API-data sisältävät jatkuvasti merkkijonoja.
+
+-"25" on merkkijono. 25 on number.
+
+-Merkkijono voidaan kirjoittaa kolmella tavalla:
+    esim.
+        const a = 'Hei';
+        const b = "Hei";
+        const c = `Hei`; //Mahdollistaa template literalit ja monirivisen tekstin.
+
+-Ulkoinen ja sisäinen lainausmerkki voivat olla eri tyyppiä.
+    esim.
+        const a = "Hän sanoi 'hei'.";
+        const b = 'Hän sanoi "hei".';
+        const c = 'It\'s JavaScript'; //Takakeno \ kertoo, että seuraava merkki kuuluu tekstiin eikä lopeta stringiä.
+
+-length kertoo, kuinka monta UTF-16-koodiyksikköä merkkijono sisältää.
+    esim.
+        const sana = 'JavaScript';
+        console.log(sana.length); // 10
+    *Kentän pituuden tarkistus, tyhjän tekstin tunnistus ja indeksien käsittely.
+    *Viimeisen tavallisen merkin indeksi on usein length - 1 (indeksin lasku [merkin paikka] alkaa 0:sta, mutta length alkaa 1) {viimeisen merkin pituus ole −1, vaan viimeisen merkin indeksi on yhden pienempi kuin koko merkkijonon pituus.}
+        esim. viimeisen merkin haku indeksistä:
+            console.log(sana[sana.length - 1]); 
+
+-Merkkijonometodit palauttavat uuden arvon – alkuperäinen string ei muutu. Stringiä ei muuteta sisältäpäin. Uusi muoto syntyy uutena arvona.
+
+-Template literal käyttää `backtick`-merkkejä. Backtick-merkkijonossa muuttuja sijoitetaan tekstin sisään ${...}-syntaksilla. Syntaksin sisäiset lausekkeet sallittu. Template literal säilyttää rivinvaihdot.
+
+-Metodeja:
+    .toUpperCase() JA .toLowerCase()
+    .trim(), .trimStart() & .trimEnd() //Poista turhat välilyönnit käyttäjän syötteen reunoilta. Ei poista keskeltä. trim() on hyvä ensimmäinen vaihe tekstisyötteen käsittelyssä.
+    .includes() //Kertoo, löytyykö merkkijonosta tietty osa. Palauttaa booleanin: true/false. Yhdistä tarvittaessa toLowerCase() + includes().
+    .startsWith() & .endsWith() //Tarkista merkkijonon alku tai loppu. For: Tiedostopäätteet, URL:t, etuliitteet, tunnisteet.
+    .indexOf() & lastIndexOf() //Kun tarvitset tiedon siitä, missä kohdassa teksti esiintyy.
+    .slice() //Poimii osan merkkijonosta. Ensimmäinen indeksi kuuluu mukaan, toinen indeksi kertoo kohdan, johon lopetetaan.
+        esim.
+            (sana.slice(0, 4));
+    .substring() //Poimii tekstin kahden indeksin välistä.
+    .replace()//Korvaa ensimmäisen löytyvän osuman. Kun haluat korvata kaikki osumat, käytä replaceAll(). Hyödyllinen esimerkiksi datan siivouksessa.
+        esim.
+            const uusi = vanha.replace('Olen vanha teksti', 'Olen päivitetty teksti');
+    .split() //Muuttaa merkkijonon taulukoksi. Tämän jälkeen käytössä ovat taulukkometodit kuten map() ja filter().
+        esim.
+            const lista = 'HTML,CSS,JavaScript';
+            const kielet = lista.split(',');
+            console.log(kielet); // ['HTML', 'CSS', 'JavaScript']
+        *Pilkun sijaan erotin voi olla välilyönti, puolipiste tai muu merkkijono.
+    .split() + map() + trim() // Yleinen datan puhdistusketju. 1. split() tekee taulukon, 2. map() käy alkiot läpi & 3. trim() poistaa ylimääräiset välilyönnit.
+    .charAt() & .at() // Hakee merkin.
+    .repeat() //toistaa merkkijonon annetun määrän. Käytetään: tekstimuotoiset erotinviivat, tähtiarviot, testidata ja konsolitulosteet.
+        esim.
+            console.log('-'.repeat(20));
+            console.log('⭐'.repeat(5));
+    .padStart() & .padEnd() // Täydennä merkkijono haluttuun pituuteen.
+        esim.
+            const numero = '7';
+            console.log(numero.padStart(3, '0')); // 007
+
+            const nimi = 'CSS';
+            console.log(nimi.padEnd(8, '.')); // CSS.....
+    .JSON.stringify() muuntaa JavaScript-arvon JSON-muotoiseksi merkkijonoksi. Se säilyttää välilyönnit ja lisää merkkijonon ympärille kaksoislainausmerkit
+
+-Lomakekentästä saatu arvo on usein string, vaikka käyttäjä kirjoittaisi numeron.
+    Number() // Muuntaa arvon numeroksi, jos muunnos onnistuu.
+        esim.
+            const syote = '25';
+            const ika = Number(syote);
+    String() //Muuntaa numeron tekstiksi
+        esim.
+            const pisteet = 95;
+
+            const a = String(pisteet);
+            const b = pisteet.toString();
+            const c = `${pisteet}`;
+
+-Merkkijonojen vertailu:
+    === // Merkkien kapitalisaatiolla on väliä. Käytä tarvittaessa muunnoksia kuten numeroksi, tekstiksi tai lowercase.
+    localeCompare() // nimet.sort((a, b) => a.localeCompare(b, 'fi')); Aakkosjärjestys riippuu kielestä ja locale-asetuksesta.
+    Unicode // Kaikki näkyvät merkit eivät ole yksi UTF-16-koodiyksikkö.
+        esim.
+            const emoji = '😀';
+            console.log(emoji.length); // 2
+            console.log([...emoji].length); // 1
+        *Spread-operaattori (...) käy merkkijonon läpi Unicode-koodipisteittäin. Hakasulkeet muodostavat näistä taulukon.
+    for...of // käy läpi stringin merkkejä luettavasti. Sopii hyvin, kun et tarvitse indeksinumeroa. Tavallinen for sopii, kun tarvitset sekä indeksin että merkin.
+
+KÄYTÄNNÖN ESIMERKKI: KÄYTTÄJÄNIMI
+    esim.
+        const syote = '  Aino Virtanen  ';
+
+        const tunnus = syote
+        .trim()
+        .toLowerCase()
+        .replaceAll(' ', '.');
+
+        console.log(tunnus); // aino.virtanen
+
+-test() tarkistaa, vastaako merkkijono säännöllisessä lausekkeessa määriteltyä rakennetta. Se palauttaa boolean-arvon (true tai false).
+    esim.
+        const saanto = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        console.log(saanto.test(email)); // true
+
+        *Merkintä:
+        / = Säännöllisen lausekkeen rajaus
+        ^ = Merkkijonon alku
+        [^\s@]+	= Vähintään yksi merkki, joka ei ole tyhjätilamerkki tai @
+        @ = Pakollinen @-merkki
+        [^\s@]+	= Vähintään yksi sallittu merkki
+        \. = Pakollinen piste
+        [^\s@]+	= Vähintään yksi sallittu merkki
+        $ = Merkkijonon loppu
+
+TEE PERJANTAINA: Dia 301. Rakenna pieni ohjelma, joka analysoi käyttäjän kirjoittamaa tekstiä
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1730,3 +1874,5 @@ järjestelmäfontti (?)
 rem/em: rem on fonttikokoon suhteutettu, em on isäelementin kokoon suhteutettu
 
 -millä testataan ruudunlukijat?
+
+Iterable tarkoittaa JavaScriptissä arvoa, jonka sisältämät arvot voidaan käydä läpi yksi kerrallaan määritellyssä järjestyksessä. Suomeksi iterable tarkoittaa iteroitavaa eli läpikäytävää.
