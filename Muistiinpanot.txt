@@ -1832,33 +1832,197 @@ KÄYTÄNNÖN ESIMERKKI: KÄYTTÄJÄNIMI
         [^\s@]+	= Vähintään yksi sallittu merkki
         $ = Merkkijonon loppu
 
-TEE PERJANTAINA: Dia 301. Rakenna pieni ohjelma, joka analysoi käyttäjän kirjoittamaa tekstiä
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+TEE TORSTAINA: Dia 301. Rakenna pieni ohjelma, joka analysoi käyttäjän kirjoittamaa tekstiä
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DOM - dokumenttipuu
+
+
+document-OBJEKTI
+    esim.
+        console.log(document);
+        console.log(document.title);
+        console.log(document.body);
+    *Edustaa selaimeen ladattua HTML-dokumenttia.
+
+document-METODIT 
+-querySelector() //Hae ensimmäinen CSS-valitsimeen osuva elementti. querySelector() käyttää samaa valitsinajattelua kuin CSS: tagi, .class, #id ja yhdistelmävalitsimet.
+    esim.
+        const otsikko = document.querySelector('h1');
+        const kortti = document.querySelector('.card');
+        const nappi = document.querySelector('#save');
+-querySelectorAll() //Hae kaikki CSS-valitsimeen osuvat elementit
+    esim.
+        const kortit = document.querySelectorAll('.card');
+
+        console.log(kortit.length);
+        for (const kortti of kortit) {
+            console.log(kortti.textContent);
+        }
+    *Voit käydä tulokset läpi for...of- tai forEach()-rakenteella.
+-getElementById() //ID:n perusteella haku. 
+    esim.
+        const tulos = document.getElementById('result');
+        console.log(tulos);
+    *querySelector("#result") toimii myös. 
+-textContent // Lue tai muuta elementin tekstisisältöä.
+    esim.
+        const otsikko = document.querySelector('h1');
+        console.log(otsikko.textContent); // tulostaa h1:sen teksti sisällön
+
+        otsikko.textContent = 'Uusi otsikko'; // antaa uuden h1 arvon.
+-innerHTML //innerHTML lukee tai asettaa elementin sisäisen HTML-osion. Voit luoda nopeasti HTML-rakennetta.
+    esim.
+        const laatikko = document.querySelector('.box');
+
+        laatikko.innerHTML = '<strong>Valmis!</strong>';
+    *Käyttäjän sisältöön: suosi textContentia ja createElement()-rakentamista. Älä sijoita luottamatta käyttäjän syötettä innerHTML:ään – se voi mahdollistaa XSS-hyökkäyksen. Tulkitsee merkkijonon HTML:nä. Käytä vain, kun sisältö on luotettua ja rakenne on tarkoituksellinen.
+-getAttribute() // lukee HTML-attribuutin arvon.
+    *HTML:n href, src, alt, aria-label, data-* jne. voidaan lukea DOMin kautta.
+        esim.
+            <a href="https://google.com" target="_blank">Google</a>
+               *a                       = Elementin tyyppi
+                href                    = Attribuutti
+                "https://google.com"    = Attribuutin arvo
+                target                  = Attribuutti
+                "_blank"                = Attribuutin arvo
+                Google                  = Elementin tekstisisältö
+        esim.
+            const linkki = document.querySelector('a'); 
+               *linkki                      = Viittaus DOM-objektiin
+                href                        = DOM-objektin property
+                linkki.href                 = Propertyn arvon lukeminen 
+                getAttribute()              = DOM-objektin metodi
+                linkki.getAttribute('href') = HTML-attribuutin arvon lukeminen
+-setAttribute() // asettaa tai päivittää attribuutin.
+    esim.
+        const kuva = document.querySelector('img');
+        kuva.setAttribute('src', 'kuva2.jpg');
+        kuva.setAttribute('alt', 'Uusi kuvaus');
+-removeAttribute() // voidaan poistaa attribuutteja.
+-hasAttribute() // Attribuuttien olemassaolo voidaan tarkistaa.
+    esim.
+        const nappi = document.querySelector('button');
+        if (nappi.hasAttribute('disabled')) {
+            nappi.removeAttribute('disabled');
+        }
+-classList // Tapa käsitellä CSS-luokkia JavaScriptillä. JavaScript voi muuttaa CSS tilaa lisäämällä tai poistamalla luokan.
+-classList.toggle()
+    esim.
+        const menu = document.querySelector('.menu');
+        menu.classList.toggle('open'); // Lisää luokan, jos sitä ei ole – poistaa, jos se on.
+
+        const onAuki = menu.classList.contains('open'); // Tarkistaa, sisältääkö elementti tietyn luokan.
+        console.log(onAuki);
+    *Luokkapohjainen tila toimii hyvin menuissa, modaleissa, korteissa ja valituissa riveissä.
+-style // Inline elementin tyyliä voi muuttaa style-propertyn kautta
+    esim.
+        const laatikko = document.querySelector('.box');
+        laatikko.style.backgroundColor = 'tomato';
+        laatikko.style.padding = '2rem';
+    *camelCase. CSS:n background-color muuttuu JavaScriptissä backgroundColor-muotoon.
+-data- & dataset // *data-product-id → dataset.productId
+    esim.
+        <button data-product-id="42">Osta</button>
+
+        const btn = document.querySelector('button');
+        console.log(btn.dataset.productId); // '42'
+    *dataset-arvot ovat merkkijonoja. Muunna tarvittaessa Number()-funktiolla.
+-createElement() // Luo uusi DOM-elementti JavaScriptillä.
+    esim. 
+        const li = document.createElement('li');
+        li.textContent = 'JavaScript';
+        console.log(li);
+    *createElement() ei vielä lisää elementtiä näkyvälle sivulle. Täytä sisältö ja ominaisuudet, sitten liitä elementti DOMiin append()- tai appendChild()-metodilla.
+-append() & appendChild() // Lisää uusi elementti olemassa olevan elementin lapseksi
+-prepend() // Lisää ensimmäiseksi lapseksi.
+-before()/after() // Lisää elementin sisarukseksi ennen tai jälkeen kohteen
+-remove() // Poista elementti DOMista.
+    *Käytetään: Ilmoituksen sulkeminen, listan rivin poistaminen ja väliaikaisten elementtien siivous.
+-replaceWith() // Korvaa olemassa oleva elementti toisella.
+    *Hyödyllinen, kun koko elementin tyyppi tai rakenne muuttuu. Jos vain sisältö tai tila vaihtuu, textContent/classList voi olla yksinkertaisempi.
+-closest() // closest() etsii elementistä ylöspäin lähimmän valitsimeen osuvan esivanhemman.
+    esim.
+        const nappi = document.querySelector('.delete-btn');
+        const kortti = nappi.closest('.card');
+        console.log(kortti);
+-matches() // Kertoo, vastaako elementti CSS-valitsinta.
+    esim.
+        HTML:ssä samalle elementille voidaan antaa useita luokkia erottamalla luokkien nimet välilyönnillä.
+            <div class="card featured">Kortti</div>
+    *kysyy: onko tällä samalla elementillä myös...
+-cloneNode() // DOM-elementti voidaan kopioida.
+    esim.
+        const kortti = document.querySelector('.card');
+        const kopio = kortti.cloneNode(true); // true = syvä kopio
+-<template> + DOM //
+    <template> on HTML-elementti, jonka sisälle voidaan määritellä uudelleenkäytettävä HTML-rakenne, jota selain ei vielä renderöi näkyviin. Se toimii eräänlaisena rakennemallina, josta JavaScript voi luoda kopioita, muokata niitä ja lisätä ne näkyvälle verkkosivulle.
+    esim.
+        <template id="card-template">
+            <div class="card">
+                <h2>Otsikko</h2>
+                <p>Kuvaus</p>
+            </div>
+        </template>
+
+        <div class="grid"></div>
+
+
+        const temp = document.querySelector('#card-template');
+        const fragment = temp.content.cloneNode(true);
+        fragment.querySelector('h2').textContent = 'Uusi kortti';
+        document.querySelector('.grid').append(fragment);
+-DocumentFragment() // Voit rakentaa kokonaisuuden muistissa ja lisätä sen DOMiin yhdellä operaatiolla.
+
+
+DOM-NAVIGOINTI
+    Voit liikkua elementistä sen vanhempiin, lapsiin ja sisaruksiin.
+
+        const item = document.querySelector('.item');
+        console.log(item.parentElement);
+        console.log(item.children);
+        console.log(item.firstElementChild);
+        console.log(item.nextElementSibling);
+
+
+DOM + TAULUKKODATA
+    Tehtävä: muuta objektitaulukko näkyväksi listaksi.
+        esim.
+            const tuotteet = [
+                { nimi: 'Hiiri', hinta: 29 },
+                { nimi: 'Näppäimistö', hinta: 79 }
+            ];
+
+            for (const tuote of tuotteet) {
+                const li = document.createElement('li');
+                li.textContent = `${tuote.nimi} – ${tuote.hinta} €`;
+                lista.append(li);
+            }
+        *Käytetään: Sama perusmalli toistuu verkkokaupoissa, uutislistoissa, taulukoissa ja hakutuloksissa.
+
+
+DOM + FUNKTIOT
+    esim.
+        function createProductCard(product) {
+            const article = document.createElement('article');
+
+            article.className = 'product-card';
+            article.textContent = product.name;
+            return article;
+        }
+
+        const card = createProductCard({ name: 'Hiiri' });
+        grid.append(card);
+
+
+*DOM-muutokset voivat aiheuttaa selaimelle uutta layout- ja paint-työtä. Vältä turhaa DOM-lukemista ja -kirjoittamista tiukoissa silmukoissa.
+*DevTools elements-paneeli näyttää selaimen nykyisen DOMin – ei vain alkuperäistä HTML-tiedostoa.
+*DOM-virhe alkaa usein väärästä oletuksesta sivun rakenteesta
+
+
+TEE PERJANTAINA: Dia 344. DOM-taidot yhdeksi pieneksi käyttöliittymäksi.
+    
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
