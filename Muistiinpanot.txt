@@ -1126,14 +1126,14 @@ Tavallisella funktion suorituksella on this-arvo, vaikka funktion koodissa ei k�
 nuolifunktio käyttää ympäröivän metodin suorituksen this-arvoa. Ympäröivän metodin ei tarvitse itse käyttää this-sanaa, jotta arvo olisi nuolifunktion käytettävissä.
 
 Tavallinen funktio ja this-arvo:
-esim.
-const opiskelija = { 
-    nimi: "Tiia",
-    pisteet: 99,
-    esittele: function () {
-        console.log(this.nimi);
-    }
-};
+    esim.
+        const opiskelija = { 
+            nimi: "Tiia",
+            pisteet: 99,
+            esittele: function () {
+                console.log(this.nimi);
+            }
+        };
 opiskelija.esittele(); // Tiia
 
     *olio/object = {...} johon opiskelija muuttuja viittaa: opiskelija = {...}
@@ -1143,17 +1143,17 @@ opiskelija.esittele(); // Tiia
     this = funktiolla, johon esittele ominaisuus viittaa, on this-arvo, joka viittaa olioon, jonka sisällä se on.
 
 Nuolifunktio ja this-arvo:
-esim.
-const opiskelija = {
-    nimi: "Tiia",
-    esittele: function () {
-        const tulostaNimi = () => {
-            console.log(this.nimi);
+    esim.
+        const opiskelija = {
+            nimi: "Tiia",
+            esittele: function () {
+                const tulostaNimi = () => {
+                    console.log(this.nimi);
+                };
+                tulostaNimi();
+            }
         };
-        tulostaNimi();
-    }
-};
-opiskelija.esittele();
+        opiskelija.esittele();
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1765,7 +1765,7 @@ Merkkijonot - JavaScript
             const lista = 'HTML,CSS,JavaScript';
             const kielet = lista.split(',');
             console.log(kielet); // ['HTML', 'CSS', 'JavaScript']
-        *Pilkun sijaan erotin voi olla välilyönti, puolipiste tai muu merkkijono.
+        *(','); // Kertoo mistä kohti split tehdään.
     .split() + map() + trim() // Yleinen datan puhdistusketju. 1. split() tekee taulukon, 2. map() käy alkiot läpi & 3. trim() poistaa ylimääräiset välilyönnit.
     .charAt() & .at() // Hakee merkin.
     .repeat() //toistaa merkkijonon annetun määrän. Käytetään: tekstimuotoiset erotinviivat, tähtiarviot, testidata ja konsolitulosteet.
@@ -1795,15 +1795,15 @@ Merkkijonot - JavaScript
             const c = `${pisteet}`;
 
 -Merkkijonojen vertailu:
-    === // Merkkien kapitalisaatiolla on väliä. Käytä tarvittaessa muunnoksia kuten numeroksi, tekstiksi tai lowercase.
+    ===             // Merkkien kapitalisaatiolla on väliä. Käytä tarvittaessa muunnoksia kuten numeroksi, tekstiksi tai lowercase.
     localeCompare() // nimet.sort((a, b) => a.localeCompare(b, 'fi')); Aakkosjärjestys riippuu kielestä ja locale-asetuksesta.
-    Unicode // Kaikki näkyvät merkit eivät ole yksi UTF-16-koodiyksikkö.
+    Unicode         // Kaikki näkyvät merkit eivät ole yksi UTF-16-koodiyksikkö.
         esim.
             const emoji = '😀';
             console.log(emoji.length); // 2
             console.log([...emoji].length); // 1
         *Spread-operaattori (...) käy merkkijonon läpi Unicode-koodipisteittäin. Hakasulkeet muodostavat näistä taulukon.
-    for...of // käy läpi stringin merkkejä luettavasti. Sopii hyvin, kun et tarvitse indeksinumeroa. Tavallinen for sopii, kun tarvitset sekä indeksin että merkin.
+    for...of        // käy läpi stringin merkkejä luettavasti. Sopii hyvin, kun et tarvitse indeksinumeroa. Tavallinen for sopii, kun tarvitset sekä indeksin että merkin.
 
 KÄYTÄNNÖN ESIMERKKI: KÄYTTÄJÄNIMI
     esim.
@@ -1834,7 +1834,11 @@ KÄYTÄNNÖN ESIMERKKI: KÄYTTÄJÄNIMI
 
 TEE TORSTAINA: Dia 301. Rakenna pieni ohjelma, joka analysoi käyttäjän kirjoittamaa tekstiä
 
+/*Muistiinpanoja: 
 
+elementti.addEventListener(tapahtumatyyppi, callbackFunktio);
+
+*/
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 DOM - dokumenttipuu
 

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fi">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="analysaattori.js" defer></script>
+        <title>Tekstianalysaattori | Harjoitus</title>
+    </head>
+    <body>
+        <div>
+            <h1>Tekstianalysaattori</h1>
+            <p>Tämä on yksinkertainen tekstianalysaatio harjoitus.</p>
+
+            <h2>Syötä tekstiä analysoitavaksi:</h2>
+            <strong>Mitä kuuluu?</strong>
+            <small>Mainitse jossain kohti kirjoitusta: onnellinen, surullinen, tyytyväinen, ärtynyt tai neutraali.</small>
+            <textarea id="analysoitava-teksti"></textarea>
+            <button id="analyysi-nappi">Analysoi</button>
+
+            <h2>Analyysin tulokset:</h2>
+                <div>
+                    <ul> 
+                        <li><h3>Merkkien määrä:</h3><span id="merkkien-maara"></span></li>
+                        <li><h3>Sanojen määrä:</h3><span id="sanojen-maara"></span></li>
+                        <li><h3>Mainitsit sanan:</h3><span id="loytyyko-sana"></span></li>
+                        <li><h3>Syötteesi isoilla kirjaimilla</h3><span id="upper-case"></span></li>
+                        <li><h3>Syötteesi pienillä kirjaimilla</h3><span id="lower-case"></span></li>
+                        <li><h3>20 ensimmäistä merkkiä:</h3><span id="ensimmaiset-merkit"></span></li>
+                    </ul>
+                </div>
+        </div>
+    </body>
+</html>
