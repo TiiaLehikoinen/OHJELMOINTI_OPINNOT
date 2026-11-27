@@ -9,41 +9,84 @@ const upperCased = document.querySelector("#upper-case");
 const lowerCased = document.querySelector("#lower-case");
 const ensimmaisetMerkit = document.querySelector("#ensimmaiset-merkit");
 
-//ANALYYSI
-analyysiNappi.addEventListener('click', () => { /*'click' määrittelee tapahtumatyypin jota kuunnellaan. Muita vaihtoehtojo on: 'dblclick' (Elementtiä kaksoisklikataan), 'mouseenter' (Hiiren osoitin siirtyy elementin päälle), 'mouseleave' (Hiiren osoitin poistuu elementin päältä), 'keydown' (Näppäimistön näppäintä painetaan), 'input' (Käyttäjä muuttaa syötekentän sisältöä) & 'submit' (Lomake lähetetään)*/
+ //URL slug
+const urlOtsikko = 'Tämä on yksinkertainen tekstianalysaatio harjoitus';
+const slug = urlOtsikko.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, "-");
+console.log(`URL slug: ${slug}`);
+
+//Kuuntelijat:
+analyysiNappi.disabled = true;
+let kayttajaHavaittu = false;
+
+analysoitavaTeksti.addEventListener('input', () => {
+    kayttajaHavaittu = true;
+    analyysiNappi.disabled = false; 
+    console.log('Käyttäjä havaittu testikentässä!');
+}); 
+analyysiNappi.addEventListener('click', () => {
+    if(kayttajaHavaittu === true) { 
+        const tulos = siivottuTeksti();
     
+            if(tulos === undefined) {
+                return;
+            }
+
+        const tekstiVersioYksi = tulos.ilmanValilyonteja;
+        const tekstiVersioKaksi = tulos.ilmanMerkkeja;
+
+        //Käyttäjälle
+        merkkienMaara.textContent = tekstiVersioYksi.length;
+        lowerCased.textContent = tekstiVersioYksi.toLowerCase();
+        upperCased.textContent = tekstiVersioYksi.toUpperCase();
+    }
+});
+
+
+//Syötteen haku
+function haetaanSyote () {
     const teksti = analysoitavaTeksti.value;
-    
-    if (teksti.trim().length === 0) { //Jos analysoitava teksti on tyhjä, niin näytetään alert-viesti
+
+    if(teksti.trim().length === 0) { 
         alert('Syötä analysoitava teksti!');
         return; 
     }
-    else {
+    else { 
         console.log('Analyysi aloitettu!');
+        return teksti;
     }
-
-    //Jatketaan koodin suoritusta...
-
-    //trimmaus ja siivous
-    const trimmattuTeksti = teksti.trim().replace(/\s+/g, " "); 
-    merkkienMaara.textContent = trimmattuTeksti.length;
-    console.log(`Siivottu teksti (aka. merkkien määrä): ${trimmattuTeksti}`);
-
-    const replacedTeksti = teksti.replace(/[.,!?;:]/g, '').trim(); //.replace(haettava, korvaava); Metodien ketjuttaminen
+};
 
     
-    //lower ja upper case
-    const lowerCasing = trimmattuTeksti.toLowerCase();
-    console.log(`Syöte pienillä kirjaimilla: ${lowerCasing}`);
-    lowerCased.textContent = lowerCasing;
+//Syötteen siivous
+const siivottuTeksti =
+    function siivotaan () {
+        const syote = haetaanSyote();
 
-    const upperCasing = trimmattuTeksti.toUpperCase();
-    console.log(`Syöte isoilla kirjaimilla: ${upperCasing}`);
-    upperCased.textContent = upperCasing;
+            if(syote === undefined) {
+                return;
+            }
 
+            const siivottuTekstiValilyonnit = function poistetaanValilyonnit () {
+                const valilyonnitTasattu = syote.trim().replace(/\s+/g, " ");
+                console.log(`Syötteestä poistettu välilyönnit alusta ja lopusta sekä jokainen yli yhden välilyönnin kohta korvataan vain yhdellä välilyönnillä. TULOS: ${valilyonnitTasattu}`);  
+                return valilyonnitTasattu;
+            };
+            const siivottuTekstiMerkit = function poistetaanMerkit () {
+                const tekstiIlmanValilyontejaTaiMerkkeja = syote.replace(/[.,!?;:]/g, '').trim(); //.replace(haettava, korvaava); Metodien ketjuttaminen
+                console.log(`Syötteestä poistettu [.;!?;:] merkit ja poistettu alusta ja lopusta välilyönnit. TULOS: ${tekstiIlmanValilyontejaTaiMerkkeja}`);
+                return tekstiIlmanValilyontejaTaiMerkkeja;
+            };
+    return {
+        ilmanValilyonteja: siivottuTekstiValilyonnit(), 
+        ilmanMerkkeja: siivottuTekstiMerkit()
+    }
+};
+    
+
+/*
 
     //taulukoksi
-    const taulukkoSanoista = replacedTeksti.split(/\s+/); // säännöllinen lauseke (Regular Expression)
+    const taulukkoSanoista = tekstiIlmanValilyontejaTaiMerkkeja.split(/\s+/); // säännöllinen lauseke (Regular Expression)
     sanojenMaara.textContent = taulukkoSanoista.length 
     console.log(`Taulukko sanoista (aka. sanojen määrä): ${taulukkoSanoista}`); 
 
@@ -68,14 +111,11 @@ analyysiNappi.addEventListener('click', () => { /*'click' määrittelee tapahtum
     etsi();
 
     //ensimmäiset 20 merkkiä...
-    const merkit = trimmattuTeksti.slice(0, 20);
+    const merkit = siivottuTeksti.slice(0, 20);
     ensimmaisetMerkit.textContent = `${merkit}...`;
     console.log(`ensimmäiset 20 merkkiä ovat: ${merkit}`);
 
-    //URL slug
-    const urlOtsikko = 'Tämä on yksinkertainen tekstianalysaatio harjoitus';
-    const slug = urlOtsikko.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, "-");
-    console.log(`URL slug: ${slug}`);
+   
 
     //SANOJEN ESIINTYMINEN
     const sana = 'Onnellinen';
@@ -96,4 +136,9 @@ analyysiNappi.addEventListener('click', () => { /*'click' määrittelee tapahtum
         summa += 1;
     };
     console.log(`Onnelisuus mainittiin: ${summa} kertaa!`);
-});
+    */
+
+
+
+
+
