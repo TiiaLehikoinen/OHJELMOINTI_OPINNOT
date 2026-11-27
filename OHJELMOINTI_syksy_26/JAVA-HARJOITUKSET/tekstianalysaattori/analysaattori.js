@@ -25,7 +25,7 @@ analyysiNappi.addEventListener('click', () => { /*'click' määrittelee tapahtum
     //Jatketaan koodin suoritusta...
 
     //trimmaus ja siivous
-    const trimmattuTeksti = teksti.trim(); 
+    const trimmattuTeksti = teksti.trim().replace(/\s+/g, " "); 
     merkkienMaara.textContent = trimmattuTeksti.length;
     console.log(`Siivottu teksti (aka. merkkien määrä): ${trimmattuTeksti}`);
 
@@ -56,7 +56,7 @@ analyysiNappi.addEventListener('click', () => { /*'click' määrittelee tapahtum
 
     function etsi () {
         for (const sana of taulukkoSanoista) {
-            if (haettavatSanat.includes(sana.toLowerCase())) {
+            if (haettavatSanat.includes(sana.toLowerCase())) { // Huomaamaton haku kun includes:in tarkkuus kirjainkoossa ohitetaan .toLowerCase tai .toUpperCase
                 loytyykoSana.textContent = sana;
                 console.log('löytyy maininta mielialasta');
                 return;
@@ -71,4 +71,29 @@ analyysiNappi.addEventListener('click', () => { /*'click' määrittelee tapahtum
     const merkit = trimmattuTeksti.slice(0, 20);
     ensimmaisetMerkit.textContent = `${merkit}...`;
     console.log(`ensimmäiset 20 merkkiä ovat: ${merkit}`);
+
+    //URL slug
+    const urlOtsikko = 'Tämä on yksinkertainen tekstianalysaatio harjoitus';
+    const slug = urlOtsikko.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, "-");
+    console.log(`URL slug: ${slug}`);
+
+    //SANOJEN ESIINTYMINEN
+    const sana = 'Onnellinen';
+    const loytyneetSanat = [];
+
+    for(const haettavaSana of taulukkoSanoista) {
+        if(haettavaSana.toLowerCase() === sana.toLowerCase()) {
+            loytyneetSanat.push(haettavaSana);
+        }
+    };
+    if(loytyneetSanat.length === 0) {
+        console.log(`Etsittävää sanaa: ${sana} ei löytynyt`);
+    } 
+    else(console.log(`${sana} on haettu ja löytynyt!`));
+    
+    let summa = 0;
+    for(let i = 0; i <= loytyneetSanat.length -1; i = i + 1) {
+        summa += 1;
+    };
+    console.log(`Onnelisuus mainittiin: ${summa} kertaa!`);
 });
